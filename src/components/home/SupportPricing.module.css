@@ -1,0 +1,219 @@
+.grid {
+  display: grid;
+  gap: var(--ic-space-5);
+  align-items: stretch;
+}
+
+.pricing {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1.5rem, 3.5vw, 2.5rem);
+  border-radius: var(--ic-radius-lg);
+  background: var(--ic-surface);
+  border: 1px solid var(--ic-border);
+  box-shadow: var(--ic-shadow-sm);
+}
+
+.pricingHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--ic-space-3);
+}
+
+.pricingHead p {
+  margin-top: 0.25rem;
+  font-size: 0.9rem;
+}
+
+.badge {
+  padding: 0.35rem 0.7rem;
+  border-radius: var(--ic-radius-pill);
+  background: var(--ic-accent-soft);
+  color: var(--ic-accent-deep);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.tiers {
+  margin-top: var(--ic-space-5);
+  border-top: 1px solid var(--ic-border);
+}
+
+.tiers li {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas:
+    "qty price"
+    "note price";
+  align-items: center;
+  gap: 0 var(--ic-space-4);
+  padding: 0.9rem 0.75rem;
+  margin-inline: -0.75rem;
+  border-bottom: 1px solid var(--ic-border);
+  border-radius: var(--ic-radius-sm);
+  transition: background-color var(--ic-dur-fast) var(--ic-ease);
+}
+
+.tiers li:hover {
+  background: var(--ic-paper);
+}
+
+.popular {
+  background: var(--ic-paper);
+  position: relative;
+}
+
+.popular::before {
+  content: "Most popular";
+  position: absolute;
+  top: -0.6rem;
+  left: 0.75rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--ic-radius-pill);
+  background: var(--ic-ink);
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.qty {
+  grid-area: qty;
+  font-weight: 600;
+}
+
+.qty small {
+  font-weight: 400;
+  color: var(--ic-text-muted);
+}
+
+.note {
+  grid-area: note;
+  font-size: 0.85rem;
+  color: var(--ic-text-muted);
+}
+
+.tierPrice {
+  grid-area: price;
+  font-family: var(--ic-font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: var(--ic-tracking-tight);
+}
+
+.includes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 0.6rem 1rem;
+  margin: var(--ic-space-5) 0 var(--ic-space-6);
+}
+
+.includes li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--ic-text-muted);
+}
+
+.includes svg {
+  flex: none;
+  color: var(--ic-success);
+}
+
+.pricing > a {
+  margin-top: auto;
+  align-self: flex-start;
+}
+
+.support {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1.5rem, 3.5vw, 2.5rem);
+  border-radius: var(--ic-radius-lg);
+}
+
+.support h3 {
+  font-size: clamp(1.4rem, 1.2rem + 0.8vw, 1.8rem);
+}
+
+.support > p {
+  margin-top: var(--ic-space-4);
+}
+
+.channels {
+  display: grid;
+  margin-top: var(--ic-space-5);
+  border-top: 1px solid var(--ic-border);
+}
+
+.channels li {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.25rem var(--ic-space-4);
+  align-items: center;
+  padding: var(--ic-space-4) 0;
+  border-bottom: 1px solid var(--ic-border);
+}
+
+.channels li > div {
+  display: grid;
+  gap: 0.1rem;
+}
+
+.channels li > div span {
+  font-size: 0.85rem;
+  color: var(--ic-text-muted);
+}
+
+.channelIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--ic-radius-sm);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.channelAction {
+  grid-column: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--ic-accent);
+}
+
+.channelAction:hover {
+  text-decoration: underline;
+}
+
+.reviewNote {
+  margin-top: auto;
+  padding-top: var(--ic-space-5);
+  font-size: 0.9rem;
+}
+
+@media (min-width: 640px) {
+  .channels li {
+    grid-template-columns: auto 1fr auto;
+  }
+
+  .channelAction {
+    grid-column: auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: 7fr 5fr;
+  }
+}

@@ -1,0 +1,121 @@
+.section {
+  background: var(--ic-surface);
+  border-top: 1px solid var(--ic-border);
+}
+
+.grid {
+  display: grid;
+  gap: var(--ic-space-7);
+}
+
+.aside p {
+  margin-top: var(--ic-space-4);
+  max-width: 40ch;
+}
+
+.contact {
+  display: grid;
+  gap: 0.6rem;
+  margin-top: var(--ic-space-6);
+  padding: var(--ic-space-5);
+  border-radius: var(--ic-radius-md);
+  background: var(--ic-paper);
+  border: 1px solid var(--ic-border);
+}
+
+.contact h6 {
+  margin-bottom: 0.25rem;
+}
+
+.contactLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 500;
+  color: var(--ic-text-muted);
+  transition: color var(--ic-dur-fast) var(--ic-ease);
+}
+
+.contactLink svg {
+  color: var(--ic-accent);
+}
+
+.contactLink:hover {
+  color: var(--ic-text);
+}
+
+.list {
+  border-top: 1px solid var(--ic-border);
+}
+
+.item {
+  border-bottom: 1px solid var(--ic-border);
+}
+
+.item h3 {
+  font-size: 1.05rem;
+  font-family: var(--ic-font-body);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ic-space-4);
+  width: 100%;
+  padding: 1.15rem 0;
+  text-align: left;
+  color: var(--ic-text);
+  transition: color var(--ic-dur-fast) var(--ic-ease);
+}
+
+.trigger:hover {
+  color: var(--ic-accent);
+}
+
+.plus {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  border: 1px solid var(--ic-border-strong);
+  transition:
+    transform var(--ic-dur) var(--ic-ease),
+    background-color var(--ic-dur) var(--ic-ease),
+    color var(--ic-dur) var(--ic-ease),
+    border-color var(--ic-dur) var(--ic-ease);
+}
+
+.open .plus {
+  transform: rotate(45deg);
+  background: var(--ic-ink);
+  border-color: var(--ic-ink);
+  color: #fff;
+}
+
+.panel {
+  overflow: hidden;
+}
+
+.panel p {
+  max-width: 62ch;
+  padding-bottom: 1.25rem;
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: 5fr 7fr;
+    gap: var(--ic-space-9);
+  }
+
+  .aside {
+    position: sticky;
+    top: calc(var(--ic-header-h) + 2rem);
+    align-self: start;
+  }
+}

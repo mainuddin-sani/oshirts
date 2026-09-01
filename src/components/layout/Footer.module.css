@@ -1,0 +1,141 @@
+.footer {
+  padding-block: var(--ic-space-8) var(--ic-space-5);
+}
+
+.top {
+  display: grid;
+  gap: var(--ic-space-7) var(--ic-space-6);
+  padding-bottom: var(--ic-space-7);
+  border-bottom: 1px solid var(--ic-border);
+}
+
+.brand p {
+  max-width: 34ch;
+  margin: var(--ic-space-4) 0 var(--ic-space-5);
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--ic-font-display);
+  font-size: 1.35rem;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.logo strong {
+  font-weight: 700;
+}
+
+.logo svg rect {
+  fill: #fff;
+}
+
+.logo svg circle:first-of-type {
+  stroke: var(--ic-ink);
+}
+
+.socials {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.socials a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--ic-radius-sm);
+  border: 1px solid var(--ic-border);
+  color: var(--ic-text-muted);
+  transition:
+    color var(--ic-dur-fast) var(--ic-ease),
+    border-color var(--ic-dur-fast) var(--ic-ease),
+    background-color var(--ic-dur-fast) var(--ic-ease);
+}
+
+.socials a:hover {
+  color: var(--ic-text);
+  border-color: var(--ic-border-strong);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.col h6 {
+  margin-bottom: var(--ic-space-4);
+  color: var(--ic-text-subtle);
+  text-transform: uppercase;
+  letter-spacing: var(--ic-tracking-caps);
+  font-family: var(--ic-font-body);
+  font-size: 0.75rem;
+}
+
+.col ul {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.col a {
+  font-size: 0.95rem;
+  color: var(--ic-text-muted);
+  transition: color var(--ic-dur-fast) var(--ic-ease);
+}
+
+.col a:hover {
+  color: var(--ic-text);
+}
+
+.bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--ic-space-4) var(--ic-space-6);
+  padding-top: var(--ic-space-5);
+}
+
+.bottom p {
+  font-size: 0.875rem;
+  color: var(--ic-text-subtle);
+}
+
+.legal {
+  display: flex;
+  gap: var(--ic-space-4);
+  font-size: 0.875rem;
+}
+
+.legal a {
+  color: var(--ic-text-subtle);
+}
+
+.legal a:hover {
+  color: var(--ic-text);
+}
+
+.payments {
+  display: flex;
+  gap: 0.6rem;
+  margin-left: auto;
+  color: var(--ic-text-subtle);
+}
+
+@media (min-width: 640px) {
+  .top {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .brand {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (min-width: 1024px) {
+  .top {
+    grid-template-columns: 1.6fr repeat(3, 1fr);
+  }
+
+  .brand {
+    grid-column: auto;
+  }
+}

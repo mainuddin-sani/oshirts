@@ -1,0 +1,93 @@
+.steps {
+  display: grid;
+  gap: var(--ic-space-7) var(--ic-space-6);
+  counter-reset: step;
+}
+
+.step {
+  position: relative;
+}
+
+.step h3 {
+  margin-top: var(--ic-space-5);
+}
+
+.step p {
+  margin-top: 0.6rem;
+  max-width: 40ch;
+}
+
+.stage {
+  position: relative;
+  isolation: isolate;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--ic-radius-md);
+  background: var(--ic-surface);
+  border: 1px solid var(--ic-border);
+  overflow: hidden;
+}
+
+.stage img {
+  position: absolute;
+  inset: 4% 12%;
+  width: 76%;
+  height: 92%;
+  object-fit: contain;
+  transition: transform var(--ic-dur-slow) var(--ic-ease);
+}
+
+.step:hover .stage img {
+  transform: translateY(-4px) scale(1.02);
+}
+
+.number {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1;
+  font-family: var(--ic-font-display);
+  font-size: 2.25rem;
+  font-weight: 700;
+  letter-spacing: var(--ic-tracking-tight);
+  line-height: 1;
+  color: var(--ic-accent);
+}
+
+.stageIcon {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: var(--ic-ink);
+  color: #fff;
+}
+
+.ctas {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ic-space-5);
+  margin-top: clamp(3rem, 6vw, 4.5rem);
+}
+
+@media (min-width: 768px) {
+  .steps {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .step:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 3.5rem;
+    left: calc(100% + 0.4rem);
+    width: calc(var(--ic-space-6) - 0.8rem);
+    border-top: 2px dashed var(--ic-border-strong);
+  }
+}

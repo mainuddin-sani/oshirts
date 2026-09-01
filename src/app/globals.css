@@ -1,0 +1,477 @@
+/* =====================================================================
+   ooShirts — global design system
+   Shared tokens, resets, typography, layout primitives and buttons only.
+   Component/section-specific styles live in CSS Modules.
+   ===================================================================== */
+
+:root {
+  /* Brand colour */
+  --ic-ink: #12141a;
+  --ic-ink-soft: #1c2029;
+  --ic-paper: #f7f4ee;
+  --ic-paper-deep: #efe9df;
+  --ic-white: #ffffff;
+  --ic-accent: #e4572e;
+  --ic-accent-deep: #c2441e;
+  --ic-accent-soft: #fbe7df;
+  --ic-success: #2e7d5b;
+  --ic-star: #f5a524;
+
+  /* Semantic (light theme) */
+  --ic-bg: var(--ic-paper);
+  --ic-surface: var(--ic-white);
+  --ic-surface-muted: var(--ic-paper-deep);
+  --ic-text: #171a21;
+  --ic-text-muted: #5d626c;
+  --ic-text-subtle: #8b9099;
+  --ic-border: #e5dfd4;
+  --ic-border-strong: #cdc5b7;
+  --ic-on-accent: #ffffff;
+
+  /* Elevation */
+  --ic-shadow-sm: 0 1px 2px rgba(18, 20, 26, 0.06), 0 1px 1px rgba(18, 20, 26, 0.04);
+  --ic-shadow-md: 0 6px 18px -6px rgba(18, 20, 26, 0.16), 0 2px 6px -2px rgba(18, 20, 26, 0.08);
+  --ic-shadow-lg: 0 24px 48px -20px rgba(18, 20, 26, 0.28), 0 8px 20px -10px rgba(18, 20, 26, 0.12);
+
+  /* Radius */
+  --ic-radius-xs: 6px;
+  --ic-radius-sm: 10px;
+  --ic-radius-md: 16px;
+  --ic-radius-lg: 24px;
+  --ic-radius-pill: 999px;
+
+  /* Spacing scale */
+  --ic-space-1: 0.25rem;
+  --ic-space-2: 0.5rem;
+  --ic-space-3: 0.75rem;
+  --ic-space-4: 1rem;
+  --ic-space-5: 1.5rem;
+  --ic-space-6: 2rem;
+  --ic-space-7: 3rem;
+  --ic-space-8: 4rem;
+  --ic-space-9: 6rem;
+  --ic-section-y: clamp(4rem, 8vw, 7rem);
+
+  /* Layout */
+  --ic-container: 1240px;
+  --ic-gutter: clamp(1.25rem, 4vw, 2.5rem);
+  --ic-header-h: 72px;
+
+  /* Motion */
+  --ic-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --ic-dur-fast: 160ms;
+  --ic-dur: 240ms;
+  --ic-dur-slow: 480ms;
+
+  /* Type */
+  --ic-font-body: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --ic-font-display: var(--font-display), var(--ic-font-body);
+  --ic-font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+  --ic-tracking-tight: -0.025em;
+  --ic-tracking-caps: 0.12em;
+
+  color-scheme: light;
+}
+
+/* Dark surface variant: any section can opt in by adding this class. */
+.ic_theme_dark {
+  --ic-bg: var(--ic-ink);
+  --ic-surface: var(--ic-ink-soft);
+  --ic-surface-muted: #232834;
+  --ic-text: #f6f3ed;
+  --ic-text-muted: #b6bbc5;
+  --ic-text-subtle: #858b96;
+  --ic-border: rgba(255, 255, 255, 0.12);
+  --ic-border-strong: rgba(255, 255, 255, 0.24);
+  --ic-accent-soft: rgba(228, 87, 46, 0.18);
+  --ic-shadow-md: 0 6px 18px -6px rgba(0, 0, 0, 0.5);
+  --ic-shadow-lg: 0 24px 48px -20px rgba(0, 0, 0, 0.6);
+  background: var(--ic-bg);
+  color: var(--ic-text);
+}
+
+/* ---------- Reset ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  /* No global scroll-behavior:smooth: it also governs keyboard paging and
+     scrollbar-track clicks, and rapid repeats of those can interrupt an
+     in-flight smooth scroll before the browser ever settles long enough to
+     fire IntersectionObserver — which is what whileInView reveals rely on
+     (see Reveal.js). Our own nav links opt into a smooth, single-shot
+     scrollIntoView instead (Header.js), which isn't subject to that. */
+  scroll-padding-top: calc(var(--ic-header-h) + 1rem);
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background: var(--ic-bg);
+  color: var(--ic-text);
+  font-family: var(--ic-font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+}
+
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  background: none;
+  border: 0;
+  padding: 0;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ic-accent);
+  outline-offset: 3px;
+  border-radius: var(--ic-radius-xs);
+}
+
+::selection {
+  background: var(--ic-accent);
+  color: var(--ic-on-accent);
+}
+
+/* ---------- Typography ---------- */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-family: var(--ic-font-display);
+  font-weight: 600;
+  letter-spacing: var(--ic-tracking-tight);
+  line-height: 1.08;
+  color: var(--ic-text);
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 1.5rem + 4.6vw, 4.75rem);
+  font-weight: 700;
+  line-height: 1.02;
+}
+
+h2 {
+  font-size: clamp(1.9rem, 1.2rem + 2.6vw, 3.1rem);
+  line-height: 1.08;
+}
+
+h3 {
+  font-size: clamp(1.3rem, 1.05rem + 0.9vw, 1.7rem);
+  line-height: 1.2;
+}
+
+h4 {
+  font-size: clamp(1.1rem, 1rem + 0.4vw, 1.25rem);
+  line-height: 1.3;
+}
+
+h5 {
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+h6 {
+  font-size: 0.875rem;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+}
+
+p {
+  margin: 0;
+  font-size: clamp(0.975rem, 0.93rem + 0.2vw, 1.0625rem);
+  line-height: 1.65;
+  color: var(--ic-text-muted);
+  text-wrap: pretty;
+}
+
+p + p {
+  margin-top: 1em;
+}
+
+strong {
+  font-weight: 600;
+  color: var(--ic-text);
+}
+
+small {
+  font-size: 0.875rem;
+}
+
+.ic_lead {
+  font-size: clamp(1.05rem, 0.98rem + 0.4vw, 1.25rem);
+  line-height: 1.6;
+}
+
+.ic_eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0 0 var(--ic-space-4);
+  font-family: var(--ic-font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: var(--ic-tracking-caps);
+  text-transform: uppercase;
+  color: var(--ic-accent);
+}
+
+.ic_eyebrow::before {
+  content: "";
+  width: 1.5rem;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+}
+
+/* Shared section heading block */
+.ic_section_head {
+  max-width: 44rem;
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.ic_section_head p {
+  margin-top: var(--ic-space-4);
+}
+
+.ic_section_head_center {
+  margin-inline: auto;
+  text-align: center;
+}
+
+.ic_section_head_center .ic_eyebrow {
+  justify-content: center;
+}
+
+/* ---------- Layout ---------- */
+.ic_container {
+  width: min(var(--ic-container), 100% - (2 * var(--ic-gutter)));
+  margin-inline: auto;
+}
+
+.ic_container_wide {
+  --ic-container: 1440px;
+}
+
+.ic_section_space {
+  padding-block: var(--ic-section-y);
+}
+
+.ic_section_space_sm {
+  padding-block: calc(var(--ic-section-y) * 0.6);
+}
+
+/* ---------- Buttons ---------- */
+.ic_btn {
+  --_bg: transparent;
+  --_fg: var(--ic-text);
+  --_bd: var(--ic-border-strong);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-height: 3rem;
+  padding: 0 1.4rem;
+  border: 1px solid var(--_bd);
+  border-radius: var(--ic-radius-sm);
+  background: var(--_bg);
+  color: var(--_fg);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: -0.005em;
+  line-height: 1;
+  white-space: nowrap;
+  text-decoration: none;
+  transition:
+    transform var(--ic-dur-fast) var(--ic-ease),
+    background-color var(--ic-dur) var(--ic-ease),
+    border-color var(--ic-dur) var(--ic-ease),
+    color var(--ic-dur) var(--ic-ease),
+    box-shadow var(--ic-dur) var(--ic-ease);
+}
+
+.ic_btn svg {
+  flex: none;
+  width: 1.1em;
+  height: 1.1em;
+  transition: transform var(--ic-dur) var(--ic-ease);
+}
+
+.ic_btn:hover {
+  transform: translateY(-1px);
+}
+
+.ic_btn:hover svg:last-child {
+  transform: translateX(3px);
+}
+
+.ic_btn:active {
+  transform: translateY(0) scale(0.985);
+}
+
+.ic_btn:disabled {
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.ic_btn_primary {
+  --_bg: var(--ic-ink);
+  --_fg: #ffffff;
+  --_bd: var(--ic-ink);
+  box-shadow: var(--ic-shadow-sm);
+}
+
+.ic_btn_primary:hover {
+  --_bg: var(--ic-accent);
+  --_bd: var(--ic-accent);
+  box-shadow: var(--ic-shadow-md);
+}
+
+.ic_theme_dark .ic_btn_primary {
+  --_bg: #ffffff;
+  --_fg: var(--ic-ink);
+  --_bd: #ffffff;
+}
+
+.ic_theme_dark .ic_btn_primary:hover {
+  --_bg: var(--ic-accent);
+  --_fg: #ffffff;
+  --_bd: var(--ic-accent);
+}
+
+.ic_btn_secondary {
+  --_bg: transparent;
+  --_fg: var(--ic-text);
+  --_bd: var(--ic-border-strong);
+}
+
+.ic_btn_secondary:hover {
+  --_bg: var(--ic-surface);
+  --_bd: var(--ic-text);
+}
+
+.ic_theme_dark .ic_btn_secondary:hover {
+  --_bg: rgba(255, 255, 255, 0.08);
+  --_bd: rgba(255, 255, 255, 0.6);
+}
+
+.ic_btn_accent {
+  --_bg: var(--ic-accent);
+  --_fg: var(--ic-on-accent);
+  --_bd: var(--ic-accent);
+}
+
+.ic_btn_accent:hover {
+  --_bg: var(--ic-accent-deep);
+  --_bd: var(--ic-accent-deep);
+}
+
+.ic_btn_lg {
+  min-height: 3.5rem;
+  padding: 0 1.9rem;
+  font-size: 1.02rem;
+}
+
+.ic_btn_sm {
+  min-height: 2.5rem;
+  padding: 0 1rem;
+  font-size: 0.875rem;
+}
+
+/* Text link with underline reveal */
+.ic_link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 600;
+  color: var(--ic-text);
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  transition: background-size var(--ic-dur) var(--ic-ease);
+}
+
+.ic_link:hover {
+  background-size: 100% 1px;
+}
+
+/* ---------- Utilities ---------- */
+.ic_sr_only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.ic_divider {
+  height: 1px;
+  background: var(--ic-border);
+}
+
+/* ---------- Motion preferences ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

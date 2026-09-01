@@ -1,0 +1,72 @@
+.section {
+  padding-block: 0 var(--ic-section-y);
+}
+
+.panel {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  gap: var(--ic-space-6);
+  padding: clamp(2rem, 5vw, 4rem);
+  border-radius: var(--ic-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--ic-shadow-lg);
+}
+
+.panel::before {
+  content: "";
+  position: absolute;
+  top: -40%;
+  right: -10%;
+  width: 60%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(228, 87, 46, 0.35), transparent 70%);
+  pointer-events: none;
+}
+
+.copy {
+  position: relative;
+  z-index: 1;
+  max-width: 34rem;
+}
+
+.copy h2 {
+  margin-top: 0;
+}
+
+.copy p {
+  margin-top: var(--ic-space-4);
+}
+
+.ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: var(--ic-space-6);
+}
+
+.visual {
+  position: relative;
+  justify-self: center;
+  width: min(70%, 320px);
+  transform: rotate(6deg);
+}
+
+.visual img {
+  filter: drop-shadow(0 30px 40px rgba(0, 0, 0, 0.45));
+}
+
+@media (min-width: 1024px) {
+  .panel {
+    grid-template-columns: 1.2fr 0.8fr;
+    align-items: center;
+  }
+
+  .visual {
+    width: 100%;
+    max-width: 420px;
+    justify-self: end;
+    margin: -8% -4% -14% 0;
+  }
+}
