@@ -23,7 +23,7 @@ const promises = [
   {
     eyebrow: "Rave-worthy service",
     title: "Rave-worthy Service",
-    text: "Our support staff is available 7 days a week over the phone, email, and live chat. We welcome questions of all kind -- from questions about how to design your own t-shirt to explanations about the types of custom shirts you can order to any fun or off-topic question of your choice. Either way, we're here to help.",
+    text: "Our support staff is available 7 days a week over the phone, email, and live chat. We welcome questions of all kind - design your own t-shirt to explanations about the types of custom shirts you can order to any fun or off-topic question of your choice. Either way, we're here to help.",
     icon: FiMessageCircle,
   },
 ];
@@ -59,7 +59,8 @@ export default function HowItWorks() {
                 delay={0.1 + i * 0.1}
               >
                 <span className={styles.icon}>
-                  <Icon size={21} aria-hidden="true" />
+                  {/* <Icon className={styles.ic_icon_size} aria-hidden="true" /> */}
+                  <Icon className={styles.ic_icon_size} />
                 </span>
 
                 <div className={styles.content}>
