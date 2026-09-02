@@ -11,6 +11,7 @@
   flex-wrap: wrap;
   align-items: flex-end;
   justify-content: space-between;
+
   gap: var(--ic-space-5);
 }
 
@@ -23,17 +24,16 @@
   margin-bottom: clamp(2.25rem, 4vw, 3.5rem);
 }
 
-.head+.grid {
-  margin-top: 0;
-}
-
 /* ==================================================
    CATEGORY GRID
 ================================================== */
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  grid-template-columns:
+    repeat(6, minmax(0, 1fr));
+
   gap: var(--ic-space-4);
 }
 
@@ -42,11 +42,12 @@
 ================================================== */
 
 .feature {
-  grid-column: 1 / -1;
-
   position: relative;
-  min-width: 0;
+  isolation: isolate;
 
+  grid-column: span 3;
+
+  min-width: 0;
   overflow: hidden;
 
   border: 1px solid var(--ic-border);
@@ -54,53 +55,83 @@
 
   background: var(--ic-surface);
 
+  box-shadow:
+    0 1px 2px rgba(18, 20, 26, 0.04),
+    0 10px 30px rgba(18, 20, 26, 0.035);
+
   transition:
-    transform var(--ic-dur) var(--ic-ease),
-    border-color var(--ic-dur) var(--ic-ease),
-    box-shadow var(--ic-dur) var(--ic-ease);
+    transform 400ms var(--ic-ease),
+    border-color 400ms var(--ic-ease),
+    box-shadow 400ms var(--ic-ease);
 }
 
-/* Soft paper background */
+/* ==================================================
+   FEATURED CARD INNER EDGE
+================================================== */
+
+.feature::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  z-index: 5;
+
+  border-radius: inherit;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.72);
+
+  pointer-events: none;
+}
+
+/* ==================================================
+   FEATURED BACKGROUNDS
+================================================== */
 
 .feature[data-tone="paper"] {
   background:
-    radial-gradient(circle at 88% 12%,
-      rgba(255, 255, 255, 0.95),
-      transparent 36%),
+    radial-gradient(circle at 90% 8%,
+      rgba(255, 255, 255, 0.96),
+      transparent 42%),
     linear-gradient(145deg,
       #ffffff 0%,
       var(--ic-paper-deep) 100%);
 }
 
-/* Soft blush background */
-
 .feature[data-tone="blush"] {
   background:
-    radial-gradient(circle at 88% 12%,
-      rgba(255, 255, 255, 0.92),
-      transparent 36%),
+    radial-gradient(circle at 90% 8%,
+      rgba(255, 255, 255, 0.96),
+      transparent 42%),
     linear-gradient(145deg,
       #ffffff 0%,
       #fbeeea 100%);
 }
 
 .feature:hover {
-  transform: translateY(-4px);
+  transform: translateY(-5px);
 
   border-color: var(--ic-border-strong);
 
-  box-shadow: var(--ic-shadow-lg);
+  box-shadow:
+    0 2px 4px rgba(18, 20, 26, 0.04),
+    0 18px 42px rgba(18, 20, 26, 0.075);
 }
 
-/* Entire featured card is clickable */
+/* ==================================================
+   FEATURED LINK
+================================================== */
 
 .featureLink {
-  display: grid;
-  grid-template-columns: 1fr;
-
   position: relative;
 
-  min-height: 380px;
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  min-height: 410px;
+
   height: 100%;
 
   overflow: hidden;
@@ -109,102 +140,166 @@
 }
 
 /* ==================================================
-   FEATURED CARD — COPY
+   FEATURE COPY
 ================================================== */
 
 .featureCopy {
   position: relative;
-  z-index: 2;
+
+  z-index: 3;
 
   display: flex;
   flex-direction: column;
 
   min-width: 0;
+  min-height: 100%;
 
-  padding: var(--ic-space-5);
+  padding: 2.5rem;
 }
 
-/* Optional small category label */
+/* ==================================================
+   CATEGORY LABEL
+================================================== */
 
 .label {
   display: inline-flex;
   align-items: center;
 
+  gap: 0.4rem;
+
   align-self: flex-start;
+
+  width: fit-content;
 
   min-height: 1.8rem;
 
-  padding: 0.25rem 0.7rem;
+  padding:
+    0.28rem 0.72rem 0.28rem 0.58rem;
 
-  border: 1px solid var(--ic-border-strong);
-  border-radius: 999px;
+  border: 1px solid rgba(18, 20, 26, 0.1);
+
+  border-radius: var(--ic-radius-pill);
 
   background: rgba(255, 255, 255, 0.62);
 
   color: var(--ic-text);
 
-  font-size: 0.68rem;
-  font-weight: 750;
+  font-size: 0.66rem;
+
+  font-weight: 800;
+
   line-height: 1;
 
-  letter-spacing: 0.06em;
+  letter-spacing: 0.1em;
+
   text-transform: uppercase;
 
-  backdrop-filter: blur(8px);
+  box-shadow:
+    0 2px 8px rgba(18, 20, 26, 0.035);
+
+  backdrop-filter: blur(10px);
 }
 
-/* Bottom content */
+.label::before {
+  content: "";
 
-.featureBottom {
+  width: 5px;
+  height: 5px;
+
+  flex: none;
+
+  border-radius: 50%;
+
+  background: var(--ic-accent);
+}
+
+/* ==================================================
+   FEATURE CONTENT
+================================================== */
+
+.featureContent {
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
+  flex-direction: column;
+
+  align-items: flex-start;
 
   width: 100%;
-
-  gap: var(--ic-space-4);
+  height: 100%;
 
   margin-top: auto;
+
+  gap: 1.75rem;
 }
 
-.featureBottom h3 {
+/* ==================================================
+   FEATURE INFO
+================================================== */
+
+.featureInfo {
+  max-width: 27rem;
+}
+
+.featureInfo h3 {
   margin: 0;
 
-  max-width: 10ch;
+  max-width: 12ch;
 
   color: var(--ic-text);
 
-  font-size: clamp(1.7rem,
-      1.25rem + 1vw,
-      2.3rem);
+  font-family: var(--ic-font-display);
 
-  line-height: 1.05;
+  font-size:
+    clamp(1.85rem,
+      1.35rem + 1.2vw,
+      2.45rem);
 
-  letter-spacing: -0.03em;
+  font-weight: 700;
+
+  line-height: 1.02;
+
+  letter-spacing: -0.045em;
 }
 
-/* Featured explore label */
+.featureInfo p {
+  max-width: 30ch;
+
+  margin: 0.7rem 0 0;
+
+  color: var(--ic-text-muted);
+
+  font-size: 0.92rem;
+
+  line-height: 1.6;
+}
+
+/* ==================================================
+   FEATURE CTA
+================================================== */
 
 .featureCta {
   display: inline-flex;
   align-items: center;
 
-  flex: 0 0 auto;
-
   gap: 0.65rem;
+
+  margin-top: auto;
 
   color: var(--ic-text);
 
   font-size: 0.8rem;
-  font-weight: 750;
+
+  font-weight: 800;
 
   white-space: nowrap;
 }
 
-/* Featured circular arrow */
+/* ==================================================
+   FEATURE ARROW
+================================================== */
 
 .arrow {
   display: inline-flex;
+
   align-items: center;
   justify-content: center;
 
@@ -212,17 +307,22 @@
   height: 2.7rem;
 
   border: 1px solid var(--ic-border-strong);
+
   border-radius: 50%;
 
-  background: rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.72);
 
   color: var(--ic-text);
 
+  box-shadow:
+    0 3px 10px rgba(18, 20, 26, 0.05);
+
   transition:
-    background-color var(--ic-dur) var(--ic-ease),
-    border-color var(--ic-dur) var(--ic-ease),
-    color var(--ic-dur) var(--ic-ease),
-    transform var(--ic-dur) var(--ic-ease);
+    background-color 300ms var(--ic-ease),
+    border-color 300ms var(--ic-ease),
+    color 300ms var(--ic-ease),
+    transform 300ms var(--ic-ease),
+    box-shadow 300ms var(--ic-ease);
 }
 
 .feature:hover .arrow {
@@ -230,13 +330,17 @@
 
   border-color: var(--ic-ink);
 
-  color: #fff;
+  color: var(--ic-white);
 
-  transform: translate(2px, -2px);
+  transform:
+    translate(2px, -2px);
+
+  box-shadow:
+    0 8px 18px rgba(18, 20, 26, 0.14);
 }
 
 /* ==================================================
-   FEATURED PRODUCT IMAGE
+   FEATURE IMAGE
 ================================================== */
 
 .featureImage {
@@ -245,12 +349,14 @@
   align-self: end;
   justify-self: end;
 
-  width: min(76%, 390px);
+  width: 100%;
+  aspect-ratio: 704 / 628;
 
-  margin: -0.5rem 0 -8%;
+  margin:
+    0 -1rem -8% 0;
 
   transition:
-    transform var(--ic-dur-slow) var(--ic-ease);
+    transform 550ms var(--ic-ease);
 }
 
 .featureImage img {
@@ -258,33 +364,43 @@
 
   width: 100%;
   height: auto;
+
+  object-fit: contain;
+
+  filter:
+    drop-shadow(0 24px 20px rgba(18, 20, 26, 0.15));
 }
 
 .feature:hover .featureImage {
   transform:
-    translateY(-8px) rotate(-1.2deg);
+    translateY(-7px) rotate(-1deg);
 }
 
 /* ==================================================
-   STANDARD CATEGORY TILES
+   STANDARD TILES
 ================================================== */
 
 .tile {
   position: relative;
+
+  grid-column: span 1;
 
   min-width: 0;
 
   overflow: hidden;
 
   border: 1px solid var(--ic-border);
+
   border-radius: var(--ic-radius-md);
 
   background: var(--ic-surface);
 
+  box-shadow: var(--ic-shadow-sm);
+
   transition:
-    transform var(--ic-dur) var(--ic-ease),
-    border-color var(--ic-dur) var(--ic-ease),
-    box-shadow var(--ic-dur) var(--ic-ease);
+    transform 350ms var(--ic-ease),
+    border-color 350ms var(--ic-ease),
+    box-shadow 350ms var(--ic-ease);
 }
 
 .tile:hover {
@@ -295,13 +411,16 @@
   box-shadow: var(--ic-shadow-md);
 }
 
-/* Entire tile clickable */
+/* ==================================================
+   TILE LINK
+================================================== */
 
 .tileLink {
   display: flex;
   flex-direction: column;
 
   height: 100%;
+
   min-width: 0;
 
   color: inherit;
@@ -314,7 +433,7 @@
 .tileImage {
   position: relative;
 
-  aspect-ratio: 1 / 0.9;
+  aspect-ratio: 1 / 0.88;
 
   overflow: hidden;
 
@@ -330,17 +449,20 @@
   width: 100%;
   height: 100%;
 
-  padding: 1rem;
+  padding: 0.75rem;
 
   object-fit: contain;
 
+  filter:
+    drop-shadow(0 13px 12px rgba(18, 20, 26, 0.1));
+
   transition:
-    transform var(--ic-dur-slow) var(--ic-ease);
+    transform 500ms var(--ic-ease);
 }
 
 .tile:hover .tileImage img {
   transform:
-    scale(1.05) translateY(-3px);
+    scale(1.055) translateY(-3px);
 }
 
 /* ==================================================
@@ -349,14 +471,16 @@
 
 .tileContent {
   display: flex;
+
   align-items: center;
   justify-content: space-between;
 
-  gap: 1rem;
+  gap: 0.75rem;
 
   min-width: 0;
 
-  padding: var(--ic-space-4);
+  padding:
+    0.95rem 1rem 1rem;
 }
 
 .tileContent h4 {
@@ -366,18 +490,24 @@
 
   color: var(--ic-text);
 
+  font-family: var(--ic-font-display);
+
   font-size: 1rem;
+
   font-weight: 700;
 
   line-height: 1.15;
 
-  letter-spacing: -0.015em;
+  letter-spacing: -0.02em;
 }
 
-/* Small arrow */
+/* ==================================================
+   TILE ARROW
+================================================== */
 
 .tileArrow {
   display: inline-flex;
+
   align-items: center;
   justify-content: center;
 
@@ -387,17 +517,16 @@
   height: 2rem;
 
   border: 1px solid var(--ic-border);
-  border-radius: 50%;
 
-  background: transparent;
+  border-radius: 50%;
 
   color: var(--ic-text-muted);
 
   transition:
-    background-color var(--ic-dur) var(--ic-ease),
-    border-color var(--ic-dur) var(--ic-ease),
-    color var(--ic-dur) var(--ic-ease),
-    transform var(--ic-dur) var(--ic-ease);
+    background-color 300ms var(--ic-ease),
+    border-color 300ms var(--ic-ease),
+    color 300ms var(--ic-ease),
+    transform 300ms var(--ic-ease);
 }
 
 .tile:hover .tileArrow {
@@ -405,114 +534,49 @@
 
   border-color: var(--ic-ink);
 
-  color: #fff;
+  color: var(--ic-white);
 
-  transform: translate(2px, -2px);
+  transform:
+    translate(2px, -2px);
 }
 
 /* ==================================================
-   FULL COLLECTION LINK
+   PRIMARY CTA
 ================================================== */
 
 .catalogLink {
-  margin-top: var(--ic-space-5);
-  text-align: center;
-}
-
-.catalogButton {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
 
-  gap: var(--ic-space-4);
-
-  width: 100%;
-
-  padding:
-    var(--ic-space-4) var(--ic-space-5);
-
-  border: 1px solid var(--ic-border);
-  border-radius: var(--ic-radius-md);
-
-  background: var(--ic-paper);
-
-  color: var(--ic-text);
-
-  transition:
-    background-color var(--ic-dur) var(--ic-ease),
-    border-color var(--ic-dur) var(--ic-ease),
-    transform var(--ic-dur) var(--ic-ease),
-    box-shadow var(--ic-dur) var(--ic-ease);
-}
-
-.catalogButton:hover {
-  background: var(--ic-surface);
-
-  border-color: var(--ic-border-strong);
-
-  transform: translateY(-2px);
-
-  box-shadow: var(--ic-shadow-sm);
-}
-
-/* Full collection text */
-
-.catalogButton>span:first-child {
-  font-size: 0.86rem;
-  font-weight: 700;
-}
-
-/* Full collection arrow */
-
-.catalogArrow {
-  display: inline-flex;
-  align-items: center;
   justify-content: center;
 
-  flex: 0 0 auto;
-
-  width: 2.5rem;
-  height: 2.5rem;
-
-  border: 1px solid var(--ic-border-strong);
-  border-radius: 50%;
-
-  background: var(--ic-surface);
-
-  color: var(--ic-text);
-
-  transition:
-    background-color var(--ic-dur) var(--ic-ease),
-    border-color var(--ic-dur) var(--ic-ease),
-    color var(--ic-dur) var(--ic-ease),
-    transform var(--ic-dur) var(--ic-ease);
-}
-
-.catalogButton:hover .catalogArrow {
-  background: var(--ic-ink);
-
-  border-color: var(--ic-ink);
-
-  color: #fff;
-
-  transform: translate(2px, -2px);
+  margin-top:
+    clamp(2.5rem,
+      5vw,
+      3.75rem);
 }
 
 /* ==================================================
    TABLET
+   max-width based
 ================================================== */
 
-@media (min-width: 640px) {
+@media (max-width: 1023px) {
+
   .grid {
     grid-template-columns:
       repeat(3, minmax(0, 1fr));
+
+    gap: var(--ic-space-4);
+  }
+
+  .feature {
+    grid-column: span 3;
   }
 
   .featureLink {
-    grid-template-columns:
-      1.05fr 0.95fr;
+    grid-template-columns: 1.05fr 0.95fr;
 
-    min-height: 350px;
+    min-height: 360px;
   }
 
   .featureCopy {
@@ -523,81 +587,27 @@
     width: 100%;
 
     margin:
-      0 0 -9%;
+      0 -0.5rem -7% 0;
+  }
+
+  .tile {
+    grid-column: span 1;
   }
 
   .tileImage {
     aspect-ratio: 1 / 0.9;
   }
 
-  .catalogButton {
-    padding:
-      var(--ic-space-4) var(--ic-space-5);
-  }
-}
-
-/* ==================================================
-   DESKTOP
-================================================== */
-
-@media (min-width: 1024px) {
-  .grid {
-    grid-template-columns:
-      repeat(6, minmax(0, 1fr));
-
-    gap: var(--ic-space-4);
-  }
-
-  /*
-    Two featured categories.
-    Each takes half of the row.
-  */
-
-  .feature {
-    grid-column: span 3;
-  }
-
-  .featureLink {
-    min-height: 390px;
-  }
-
-  .featureCopy {
-    padding: var(--ic-space-6);
-  }
-
-  .featureImage {
-    margin-bottom: -8%;
-  }
-
-  /*
-    Remaining categories become
-    compact one-column tiles.
-  */
-
-  .tile {
-    grid-column: span 1;
-  }
-
   .tileContent {
-    padding: var(--ic-space-4);
-  }
-}
-
-/* ==================================================
-   LARGE DESKTOP
-================================================== */
-
-@media (min-width: 1280px) {
-  .featureLink {
-    min-height: 410px;
+    padding:
+      1rem 1.05rem;
   }
 
-  .featureBottom h3 {
-    font-size: 2.35rem;
-  }
-
-  .tileContent h4 {
-    font-size: 1.02rem;
+  .featureInfo h3 {
+    font-size:
+      clamp(1.75rem,
+        1.3rem + 1vw,
+        2.2rem);
   }
 }
 
@@ -606,84 +616,109 @@
 ================================================== */
 
 @media (max-width: 639px) {
+
+  .head {
+    align-items: flex-start;
+
+    gap: var(--ic-space-4);
+  }
+
   .headLink {
     margin-bottom: 0;
   }
 
-  /*
-    Featured cards become vertical.
-  */
+  /* --------------------------------
+     Grid
+  --------------------------------- */
+
+  .grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: var(--ic-space-4);
+  }
+
+  /* --------------------------------
+     Featured card
+  --------------------------------- */
+
+  .feature {
+    grid-column: 1 / -1;
+
+    border-radius: var(--ic-radius-lg);
+  }
 
   .featureLink {
-    min-height: 500px;
+    grid-template-columns: 1fr;
+
+    min-height: 480px;
   }
 
   .featureCopy {
     padding: var(--ic-space-5);
   }
 
-  .featureBottom {
-    align-items: flex-end;
+  .featureContent {
+    gap: 1.25rem;
   }
 
-  .featureBottom h3 {
-    max-width: 8ch;
+  .featureInfo h3 {
+    max-width: 10ch;
 
-    font-size: 1.8rem;
+    font-size: 1.85rem;
+  }
+
+  .featureInfo p {
+    max-width: 28ch;
+
+    font-size: 0.88rem;
+  }
+
+  .featureImage {
+    position: absolute;
+
+    right: -0.5rem;
+    bottom: -1.5rem;
+
+    width: 76%;
+
+    margin: 0;
   }
 
   .featureCta {
     font-size: 0.76rem;
   }
 
-  .featureImage {
-    width: 78%;
+  /* --------------------------------
+     Standard tiles
+  --------------------------------- */
 
-    margin:
-      -0.5rem 0 -5%;
+  .tile {
+    grid-column: span 1;
+
+    border-radius: var(--ic-radius-md);
   }
 
-  /*
-    Standard category cards
-    remain compact on mobile.
-  */
-
   .tileImage {
-    aspect-ratio: 1 / 0.92;
+    aspect-ratio: 1 / 0.9;
   }
 
   .tileImage img {
-    padding: 0.75rem;
+    padding: 0.65rem;
   }
 
   .tileContent {
-    padding: 0.9rem;
+    padding:
+      0.85rem 0.9rem;
   }
 
   .tileContent h4 {
-    font-size: 0.92rem;
+    font-size: 0.9rem;
   }
 
   .tileArrow {
     width: 1.85rem;
     height: 1.85rem;
-  }
-
-  /*
-    Full collection CTA
-  */
-
-  .catalogButton {
-    padding: var(--ic-space-4);
-  }
-
-  .catalogButton>span:first-child {
-    font-size: 0.82rem;
-  }
-
-  .catalogArrow {
-    width: 2.25rem;
-    height: 2.25rem;
   }
 }
 
@@ -692,6 +727,7 @@
 ================================================== */
 
 @media (max-width: 380px) {
+
   .grid {
     gap: 0.65rem;
   }
@@ -700,16 +736,16 @@
     min-height: 450px;
   }
 
-  .featureBottom {
-    gap: 0.5rem;
+  .featureCopy {
+    padding: 1.25rem;
   }
 
-  .featureBottom h3 {
-    font-size: 1.6rem;
+  .featureInfo h3 {
+    font-size: 1.65rem;
   }
 
-  .featureCta {
-    gap: 0.45rem;
+  .featureImage {
+    width: 80%;
   }
 
   .arrow {
@@ -718,11 +754,12 @@
   }
 
   .tileContent {
-    padding: 0.75rem;
+    padding:
+      0.75rem 0.7rem;
   }
 
   .tileContent h4 {
-    font-size: 0.86rem;
+    font-size: 0.84rem;
   }
 }
 
@@ -737,9 +774,19 @@
   .tile,
   .tileImage img,
   .arrow,
-  .tileArrow,
-  .catalogButton,
-  .catalogArrow {
+  .tileArrow {
     transition: none;
+  }
+
+  .feature:hover,
+  .tile:hover {
+    transform: none;
+  }
+
+  .feature:hover .featureImage,
+  .feature:hover .arrow,
+  .tile:hover .tileImage img,
+  .tile:hover .tileArrow {
+    transform: none;
   }
 }

@@ -19,6 +19,11 @@ export default function Categories() {
       aria-labelledby="products-title"
     >
       <div className="ic_container">
+
+        {/* ================================================
+            SECTION HEADER
+        ================================================= */}
+
         <div className={`${styles.head} ic_section_heading_space`}>
           <SectionHeading
             eyebrow="Our products"
@@ -30,15 +35,30 @@ export default function Categories() {
             description="Choose a category to explore available styles, colours and sizes."
           />
 
-          <Reveal delay={0.1} className={styles.headLink}>
-            <Link href="/products" className="ic_link">
+          <Reveal
+            delay={0.1}
+            className={styles.headLink}
+          >
+            <Link
+              href="/products"
+              className="ic_link"
+            >
               Browse all styles
               <FiArrowUpRight aria-hidden="true" />
             </Link>
           </Reveal>
         </div>
 
+        {/* ================================================
+            CATEGORY GRID
+        ================================================= */}
+
         <div className={styles.grid}>
+
+          {/* ==============================================
+              FEATURED CATEGORIES
+          =============================================== */}
+
           {featured.map((category, index) => (
             <Reveal
               as="article"
@@ -52,36 +72,60 @@ export default function Categories() {
                 className={styles.featureLink}
                 aria-label={`Explore ${category.name}`}
               >
+
+                {/* Featured copy */}
+
                 <div className={styles.featureCopy}>
+
                   {category.label && (
                     <span className={styles.label}>
                       {category.label}
                     </span>
                   )}
 
-                  <div className={styles.featureBottom}>
-                    <h3>{category.name}</h3>
+                  <div className={styles.featureContent}>
+
+                    <div className={styles.featureInfo}>
+                      <h3>{category.name}</h3>
+
+                      {category.blurb && (
+                        <p>{category.blurb}</p>
+                      )}
+                    </div>
 
                     <span className={styles.featureCta}>
-                      Explore
-                      <span className={styles.arrow} aria-hidden="true">
+                      <span>Explore</span>
+
+                      <span
+                        className={styles.arrow}
+                        aria-hidden="true"
+                      >
                         <FiArrowUpRight />
                       </span>
                     </span>
+
                   </div>
                 </div>
+
+                {/* Featured product image */}
 
                 <div className={styles.featureImage}>
                   <Image
                     src={category.image}
                     alt={category.imageAlt}
-                    placeholder="blur"
-                    sizes="(min-width: 1024px) 30vw, 70vw"
+                    fill
+                    priority={index === 0}
+                    sizes="(min-width: 1024px) 30vw, 80vw"
                   />
                 </div>
+
               </Link>
             </Reveal>
           ))}
+
+          {/* ==============================================
+              STANDARD CATEGORIES
+          =============================================== */}
 
           {rest.map((category, index) => (
             <Reveal
@@ -95,29 +139,49 @@ export default function Categories() {
                 className={styles.tileLink}
                 aria-label={`Explore ${category.name}`}
               >
+
+                {/* Product image */}
+
                 <div className={styles.tileImage}>
                   <Image
                     src={category.image}
                     alt={category.imageAlt}
-                    placeholder="blur"
+                    fill
                     sizes="(min-width: 1024px) 16vw, (min-width: 640px) 30vw, 50vw"
                   />
                 </div>
 
+                {/* Category name */}
+
                 <div className={styles.tileContent}>
                   <h4>{category.name}</h4>
 
-                  <span className={styles.tileArrow} aria-hidden="true">
+                  <span
+                    className={styles.tileArrow}
+                    aria-hidden="true"
+                  >
                     <FiArrowUpRight />
                   </span>
                 </div>
+
               </Link>
             </Reveal>
           ))}
+
         </div>
 
-        <Reveal delay={0.15} className={styles.catalogLink}>
-          <Link href="/design" className="ic_btn ic_btn_primary ic_btn_lg">
+        {/* ================================================
+            PRIMARY CTA
+        ================================================= */}
+
+        <Reveal
+          delay={0.15}
+          className={styles.catalogLink}
+        >
+          <Link
+            href="/design"
+            className="ic_btn ic_btn_primary ic_btn_lg"
+          >
             Start designing
             <FiArrowUpRight aria-hidden="true" />
           </Link>
@@ -127,7 +191,6 @@ export default function Categories() {
     </section>
   );
 }
-
 
 
 // import Image from "next/image";

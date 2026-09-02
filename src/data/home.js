@@ -199,7 +199,7 @@ export const categories = [
   },
   {
     slug: "womens",
-    name: "Women's T-Shirts",
+    name: "Hoodies",
     image: printPinkMountain,
     imageAlt:
       "Pink women's T-shirt with a custom mountain graphic",
