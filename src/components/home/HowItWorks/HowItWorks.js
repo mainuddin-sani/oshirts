@@ -9,21 +9,18 @@ import styles from "./HowItWorks.module.css";
 
 const promises = [
   {
-    number: "01",
     eyebrow: "Low price",
     title: "Low Price Guarantee",
     text: "ooShirts.com was founded by a high school student in 2007 with an investment of just $2000. Our goal was to offer t-shirt printing that's actually affordable to school groups, nonprofits, families, and small businesses in the US. If you find a lower price online, simply send it to us and we'll match the price.",
     icon: FiDollarSign,
   },
   {
-    number: "02",
     eyebrow: "Quality shirts",
     title: "Amazing Print Quality",
     text: "High quality printing comes from years of printing experience, use of top-notch inks, and an unwavering commitment to producing well made t-shirt designs. We guarantee our prints will last wash after wash, and that our garments will come free of material defects -- or we'll redo your order from scratch.",
     icon: FiAward,
   },
   {
-    number: "03",
     eyebrow: "Rave-worthy service",
     title: "Rave-worthy Service",
     text: "Our support staff is available 7 days a week over the phone, email, and live chat. We welcome questions of all kind -- from questions about how to design your own t-shirt to explanations about the types of custom shirts you can order to any fun or off-topic question of your choice. Either way, we're here to help.",
@@ -57,19 +54,13 @@ export default function HowItWorks() {
             return (
               <Reveal
                 as="article"
-                key={promise.number}
+                key={promise.title}
                 className={styles.promise}
-                delay={i * 0.1}
+                delay={0.1 + i * 0.1}
               >
-                <div className={styles.top}>
-                  <span className={styles.number}>
-                    {promise.number}
-                  </span>
-
-                  <span className={styles.icon}>
-                    <Icon size={21} aria-hidden="true" />
-                  </span>
-                </div>
+                <span className={styles.icon}>
+                  <Icon size={21} aria-hidden="true" />
+                </span>
 
                 <div className={styles.content}>
                   <span className={styles.eyebrow}>
