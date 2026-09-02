@@ -107,34 +107,90 @@ export const benefits = [
   { icon: FiTruck, title: "Free & fast shipping", text: "Free ground shipping on every order, rush options to 48 hours." },
 ];
 
+
 export const categories = [
   {
     slug: "t-shirts",
     name: "T-Shirts",
-    blurb: "Classic, heavyweight and premium ring-spun tees in 40+ colours.",
+    blurb:
+      "Classic, heavyweight and premium ring-spun tees in 40+ colours.",
     price: "From $4.99",
     image: printBlackMountain,
-    imageAlt: "Black T-shirt with a full-colour mountain graphic printed on the chest",
+    imageAlt:
+      "Black T-shirt with a full-colour mountain graphic printed on the chest",
     featured: true,
     tone: "paper",
   },
   {
     slug: "womens",
     name: "Women's Apparel",
-    blurb: "Relaxed, fitted and cropped cuts designed for the way they're actually worn.",
+    blurb:
+      "Relaxed, fitted and cropped cuts designed for the way they're actually worn.",
     price: "From $6.49",
     image: printPinkMountain,
-    imageAlt: "Pink women's T-shirt with a printed mountain badge",
+    imageAlt:
+      "Pink women's T-shirt with a printed mountain badge",
     featured: true,
     tone: "blush",
   },
-  { slug: "hoodies", name: "Hoodies", price: "From $18.99", icon: GiHoodie },
-  { slug: "sweatshirts", name: "Sweatshirts", price: "From $14.99", icon: GiShirt },
-  { slug: "youth", name: "Youth", price: "From $4.49", icon: GiTShirt },
-  { slug: "performance", name: "Performance", price: "From $7.99", icon: GiRunningShoe },
-  { slug: "long-sleeve", name: "Long Sleeve", price: "From $7.49", icon: GiPoloShirt },
-  { slug: "jackets", name: "Jackets", price: "From $29.99", icon: GiMonclerJacket },
+
+  {
+    slug: "hoodies",
+    name: "Hoodies",
+    blurb: "Heavyweight and everyday hoodies made for comfort.",
+    price: "From $18.99",
+    image: printBlackMountain,
+    imageAlt: "Custom printed hoodie",
+  },
+
+  {
+    slug: "sweatshirts",
+    name: "Sweatshirts",
+    blurb: "Classic crewnecks with soft, durable construction.",
+    price: "From $14.99",
+    image: printPinkMountain,
+    imageAlt: "Custom printed sweatshirt",
+  },
+
+  {
+    slug: "youth",
+    name: "Youth",
+    blurb: "Comfortable styles made for kids and growing teams.",
+    price: "From $4.49",
+    image: printBlackMountain,
+    imageAlt: "Custom printed youth T-shirt",
+  },
+
+  {
+    slug: "performance",
+    name: "Performance",
+    blurb: "Lightweight performance styles built for active wear.",
+    price: "From $7.99",
+    image: printPinkMountain,
+    imageAlt: "Custom printed performance shirt",
+  },
+
+  {
+    slug: "long-sleeve",
+    name: "Long Sleeve",
+    blurb: "Versatile long-sleeve styles for cooler days.",
+    price: "From $7.49",
+    image: printBlackMountain,
+    imageAlt: "Custom printed long-sleeve shirt",
+  },
+
+  {
+    slug: "jackets",
+    name: "Jackets",
+    blurb: "Layer-ready jackets for teams, events and everyday wear.",
+    price: "From $29.99",
+    image: printPinkMountain,
+    imageAlt: "Custom printed jacket",
+  },
 ];
+
+
+
 
 export const brands = [
   { name: "Northwind Outfitters", style: "serif" },

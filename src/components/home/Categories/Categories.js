@@ -13,7 +13,7 @@ export default function Categories() {
   return (
     <section id="products" className={`ic_section_space ${styles.section}`} aria-labelledby="products-title">
       <div className="ic_container">
-        <div className={styles.head}>
+        <div className={`${styles.head} ic_section_heading_space`}>
           <SectionHeading
             eyebrow="Products"
             title={<span id="products-title">Every blank you need, one place to print it.</span>}
@@ -45,17 +45,40 @@ export default function Categories() {
             </Reveal>
           ))}
 
-          {rest.map(({ slug, name, price, icon: Icon }, i) => (
-            <Reveal as="article" key={slug} delay={0.16 + i * 0.05} className={styles.tile}>
-              <Link href={`/products/${slug}`} className={styles.tileLink}>
-                <span className={styles.tileIcon}>
-                  <Icon size={30} aria-hidden="true" />
-                </span>
-                <h4>{name}</h4>
-                <span className={styles.price}>{price}</span>
+
+          {rest.map((cat, i) => (
+            <Reveal
+              as="article"
+              key={cat.slug}
+              delay={0.16 + i * 0.05}
+              className={styles.tile}
+            >
+              <Link
+                href={`/products/${cat.slug}`}
+                className={styles.tileLink}
+              >
+                <div className={styles.tileImage}>
+                  <Image
+                    src={cat.image}
+                    alt={cat.imageAlt}
+                    placeholder="blur"
+                    sizes="(min-width: 1024px) 16vw, (min-width: 640px) 30vw, 50vw"
+                  />
+                </div>
+
+                <div className={styles.tileContent}>
+                  <span className={styles.price}>{cat.price}</span>
+
+                  <h4>{cat.name}</h4>
+
+                  <span className={styles.tileArrow} aria-hidden="true">
+                    <FiArrowUpRight />
+                  </span>
+                </div>
               </Link>
             </Reveal>
           ))}
+
         </div>
       </div>
     </section>
