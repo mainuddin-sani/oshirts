@@ -39,7 +39,7 @@ import printWhiteGarage from "@/assets/images/custom-sweatshirts.png";
 import printSkyWild from "@/assets/images/print-sky-wild.webp";
 import printBlueGarage from "@/assets/images/print-blue-garage.webp";
 import printGrayWild from "@/assets/images/print-gray-wild.webp";
-import printPinkMountain from "@/assets/images/print-pink-mountain.webp";
+import printPinkMountain from "@/assets/images/custom-sweatshirts.png";
 import badgeMountain from "@/assets/images/badge-mountain.webp";
 import badgeWild from "@/assets/images/badge-wild.webp";
 import badgeGarage from "@/assets/images/badge-garage.webp";
