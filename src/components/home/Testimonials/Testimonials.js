@@ -219,18 +219,18 @@ export default function Testimonials() {
                   className={styles.slide}
                   key={`${testimonial.name}-${index}`}
                 >
-                  <Reveal
+                  {/* <Reveal
                     as="div"
                     delay={0.05 + index * 0.04}
                     className={styles.slideInner}
-                  >
-                    <TestimonialCard
-                      testimonial={testimonial}
-                      featured={
-                        testimonial.featured
-                      }
-                    />
-                  </Reveal>
+                  > */}
+                  <TestimonialCard
+                    testimonial={testimonial}
+                    featured={
+                      testimonial.featured
+                    }
+                  />
+                  {/* </Reveal> */}
                 </div>
               )
             )}

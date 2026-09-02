@@ -128,7 +128,7 @@
 
   margin-top: 64px;
 
-  padding: 0 56px 76px;
+  padding: 0 56px;
 }
 
 
@@ -145,6 +145,8 @@
 .carousel :global(.slick-list) {
   width: 90%;
   margin: 0 auto;
+
+  padding: 10px 0 !important;
 
   overflow: hidden;
 
@@ -163,6 +165,9 @@
 
 .carousel :global(.slick-slide) {
   height: auto;
+
+  box-sizing: border-box;
+  padding: 0 14px;
 }
 
 .carousel :global(.slick-slide > div) {
@@ -504,21 +509,15 @@
    ========================================================= */
 
 .carousel :global(.slick-dots) {
-  position: absolute;
-
-  left: 0;
-  right: 0;
-  bottom: 16px;
-
-  height: 20px;
+  position: static;
 
   display: flex !important;
   align-items: center;
   justify-content: center;
 
-  gap: 6px;
+  gap: 8px;
 
-  margin: 0;
+  margin: 36px 0 0;
   padding: 0;
 }
 
@@ -540,20 +539,28 @@
   border-radius: 999px;
 
   background: var(--ic-border-strong);
+  cursor: pointer;
 
   transition:
     width var(--ic-dur-slow) var(--ic-ease),
-    background-color var(--ic-dur) var(--ic-ease);
+    background-color var(--ic-dur) var(--ic-ease),
+    box-shadow var(--ic-dur) var(--ic-ease);
 }
 
 .carousel :global(.slick-dots li button::before) {
   display: none;
 }
 
+.carousel :global(.slick-dots li:hover button) {
+  background: var(--ic-text-subtle);
+}
+
 .carousel :global(.slick-dots li.slick-active button) {
   width: 28px;
 
   background: var(--ic-accent);
+
+  box-shadow: 0 2px 8px rgba(228, 87, 46, 0.35);
 }
 
 
@@ -623,8 +630,6 @@
 
     padding-left: 0;
     padding-right: 0;
-
-    padding-bottom: 76px;
   }
 
 
@@ -670,7 +675,7 @@
   /* Dots */
 
   .carousel :global(.slick-dots) {
-    bottom: 12px;
+    margin-top: 24px;
   }
 
 
@@ -684,7 +689,7 @@
 
     gap: 10px;
 
-    margin-top: -42px;
+    margin-top: 20px;
 
     color: var(--ic-text-subtle);
 
