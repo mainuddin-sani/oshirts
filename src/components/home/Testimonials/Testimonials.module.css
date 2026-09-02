@@ -1,4 +1,633 @@
 .section {
+  position: relative;
+  overflow: hidden;
+}
+
+/* =========================================
+   Trust bar
+========================================= */
+
+.trustBar {
+  width: min(100%, 760px);
+  margin: -1rem auto 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+
+  color: var(--ic-text-muted);
+}
+
+.trustRating {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.trustRating>strong {
+  font-family: var(--ic-font-display);
+  font-size: 1.5rem;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.trustRating>div {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.trustRating>div span {
+  font-size: 0.7rem;
+  color: var(--ic-text-subtle);
+}
+
+.trustDivider {
+  width: 1px;
+  height: 30px;
+  background: var(--ic-border);
+}
+
+.trustReviews {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+
+  font-size: 0.75rem;
+  color: var(--ic-text-subtle);
+}
+
+.reviewCount {
+  color: var(--ic-text);
+  font-weight: 600;
+}
+
+.trustBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+
+  padding: 0.45rem 0.7rem;
+
+  border: 1px solid var(--ic-border);
+  border-radius: var(--ic-radius-pill);
+
+  background: rgba(255, 255, 255, 0.5);
+
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--ic-text);
+}
+
+.badgeDot {
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+  background: var(--ic-success);
+
+  box-shadow: 0 0 0 3px rgba(46, 125, 91, 0.1);
+}
+
+/* =========================================
+   Carousel
+========================================= */
+
+.carousel {
+  position: relative;
+
+  margin-top: clamp(2.75rem, 5vw, 4rem);
+  padding: 0 3.5rem 3.75rem;
+}
+
+.carousel :global(.slick-list) {
+  overflow: visible;
+}
+
+.carousel :global(.slick-track) {
+  display: flex;
+  align-items: stretch;
+}
+
+.carousel :global(.slick-slide) {
+  height: auto;
+  padding: 0 0.5rem;
+}
+
+.carousel :global(.slick-slide > div) {
+  height: 100%;
+}
+
+.slide {
+  height: 100%;
+}
+
+.slideInner {
+  height: 100%;
+}
+
+/* =========================================
+   Cards
+========================================= */
+
+.card {
+  position: relative;
+
+  height: 100%;
+  min-height: 365px;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 1.75rem;
+
+  border: 1px solid var(--ic-border);
+  border-radius: var(--ic-radius-lg);
+
+  background: var(--ic-surface);
+
+  box-shadow: var(--ic-shadow-sm);
+
+  overflow: hidden;
+
+  transition:
+    transform var(--ic-dur-slow) var(--ic-ease),
+    box-shadow var(--ic-dur-slow) var(--ic-ease),
+    border-color var(--ic-dur) var(--ic-ease);
+}
+
+.card::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+
+  background:
+    radial-gradient(circle at 100% 0%,
+      rgba(228, 87, 46, 0.06),
+      transparent 34%);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+
+  border-color: var(--ic-border-strong);
+
+  box-shadow: var(--ic-shadow-md);
+}
+
+/* =========================================
+   Featured card
+========================================= */
+
+.featuredCard {
+  background:
+    linear-gradient(145deg,
+      var(--ic-ink) 0%,
+      var(--ic-ink-soft) 100%);
+
+  border-color: var(--ic-ink);
+  box-shadow: var(--ic-shadow-lg);
+
+  color: #fff;
+}
+
+.featuredCard::before {
+  background:
+    radial-gradient(circle at 100% 0%,
+      rgba(228, 87, 46, 0.2),
+      transparent 38%),
+    radial-gradient(circle at 0% 100%,
+      rgba(255, 255, 255, 0.05),
+      transparent 30%);
+}
+
+.featuredCard:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* =========================================
+   Card header
+========================================= */
+
+.cardHeader {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.verified {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--ic-text-subtle);
+}
+
+.featuredCard .verified {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* =========================================
+   Quote
+========================================= */
+
+.quote {
+  position: relative;
+  z-index: 1;
+
+  flex: 1;
+
+  margin: 1.5rem 0 2rem;
+  padding-left: 0.15rem;
+}
+
+.quoteMark {
+  display: block;
+
+  height: 0.9rem;
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 3.5rem;
+  line-height: 0.8;
+
+  color: var(--ic-accent);
+}
+
+.quote p {
+  margin-top: 0.65rem;
+
+  color: var(--ic-text);
+
+  font-size: clamp(1rem, 0.92rem + 0.25vw, 1.15rem);
+  line-height: 1.65;
+  letter-spacing: -0.012em;
+}
+
+.featuredCard .quote p {
+  color: #f6f3ed;
+
+  font-size: clamp(1.08rem,
+      0.98rem + 0.35vw,
+      1.25rem);
+
+  line-height: 1.62;
+}
+
+/* =========================================
+   Footer / Author
+========================================= */
+
+.cardFooter {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+
+  padding-top: 1.25rem;
+
+  border-top: 1px solid var(--ic-border);
+}
+
+.featuredCard .cardFooter {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.avatar {
+  width: 2.4rem;
+  height: 2.4rem;
+
+  flex: none;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 50%;
+
+  background: var(--ic-accent-soft);
+  color: var(--ic-accent);
+
+  font-family: var(--ic-font-display);
+  font-size: 0.9rem;
+  font-weight: 700;
+
+  border: 1px solid rgba(228, 87, 46, 0.12);
+}
+
+.featuredCard .avatar {
+  background: rgba(228, 87, 46, 0.14);
+  color: #ff9b7d;
+  border-color: rgba(228, 87, 46, 0.2);
+}
+
+.author {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.12rem;
+}
+
+.author strong {
+  overflow: hidden;
+
+  color: var(--ic-text);
+
+  font-size: 0.82rem;
+  line-height: 1.3;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.author span {
+  overflow: hidden;
+
+  color: var(--ic-text-subtle);
+
+  font-size: 0.7rem;
+  line-height: 1.35;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.featuredCard .author strong {
+  color: #fff;
+}
+
+.featuredCard .author span {
+  color: rgba(255, 255, 255, 0.48);
+}
+
+/* =========================================
+   Navigation arrows
+========================================= */
+
+.arrow {
+  position: absolute !important;
+  top: 50% !important;
+  z-index: 5;
+
+  width: 3rem !important;
+  height: 3rem !important;
+
+  display: grid !important;
+  place-items: center;
+
+  border: 1px solid var(--ic-border-strong) !important;
+  border-radius: 50%;
+
+  background: var(--ic-surface) !important;
+  color: var(--ic-text) !important;
+
+  box-shadow: var(--ic-shadow-md);
+
+  transform: translateY(-50%);
+
+  transition:
+    transform var(--ic-dur) var(--ic-ease),
+    background-color var(--ic-dur) var(--ic-ease),
+    border-color var(--ic-dur) var(--ic-ease),
+    color var(--ic-dur) var(--ic-ease),
+    box-shadow var(--ic-dur) var(--ic-ease);
+}
+
+.arrow::before {
+  display: none !important;
+}
+
+.arrow:hover {
+  background: var(--ic-ink) !important;
+  border-color: var(--ic-ink) !important;
+  color: var(--ic-white) !important;
+
+  box-shadow: var(--ic-shadow-lg);
+}
+
+.prev {
+  left: 0;
+}
+
+.next {
+  right: 0;
+}
+
+.prev:hover {
+  transform: translate(-2px, -50%);
+}
+
+.next:hover {
+  transform: translate(2px, -50%);
+}
+
+/* =========================================
+   Dots
+========================================= */
+
+.carousel :global(.slick-dots) {
+  bottom: 0;
+
+  height: 1.5rem;
+
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+}
+
+.carousel :global(.slick-dots li) {
+  width: auto;
+  height: auto;
+
+  margin: 0;
+}
+
+.carousel :global(.slick-dots li button) {
+  width: 0.4rem;
+  height: 0.4rem;
+
+  padding: 0;
+
+  border-radius: var(--ic-radius-pill);
+
+  background: var(--ic-border-strong);
+
+  transition:
+    width var(--ic-dur-slow) var(--ic-ease),
+    background-color var(--ic-dur) var(--ic-ease);
+}
+
+.carousel :global(.slick-dots li button::before) {
+  display: none;
+}
+
+.carousel :global(.slick-dots li.slick-active button) {
+  width: 1.75rem;
+  background: var(--ic-accent);
+}
+
+/* =========================================
+   Swipe hint
+========================================= */
+
+.carouselHint {
+  display: none;
+}
+
+/* =========================================
+   Tablet
+========================================= */
+
+@media (max-width: 1180px) {
+  .carousel {
+    padding-inline: 3rem;
+  }
+
+  .card {
+    min-height: 350px;
+  }
+}
+
+/* =========================================
+   Mobile
+========================================= */
+
+@media (max-width: 720px) {
+  .trustBar {
+    margin-top: -0.5rem;
+
+    gap: 0.9rem;
+  }
+
+  .trustReviews {
+    display: none;
+  }
+
+  .trustDivider {
+    height: 24px;
+  }
+
+  .trustBadge {
+    padding: 0.4rem 0.6rem;
+  }
+
+  .carousel {
+    margin-top: 2.5rem;
+    padding: 0 0 3.25rem;
+  }
+
+  .carousel :global(.slick-list) {
+    margin-inline: -0.35rem;
+    overflow: hidden;
+  }
+
+  .carousel :global(.slick-slide) {
+    padding-inline: 0.35rem;
+  }
+
+  .card {
+    min-height: 390px;
+
+    padding: 1.5rem;
+
+    border-radius: var(--ic-radius-md);
+  }
+
+  .quote {
+    margin-top: 1.35rem;
+  }
+
+  .quote p {
+    font-size: 1rem;
+  }
+
+  .featuredCard .quote p {
+    font-size: 1.08rem;
+  }
+
+  .carouselHint {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+
+    margin-top: -2.25rem;
+
+    color: var(--ic-text-subtle);
+
+    font-size: 0.68rem;
+    font-weight: 500;
+  }
+
+  .hintLine {
+    width: 2rem;
+    height: 1px;
+
+    overflow: hidden;
+
+    background: var(--ic-border);
+  }
+
+  .hintLine span {
+    display: block;
+
+    width: 45%;
+    height: 100%;
+
+    background: var(--ic-accent);
+
+    animation: testimonialHint 2s var(--ic-ease) infinite;
+  }
+}
+
+@keyframes testimonialHint {
+  0% {
+    transform: translateX(-120%);
+  }
+
+  50% {
+    transform: translateX(120%);
+  }
+
+  100% {
+    transform: translateX(120%);
+  }
+}
+
+/* =========================================
+   Reduced motion
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+
+  .carouselHint {
+    display: none;
+  }
+
+  .hintLine span {
+    animation: none;
+  }
+}
+
+
+
+
+
+/* .section {
   background: var(--ic-surface);
   border-top: 1px solid var(--ic-border);
 }
@@ -118,4 +747,4 @@
     grid-template-columns: 7fr 5fr;
     gap: var(--ic-space-8);
   }
-}
+} */
