@@ -1,15 +1,10 @@
 "use client";
 
 import Slider from "react-slick";
-
-import Reveal from "@/components/motion/Reveal";
 import Stars from "@/components/ui/Stars";
 import SectionHeading from "@/components/ui/SectionHeading";
-
 import { testimonials } from "@/data/home";
-
 import styles from "./Testimonials.module.css";
-
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import TestimonialCard from "./TestimonialCard";
@@ -219,18 +214,13 @@ export default function Testimonials() {
                   className={styles.slide}
                   key={`${testimonial.name}-${index}`}
                 >
-                  {/* <Reveal
-                    as="div"
-                    delay={0.05 + index * 0.04}
-                    className={styles.slideInner}
-                  > */}
+
                   <TestimonialCard
                     testimonial={testimonial}
                     featured={
                       testimonial.featured
                     }
                   />
-                  {/* </Reveal> */}
                 </div>
               )
             )}
