@@ -95,11 +95,18 @@
   /* border: 1px solid green; */
 }
 
+/* .carousel :global(.slick-list) {
+  width: 100%;
+  margin: 0 auto;
+  padding: 10px 0 !important;
+  overflow: hidden;
+  border-radius: 24px;
+} */
+
 .carousel :global(.slick-list) {
   width: 100%;
   margin: 0 auto;
-  /* border: 1px solid red; */
-  padding: 10px 0 !important;
+  /* padding: 10px 12px !important; */
   overflow: hidden;
   border-radius: 24px;
 }
@@ -113,7 +120,7 @@
 .carousel :global(.slick-slide) {
   height: auto;
   box-sizing: border-box;
-  padding: 0 10px;
+  padding: 0 12px;
 }
 
 .carousel :global(.slick-slide > div) {
@@ -497,7 +504,6 @@
 
   .carousel :global(.slick-list) {
     overflow: hidden;
-
     border-radius: 16px;
   }
 
