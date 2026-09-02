@@ -108,32 +108,34 @@ export const benefits = [
 ];
 
 
+
 // export const categories = [
 //   {
 //     slug: "t-shirts",
-//     name: "T-Shirts",
+//     name: "Custom T-Shirts",
 //     blurb:
 //       "Classic, heavyweight and premium ring-spun tees in 40+ colours.",
 //     price: "From $4.99",
 //     image: printBlackMountain,
 //     imageAlt:
-//       "Black T-shirt with a full-colour mountain graphic printed on the chest",
+//       "Black custom T-shirt with a full-colour mountain graphic printed on the chest",
 //     featured: true,
 //     tone: "paper",
+//     label: "Most popular",
 //   },
 //   {
 //     slug: "womens",
-//     name: "Women's Apparel",
+//     name: "Custom Women's T-Shirts",
 //     blurb:
-//       "Relaxed, fitted and cropped cuts designed for the way they're actually worn.",
+//       "Relaxed, fitted and cropped styles designed for everyday wear.",
 //     price: "From $6.49",
 //     image: printPinkMountain,
 //     imageAlt:
-//       "Pink women's T-shirt with a printed mountain badge",
+//       "Pink women's T-shirt with a custom mountain graphic",
 //     featured: true,
 //     tone: "blush",
+//     label: "Women's fit",
 //   },
-
 //   {
 //     slug: "hoodies",
 //     name: "Hoodies",
@@ -142,7 +144,6 @@ export const benefits = [
 //     image: printBlackMountain,
 //     imageAlt: "Custom printed hoodie",
 //   },
-
 //   {
 //     slug: "sweatshirts",
 //     name: "Sweatshirts",
@@ -151,7 +152,6 @@ export const benefits = [
 //     image: printPinkMountain,
 //     imageAlt: "Custom printed sweatshirt",
 //   },
-
 //   {
 //     slug: "youth",
 //     name: "Youth",
@@ -160,7 +160,6 @@ export const benefits = [
 //     image: printBlackMountain,
 //     imageAlt: "Custom printed youth T-shirt",
 //   },
-
 //   {
 //     slug: "performance",
 //     name: "Performance",
@@ -169,7 +168,6 @@ export const benefits = [
 //     image: printPinkMountain,
 //     imageAlt: "Custom printed performance shirt",
 //   },
-
 //   {
 //     slug: "long-sleeve",
 //     name: "Long Sleeve",
@@ -178,7 +176,6 @@ export const benefits = [
 //     image: printBlackMountain,
 //     imageAlt: "Custom printed long-sleeve shirt",
 //   },
-
 //   {
 //     slug: "jackets",
 //     name: "Jackets",
@@ -189,14 +186,10 @@ export const benefits = [
 //   },
 // ];
 
-
 export const categories = [
   {
     slug: "t-shirts",
-    name: "Custom T-Shirts",
-    blurb:
-      "Classic, heavyweight and premium ring-spun tees in 40+ colours.",
-    price: "From $4.99",
+    name: "T-Shirts",
     image: printBlackMountain,
     imageAlt:
       "Black custom T-shirt with a full-colour mountain graphic printed on the chest",
@@ -206,10 +199,7 @@ export const categories = [
   },
   {
     slug: "womens",
-    name: "Custom Women's T-Shirts",
-    blurb:
-      "Relaxed, fitted and cropped styles designed for everyday wear.",
-    price: "From $6.49",
+    name: "Women's T-Shirts",
     image: printPinkMountain,
     imageAlt:
       "Pink women's T-shirt with a custom mountain graphic",
@@ -220,53 +210,40 @@ export const categories = [
   {
     slug: "hoodies",
     name: "Hoodies",
-    blurb: "Heavyweight and everyday hoodies made for comfort.",
-    price: "From $18.99",
     image: printBlackMountain,
     imageAlt: "Custom printed hoodie",
   },
   {
     slug: "sweatshirts",
     name: "Sweatshirts",
-    blurb: "Classic crewnecks with soft, durable construction.",
-    price: "From $14.99",
     image: printPinkMountain,
     imageAlt: "Custom printed sweatshirt",
   },
   {
     slug: "youth",
     name: "Youth",
-    blurb: "Comfortable styles made for kids and growing teams.",
-    price: "From $4.49",
     image: printBlackMountain,
     imageAlt: "Custom printed youth T-shirt",
   },
   {
     slug: "performance",
     name: "Performance",
-    blurb: "Lightweight performance styles built for active wear.",
-    price: "From $7.99",
     image: printPinkMountain,
     imageAlt: "Custom printed performance shirt",
   },
   {
     slug: "long-sleeve",
     name: "Long Sleeve",
-    blurb: "Versatile long-sleeve styles for cooler days.",
-    price: "From $7.49",
     image: printBlackMountain,
     imageAlt: "Custom printed long-sleeve shirt",
   },
   {
     slug: "jackets",
     name: "Jackets",
-    blurb: "Layer-ready jackets for teams, events and everyday wear.",
-    price: "From $29.99",
     image: printPinkMountain,
     imageAlt: "Custom printed jacket",
   },
 ];
-
 
 
 
