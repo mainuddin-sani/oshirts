@@ -21,7 +21,8 @@
   width: 60%;
   aspect-ratio: 1;
   border-radius: 50%;
-  background: radial-gradient(closest-side, rgba(228, 87, 46, 0.35), transparent 70%);
+  /* background: radial-gradient(closest-side, rgba(228, 87, 46, 0.35), transparent 70%); */
+  background: radial-gradient(closest-side, rgba(112, 53, 35, 0.35), transparent 70%);
   pointer-events: none;
 }
 
