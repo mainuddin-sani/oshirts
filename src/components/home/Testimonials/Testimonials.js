@@ -118,7 +118,6 @@ export default function Testimonials() {
     >
       <div className={`ic_container ${styles.container}`}>
 
-
         <SectionHeading
           eyebrow="Reviews"
           title={

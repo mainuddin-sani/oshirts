@@ -162,8 +162,8 @@
 }
 
 .card:hover {
-  transform: translateY(-5px);
-  border-color: var(--ic-border-strong);
+  /* transform: translateY(-5px); */
+  /* border-color: var(--ic-border-strong); */
   box-shadow: var(--ic-shadow-md);
 }
 
@@ -439,7 +439,51 @@
 }
 
 
+.collapsedQuote {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
 
+.expandedQuote {
+  display: block;
+}
+
+.seeMore {
+  position: relative;
+
+  background: none;
+  border: none;
+  padding: 0;
+  margin-top: 6px;
+
+  color: var(--ic-accent);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+
+  transition: color 0.3s ease;
+}
+
+.seeMore::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.seeMore:hover::after {
+  transform: scaleX(1);
+}
 
 @media (max-width: 1180px) {
   .carousel {
