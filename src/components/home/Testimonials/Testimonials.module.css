@@ -3,10 +3,6 @@
   overflow: hidden;
 }
 
-.container {
-  border: 1px solid black;
-
-}
 
 
 .trustBar {
@@ -465,7 +461,11 @@
   }
 }
 
-
+@media (max-width: 991px) {
+  .carousel :global(.slick-slide) {
+    padding: 0 8px;
+  }
+}
 
 
 @media (max-width: 720px) {
@@ -508,8 +508,7 @@
   }
 
   .carousel :global(.slick-slide) {
-    padding-left: 5px;
-    padding-right: 5px;
+    padding: 0 5px;
   }
 
 

@@ -52,15 +52,7 @@ function Arrow({ className, onClick, direction }) {
 
 
 export default function Testimonials() {
-  const {
-    featured,
-    items,
-    rating,
-    count,
-  } = testimonials;
-
-
-
+  const { featured, items, rating, count } = testimonials;
 
   const allTestimonials = [
     {
@@ -79,39 +71,27 @@ export default function Testimonials() {
   const sliderSettings = {
     dots: true,
     arrows: true,
-
     infinite: true,
-
     speed: 700,
-    cssEase:
-      "cubic-bezier(0.2, 0.7, 0.2, 1)",
-
+    cssEase: "cubic-bezier(0.2, 0.7, 0.2, 1)",
     slidesToShow: 3,
     slidesToScroll: 1,
-
     autoplay: true,
     autoplaySpeed: 5500,
-
     pauseOnHover: true,
     pauseOnFocus: true,
-
     swipeToSlide: true,
     draggable: true,
-
     adaptiveHeight: false,
-
     prevArrow: (
       <Arrow direction="prev" />
     ),
-
     nextArrow: (
       <Arrow direction="next" />
     ),
-
     responsive: [
       {
         breakpoint: 1180,
-
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
@@ -120,7 +100,6 @@ export default function Testimonials() {
 
       {
         breakpoint: 720,
-
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
