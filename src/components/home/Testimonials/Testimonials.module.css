@@ -86,18 +86,10 @@
 .carousel {
   position: relative;
   width: 100%;
-  margin-top: 64px;
+  /* margin-top: 64px; */
   padding: 0 50px;
-  /* border: 1px solid green; */
 }
 
-/* .carousel :global(.slick-list) {
-  width: 100%;
-  margin: 0 auto;
-  padding: 10px 0 !important;
-  overflow: hidden;
-  border-radius: 24px;
-} */
 
 .carousel :global(.slick-list) {
   width: 100%;
@@ -487,8 +479,8 @@
 
 @media (max-width: 1180px) {
   .carousel {
-    padding-left: 52px;
-    padding-right: 52px;
+    padding: 0 52px;
+
   }
 
   .card {
@@ -531,20 +523,9 @@
     padding: 6px 9px;
   }
 
-
-  /* Carousel */
-
   .carousel {
-    margin-top: 40px;
-
-    padding-left: 0;
-    padding-right: 0;
+    padding: 0 0;
   }
-
-
-  /*
-    One complete card only.
-  */
 
   .carousel :global(.slick-list) {
     overflow: hidden;
@@ -555,14 +536,9 @@
     padding: 0 5px;
   }
 
-
-  /* Card */
-
   .card {
     min-height: 390px;
-
     padding: 24px;
-
     border-radius: 16px;
   }
 
@@ -578,28 +554,18 @@
     font-size: 17px;
   }
 
-
-  /* Dots */
-
   .carousel :global(.slick-dots) {
     margin-top: 24px;
   }
 
 
-  /* Swipe hint */
-
   .carouselHint {
     display: flex;
-
     align-items: center;
     justify-content: center;
-
     gap: 10px;
-
     margin-top: 20px;
-
     color: var(--ic-text-subtle);
-
     font-size: 11px;
     font-weight: 500;
   }
@@ -607,29 +573,20 @@
   .hintLine {
     width: 32px;
     height: 1px;
-
     overflow: hidden;
-
     background: var(--ic-border);
   }
 
   .hintLine span {
     display: block;
-
     width: 45%;
     height: 100%;
-
     background: var(--ic-accent);
-
     animation:
       testimonialHint 2s var(--ic-ease) infinite;
   }
 }
 
-
-/* =========================================================
-   Small Mobile
-   ========================================================= */
 
 @media (max-width: 480px) {
   .trustBar {
@@ -646,15 +603,10 @@
 
   .card {
     min-height: 380px;
-
     padding: 22px;
   }
 }
 
-
-/* =========================================================
-   Swipe Animation
-   ========================================================= */
 
 @keyframes testimonialHint {
   0% {

@@ -1,4 +1,5 @@
 import Reveal from "@/components/motion/Reveal";
+import styles from "./SectionHeading.module.css"
 
 export default function SectionHeading({
   eyebrow,
@@ -9,15 +10,35 @@ export default function SectionHeading({
   className = "",
 }) {
   const Heading = as;
-  const classes = ["ic_section_head", align === "center" && "ic_section_head_center", className]
+  const classes = [
+    styles.ic_section_head,
+    align === "center" && styles.ic_section_head_center,
+    className,
+  ]
     .filter(Boolean)
     .join(" ");
 
+  // const classes = ["ic_section_head", align === "center" && "ic_section_head_center", className]
+  //   .filter(Boolean)
+  //   .join(" ");
+
   return (
     <Reveal className={classes}>
-      {eyebrow ? <span className="ic_eyebrow">{eyebrow}</span> : null}
+      {eyebrow ? (
+        <span className={styles.ic_eyebrow}>{eyebrow}</span>
+      ) : null}
+
       <Heading>{title}</Heading>
-      {description ? <p className="ic_lead">{description}</p> : null}
+
+      {description ? (
+        <p className={styles.ic_lead}>{description}</p>
+      ) : null}
     </Reveal>
+
+    // <Reveal className={classes}>
+    //   {eyebrow ? <span className="ic_eyebrow">{eyebrow}</span> : null}
+    //   <Heading>{title}</Heading>
+    //   {description ? <p className="ic_lead">{description}</p> : null}
+    // </Reveal>
   );
 }

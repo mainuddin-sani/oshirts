@@ -118,71 +118,74 @@ export default function Testimonials() {
     >
       <div className={`ic_container ${styles.container}`}>
 
-        <SectionHeading
-          eyebrow="Reviews"
-          title={
-            <span id="reviews-title">
-              Rated 4.9 by the people who wear them.
-            </span>
-          }
-          align="center"
-        />
-
-
-        {/* ===================================================
-            Trust Bar
-            =================================================== */}
-
-        <div className={styles.trustBar}>
-
-          <div className={styles.trustRating}>
-            <strong>{rating}</strong>
-
-            <div>
-              <Stars
-                rating={rating}
-                size={15}
-              />
-
-              <span>Excellent</span>
-            </div>
-          </div>
-
-
-          <div
-            className={styles.trustDivider}
-            aria-hidden="true"
+        <div className="ic_section_heading_space">
+          <SectionHeading
+            eyebrow="Reviews"
+            title={
+              <span id="reviews-title">
+                Rated 4.9 by the people who wear them.
+              </span>
+            }
+            align="center"
           />
 
 
-          <div className={styles.trustReviews}>
-            <span className={styles.reviewCount}>
-              {count}
-            </span>
+          {/* Trust Bar */}
+          <div className={styles.trustBar}>
 
-            <span>
-              verified customer reviews
-            </span>
-          </div>
+            <div className={styles.trustRating}>
+              <strong>{rating}</strong>
+
+              <div>
+                <Stars
+                  rating={rating}
+                  size={15}
+                />
+
+                <span>Excellent</span>
+              </div>
+            </div>
 
 
-          <div className={styles.trustBadge}>
-            <span
-              className={styles.badgeDot}
+            <div
+              className={styles.trustDivider}
               aria-hidden="true"
             />
 
-            Loved by teams
+
+            <div className={styles.trustReviews}>
+              <span className={styles.reviewCount}>
+                {count}
+              </span>
+
+              <span>
+                verified customer reviews
+              </span>
+            </div>
+
+
+            <div className={styles.trustBadge}>
+              <span
+                className={styles.badgeDot}
+                aria-hidden="true"
+              />
+
+              Loved by teams
+            </div>
+
           </div>
 
         </div>
 
 
-        {/* ===================================================
-            Carousel
-            =================================================== */}
 
-        <div className={styles.carousel}>
+
+
+
+        {/* Carousel */}
+
+
+        <div className={`${styles.carousel}`}>
 
           <Slider {...sliderSettings}>
 
