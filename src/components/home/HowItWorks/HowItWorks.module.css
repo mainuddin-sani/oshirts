@@ -174,13 +174,9 @@
   width: 90px;
   height: 90px;
   margin-bottom: clamp(1.75rem, 3vw, 2.5rem);
-  font-size: 35px;
-
   border: 1px solid var(--ic-border);
   border-radius: 50%;
-
   background: var(--ic-white);
-  /* color: #fff; */
   color: var(--ic-accent);
 
   /* box-shadow:
@@ -198,7 +194,7 @@
 }
 
 .ic_icon_size {
-  font-size: 50px;
+  font-size: 40px;
 }
 
 /* --------------------------------
