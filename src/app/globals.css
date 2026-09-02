@@ -208,9 +208,7 @@ dd {
 }
 
 
-/* ================================================================
-   ACCESSIBILITY
-   ================================================================ */
+/* ACCESSIBILITY */
 
 :focus-visible {
   outline: 2px solid var(--ic-accent);
@@ -224,9 +222,7 @@ dd {
 }
 
 
-/* ================================================================
-   TYPOGRAPHY
-   ================================================================ */
+/* TYPOGRAPHY */
 
 h1,
 h2,
@@ -235,12 +231,10 @@ h4,
 h5,
 h6 {
   margin: 0;
-
   font-family: var(--ic-font-display);
   font-weight: 600;
   letter-spacing: var(--ic-tracking-tight);
   line-height: 1.08;
-
   color: var(--ic-text);
   text-wrap: balance;
 }
@@ -279,10 +273,8 @@ h6 {
 
 p {
   margin: 0;
-
   font-size: 17px;
   line-height: 1.65;
-
   color: var(--ic-text-muted);
   text-wrap: pretty;
 }
@@ -302,7 +294,6 @@ small {
 
 
 /* ---------- Lead Text ---------- */
-
 .ic_lead {
   font-size: 20px;
   line-height: 1.6;
@@ -310,29 +301,23 @@ small {
 
 
 /* ---------- Eyebrow ---------- */
-
 .ic_eyebrow {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-
   margin: 0 0 16px;
-
   font-family: var(--ic-font-body);
   font-size: 12px;
   font-weight: 600;
   letter-spacing: var(--ic-tracking-caps);
   text-transform: uppercase;
-
   color: var(--ic-accent);
 }
 
 .ic_eyebrow::before {
   content: "";
-
   width: 24px;
   height: 2px;
-
   border-radius: 2px;
   background: currentColor;
 }
@@ -529,9 +514,7 @@ small {
 }
 
 
-/* ================================================================
-   LAYOUT
-   ================================================================ */
+/* ================LAYOUT================================== */
 
 .ic_container {
   width: min(var(--ic-container), calc(100% - 80px));
@@ -666,10 +649,8 @@ small {
 }
 
 
-/* ================================================================
-   SMALL MOBILE
-   ================================================================ */
 
+/* SMALL MOBILE */
 @media (max-width: 480px) {
 
   h1 {

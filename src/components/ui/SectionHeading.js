@@ -18,10 +18,6 @@ export default function SectionHeading({
     .filter(Boolean)
     .join(" ");
 
-  // const classes = ["ic_section_head", align === "center" && "ic_section_head_center", className]
-  //   .filter(Boolean)
-  //   .join(" ");
-
   return (
     <Reveal className={classes}>
       {eyebrow ? (
@@ -34,11 +30,5 @@ export default function SectionHeading({
         <p className={styles.ic_lead}>{description}</p>
       ) : null}
     </Reveal>
-
-    // <Reveal className={classes}>
-    //   {eyebrow ? <span className="ic_eyebrow">{eyebrow}</span> : null}
-    //   <Heading>{title}</Heading>
-    //   {description ? <p className="ic_lead">{description}</p> : null}
-    // </Reveal>
   );
 }
