@@ -11,19 +11,19 @@ const promises = [
   {
     eyebrow: "Low price",
     title: "Low Price Guarantee",
-    text: "ooShirts.com was founded by a high school student in 2007 with an investment of just $2000. Our goal was to offer t-shirt printing that's actually affordable to school groups, nonprofits, families, and small businesses in the US. If you find a lower price online, simply send it to us and we'll match the price.",
+    text: "ooShirts.com was founded by a high school student in 2007 with an investment of just $2000. Our goal was to If you find a lower price online, simply send it to us and we'll match the price.",
     icon: FiDollarSign,
   },
   {
     eyebrow: "Quality shirts",
     title: "Amazing Print Quality",
-    text: "High quality printing comes from years of printing experience, use of top-notch inks, and an unwavering commitment to producing well made t-shirt designs. We guarantee our prints will last wash after wash, and that our garments will come free of material defects -- or we'll redo your order from scratch.",
+    text: "High quality printing comes from years of printing experience, use of top-notch inks, and an unwavering commitment garments will come free of material defects -- or we'll redo your order from scratch.",
     icon: FiAward,
   },
   {
     eyebrow: "Rave-worthy service",
     title: "Rave-worthy Service",
-    text: "Our support staff is available 7 days a week over the phone, email, and live chat. We welcome questions of all kind - design your own t-shirt to explanations about the types of custom shirts you can order to any fun or off-topic question of your choice. Either way, we're here to help.",
+    text: "Our support staff is available 7 days a week over the phone, email, and live chat. t-shirt pes of custom shirts you can order to any fun or off-topic question of your choice. Either way, we're here to help.",
     icon: FiMessageCircle,
   },
 ];

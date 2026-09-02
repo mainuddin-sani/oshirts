@@ -80,7 +80,8 @@
 .promiseGrid {
   display: grid;
   gap: 1rem;
-  margin-top: clamp(2.75rem, 5vw, 3.75rem);
+  grid-template-columns: repeat(2, 1fr);
+  /* margin-top: clamp(2.75rem, 5vw, 3.75rem); */
 }
 
 /* --------------------------------
@@ -91,14 +92,10 @@
   position: relative;
   isolation: isolate;
   overflow: hidden;
-
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  min-height: 100%;
-  padding: clamp(2rem, 3.5vw, 2.75rem) clamp(1.5rem, 3vw, 2.25rem);
-
+  padding: clamp(2rem, 3.5vw, 2.25rem) clamp(1.5rem, 3vw, 2rem);
   border: 1px solid var(--ic-border);
   border-radius: 1.5rem;
 
@@ -253,18 +250,12 @@
 
 .accent {
   display: block;
-
   width: 2.5rem;
   height: 2px;
-
-  margin-top: 2rem;
-
+  margin-top: 24px;
   border-radius: 999px;
-
   background: var(--ic-accent);
-
-  transition:
-    width 450ms var(--ic-ease);
+  transition: width 450ms var(--ic-ease);
 }
 
 .promise:hover .accent {
@@ -299,33 +290,12 @@
     grid-column: auto;
   }
 
-  .promise {
-    min-height: 31rem;
-  }
-
   .content p {
     font-size: 0.94rem;
   }
 }
 
-/* --------------------------------
-   Large Screens
---------------------------------- */
 
-@media (min-width: 1280px) {
-  .promiseGrid {
-    gap: 1.5rem;
-  }
-
-  .promise {
-    padding: 2.5rem;
-    min-height: 33rem;
-  }
-}
-
-/* --------------------------------
-   Mobile
---------------------------------- */
 
 @media (max-width: 639px) {
   .emblem {
@@ -346,9 +316,7 @@
   }
 }
 
-/* --------------------------------
-   Accessibility
---------------------------------- */
+
 
 @media (prefers-reduced-motion: reduce) {
 
