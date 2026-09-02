@@ -12,23 +12,22 @@ import styles from "./Testimonials.module.css";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import TestimonialCard from "./TestimonialCard";
 
 
-/* =========================================================
-   Carousel Arrow
-   ========================================================= */
+
 
 function Arrow({ className, onClick, direction }) {
-  const isPrevious = direction === "prev";
+  const isPrev = direction === "prev";
 
   return (
     <button
       type="button"
-      className={`${className || ""} ${styles.arrow} ${isPrevious ? styles.prev : styles.next
+      className={`${className || ""} ${styles.arrow} ${isPrev ? styles.prev : styles.next
         }`}
       onClick={onClick}
       aria-label={
-        isPrevious
+        isPrev
           ? "Previous testimonial"
           : "Next testimonial"
       }
@@ -42,7 +41,7 @@ function Arrow({ className, onClick, direction }) {
       >
         <path
           d={
-            isPrevious
+            isPrev
               ? "M15 18L9 12L15 6"
               : "M9 18L15 12L9 6"
           }
@@ -57,117 +56,6 @@ function Arrow({ className, onClick, direction }) {
 }
 
 
-/* =========================================================
-   Testimonial Card
-   ========================================================= */
-
-function TestimonialCard({
-  testimonial,
-  featured = false,
-}) {
-  return (
-    <article
-      className={`${styles.card} ${featured
-        ? styles.featuredCard
-        : styles.standardCard
-        }`}
-    >
-      {/* ---------- Card Header ---------- */}
-
-      <div className={styles.cardHeader}>
-        <Stars
-          rating={testimonial.rating}
-          size={14}
-        />
-
-        <span className={styles.verified}>
-          <svg
-            viewBox="0 0 20 20"
-            width="14"
-            height="14"
-            fill="none"
-            aria-hidden="true"
-          >
-            <path
-              d="
-                M10 1.75
-                l2.03 1.32
-                2.4-.02
-                .75 2.28
-                1.94 1.4
-                -.75 2.28
-                .75 2.28
-                -1.94 1.4
-                -.75 2.28
-                -2.4-.02
-                L10 18.25
-                l-2.03-1.32
-                -2.4.02
-                -.75-2.28
-                -1.94-1.4
-                .75-2.28
-                -.75-2.28
-                1.94-1.4
-                .75-2.28
-                2.4.02
-                L10 1.75z
-              "
-              fill="currentColor"
-              opacity="0.12"
-            />
-
-            <path
-              d="M7.2 10.2l1.7 1.7 3.9-4"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-
-          Verified
-        </span>
-      </div>
-
-
-      {/* ---------- Quote ---------- */}
-
-      <blockquote className={styles.quote}>
-        <span
-          className={styles.quoteMark}
-          aria-hidden="true"
-        >
-          “
-        </span>
-
-        <p>{testimonial.quote}</p>
-      </blockquote>
-
-
-      {/* ---------- Author ---------- */}
-
-      <div className={styles.cardFooter}>
-        <div
-          className={styles.avatar}
-          aria-hidden="true"
-        >
-          {testimonial.name.charAt(0)}
-        </div>
-
-        <div className={styles.author}>
-          <strong>{testimonial.name}</strong>
-          <span>{testimonial.role}</span>
-        </div>
-      </div>
-    </article>
-  );
-}
-
-
-/* =========================================================
-   Testimonials Section
-   ========================================================= */
-
 export default function Testimonials() {
   const {
     featured,
@@ -177,9 +65,7 @@ export default function Testimonials() {
   } = testimonials;
 
 
-  /* ---------------------------------------------------------
-     Prepare all testimonials
-     --------------------------------------------------------- */
+
 
   const allTestimonials = [
     {
@@ -194,9 +80,6 @@ export default function Testimonials() {
   ];
 
 
-  /* ---------------------------------------------------------
-     Slider Settings
-     --------------------------------------------------------- */
 
   const sliderSettings = {
     dots: true,
@@ -246,9 +129,7 @@ export default function Testimonials() {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-
           arrows: false,
-
           autoplaySpeed: 4800,
         },
       },
@@ -256,20 +137,13 @@ export default function Testimonials() {
   };
 
 
-  /* ---------------------------------------------------------
-     Render
-     --------------------------------------------------------- */
-
   return (
     <section
-      className={`ic_section_space ic_container ${styles.section}`}
+      className={`ic_section_space ${styles.section}`}
       aria-labelledby="reviews-title"
     >
-      <div className="ic_container">
+      <div className={`ic_container ${styles.container}`}>
 
-        {/* ===================================================
-            Section Heading
-            =================================================== */}
 
         <SectionHeading
           eyebrow="Reviews"
@@ -288,8 +162,6 @@ export default function Testimonials() {
 
         <div className={styles.trustBar}>
 
-          {/* Rating */}
-
           <div className={styles.trustRating}>
             <strong>{rating}</strong>
 
@@ -304,15 +176,11 @@ export default function Testimonials() {
           </div>
 
 
-          {/* Divider */}
-
           <div
             className={styles.trustDivider}
             aria-hidden="true"
           />
 
-
-          {/* Reviews */}
 
           <div className={styles.trustReviews}>
             <span className={styles.reviewCount}>
@@ -324,8 +192,6 @@ export default function Testimonials() {
             </span>
           </div>
 
-
-          {/* Badge */}
 
           <div className={styles.trustBadge}>
             <span
@@ -344,7 +210,9 @@ export default function Testimonials() {
             =================================================== */}
 
         <div className={styles.carousel}>
+
           <Slider {...sliderSettings}>
+
             {allTestimonials.map(
               (testimonial, index) => (
                 <div
@@ -366,12 +234,14 @@ export default function Testimonials() {
                 </div>
               )
             )}
+
           </Slider>
+
         </div>
 
 
         {/* ===================================================
-            Mobile Swipe Hint
+            Mobile Hint
             =================================================== */}
 
         <div

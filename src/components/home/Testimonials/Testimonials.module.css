@@ -1,20 +1,33 @@
+/* =========================================================
+   Testimonials Section
+   ========================================================= */
+
 .section {
   position: relative;
   overflow: hidden;
+
+
+
+  .container {
+    /* border: 1px solid red; */
+  }
 }
 
-/* =========================================
-   Trust bar
-========================================= */
+
+/* =========================================================
+   Trust Bar
+   ========================================================= */
 
 .trustBar {
-  width: min(100%, 760px);
-  margin: -1rem auto 0;
+  width: 760px;
+  max-width: 100%;
+
+  margin: -16px auto 0;
 
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1.5rem;
+  gap: 24px;
 
   color: var(--ic-text-muted);
 }
@@ -22,12 +35,12 @@
 .trustRating {
   display: flex;
   align-items: center;
-  gap: 0.7rem;
+  gap: 11px;
 }
 
 .trustRating>strong {
   font-family: var(--ic-font-display);
-  font-size: 1.5rem;
+  font-size: 24px;
   line-height: 1;
   letter-spacing: -0.04em;
 }
@@ -39,7 +52,7 @@
 }
 
 .trustRating>div span {
-  font-size: 0.7rem;
+  font-size: 11px;
   color: var(--ic-text-subtle);
 }
 
@@ -52,9 +65,9 @@
 .trustReviews {
   display: flex;
   align-items: baseline;
-  gap: 0.4rem;
+  gap: 6px;
 
-  font-size: 0.75rem;
+  font-size: 12px;
   color: var(--ic-text-subtle);
 }
 
@@ -66,16 +79,16 @@
 .trustBadge {
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
+  gap: 7px;
 
-  padding: 0.45rem 0.7rem;
+  padding: 7px 11px;
 
   border: 1px solid var(--ic-border);
   border-radius: var(--ic-radius-pill);
 
   background: rgba(255, 255, 255, 0.5);
 
-  font-size: 0.7rem;
+  font-size: 11px;
   font-weight: 600;
   color: var(--ic-text);
 }
@@ -84,26 +97,64 @@
   width: 6px;
   height: 6px;
 
+  flex: none;
+
   border-radius: 50%;
+
   background: var(--ic-success);
 
-  box-shadow: 0 0 0 3px rgba(46, 125, 91, 0.1);
+  box-shadow:
+    0 0 0 3px rgba(46, 125, 91, 0.1);
 }
 
-/* =========================================
+
+/* =========================================================
    Carousel
-========================================= */
+   ========================================================= */
 
 .carousel {
   position: relative;
 
-  margin-top: clamp(2.75rem, 5vw, 4rem);
-  padding: 0 3.5rem 3.75rem;
+  /*
+    The carousel itself is already inside
+    .ic_container.
+
+    56px on both sides gives the arrows
+    their own space.
+  */
+
+  width: 100%;
+
+
+  margin-top: 64px;
+
+  padding: 0 56px 76px;
 }
 
+
+/*
+  VERY IMPORTANT
+
+  Only the 3 visible slides stay inside
+  the viewport.
+
+  This prevents the 4th/5th card from
+  appearing half-cut on the sides.
+*/
+
 .carousel :global(.slick-list) {
-  overflow: visible;
+  width: 90%;
+  margin: 0 auto;
+
+  overflow: hidden;
+
+  border-radius: 24px;
 }
+
+
+/*
+  Keep slides equal height.
+*/
 
 .carousel :global(.slick-track) {
   display: flex;
@@ -112,7 +163,6 @@
 
 .carousel :global(.slick-slide) {
   height: auto;
-  padding: 0 0.5rem;
 }
 
 .carousel :global(.slick-slide > div) {
@@ -127,9 +177,10 @@
   height: 100%;
 }
 
-/* =========================================
+
+/* =========================================================
    Cards
-========================================= */
+   ========================================================= */
 
 .card {
   position: relative;
@@ -140,10 +191,10 @@
   display: flex;
   flex-direction: column;
 
-  padding: 1.75rem;
+  padding: 28px;
 
   border: 1px solid var(--ic-border);
-  border-radius: var(--ic-radius-lg);
+  border-radius: 24px;
 
   background: var(--ic-surface);
 
@@ -172,16 +223,17 @@
 }
 
 .card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-5px);
 
   border-color: var(--ic-border-strong);
 
   box-shadow: var(--ic-shadow-md);
 }
 
-/* =========================================
-   Featured card
-========================================= */
+
+/* =========================================================
+   Featured Card
+   ========================================================= */
 
 .featuredCard {
   background:
@@ -190,9 +242,10 @@
       var(--ic-ink-soft) 100%);
 
   border-color: var(--ic-ink);
+
   box-shadow: var(--ic-shadow-lg);
 
-  color: #fff;
+  color: #ffffff;
 }
 
 .featuredCard::before {
@@ -209,9 +262,10 @@
   border-color: rgba(255, 255, 255, 0.2);
 }
 
-/* =========================================
-   Card header
-========================================= */
+
+/* =========================================================
+   Card Header
+   ========================================================= */
 
 .cardHeader {
   position: relative;
@@ -225,10 +279,11 @@
 .verified {
   display: inline-flex;
   align-items: center;
-  gap: 0.3rem;
+  gap: 5px;
 
-  font-size: 0.68rem;
+  font-size: 11px;
   font-weight: 600;
+
   color: var(--ic-text-subtle);
 }
 
@@ -236,9 +291,10 @@
   color: rgba(255, 255, 255, 0.55);
 }
 
-/* =========================================
+
+/* =========================================================
    Quote
-========================================= */
+   ========================================================= */
 
 .quote {
   position: relative;
@@ -246,45 +302,44 @@
 
   flex: 1;
 
-  margin: 1.5rem 0 2rem;
-  padding-left: 0.15rem;
+  margin: 24px 0 32px;
+  padding-left: 2px;
 }
 
 .quoteMark {
   display: block;
 
-  height: 0.9rem;
+  height: 14px;
 
   font-family: Georgia, "Times New Roman", serif;
-  font-size: 3.5rem;
+  font-size: 56px;
   line-height: 0.8;
 
   color: var(--ic-accent);
 }
 
 .quote p {
-  margin-top: 0.65rem;
+  margin-top: 10px;
 
   color: var(--ic-text);
 
-  font-size: clamp(1rem, 0.92rem + 0.25vw, 1.15rem);
-  line-height: 1.65;
+  font-size: 18px;
+  line-height: 1.6;
+
   letter-spacing: -0.012em;
 }
 
 .featuredCard .quote p {
   color: #f6f3ed;
 
-  font-size: clamp(1.08rem,
-      0.98rem + 0.35vw,
-      1.25rem);
-
+  font-size: 19px;
   line-height: 1.62;
 }
 
-/* =========================================
-   Footer / Author
-========================================= */
+
+/* =========================================================
+   Card Footer
+   ========================================================= */
 
 .cardFooter {
   position: relative;
@@ -292,9 +347,9 @@
 
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 12px;
 
-  padding-top: 1.25rem;
+  padding-top: 20px;
 
   border-top: 1px solid var(--ic-border);
 }
@@ -304,8 +359,8 @@
 }
 
 .avatar {
-  width: 2.4rem;
-  height: 2.4rem;
+  width: 38px;
+  height: 38px;
 
   flex: none;
 
@@ -318,7 +373,7 @@
   color: var(--ic-accent);
 
   font-family: var(--ic-font-display);
-  font-size: 0.9rem;
+  font-size: 14px;
   font-weight: 700;
 
   border: 1px solid rgba(228, 87, 46, 0.12);
@@ -327,6 +382,7 @@
 .featuredCard .avatar {
   background: rgba(228, 87, 46, 0.14);
   color: #ff9b7d;
+
   border-color: rgba(228, 87, 46, 0.2);
 }
 
@@ -335,7 +391,7 @@
 
   display: flex;
   flex-direction: column;
-  gap: 0.12rem;
+  gap: 2px;
 }
 
 .author strong {
@@ -343,7 +399,7 @@
 
   color: var(--ic-text);
 
-  font-size: 0.82rem;
+  font-size: 13px;
   line-height: 1.3;
 
   text-overflow: ellipsis;
@@ -355,7 +411,7 @@
 
   color: var(--ic-text-subtle);
 
-  font-size: 0.7rem;
+  font-size: 11px;
   line-height: 1.35;
 
   text-overflow: ellipsis;
@@ -363,27 +419,32 @@
 }
 
 .featuredCard .author strong {
-  color: #fff;
+  color: #ffffff;
 }
 
 .featuredCard .author span {
   color: rgba(255, 255, 255, 0.48);
 }
 
-/* =========================================
-   Navigation arrows
-========================================= */
+
+/* =========================================================
+   Navigation Arrows
+   ========================================================= */
 
 .arrow {
   position: absolute !important;
-  top: 50% !important;
-  z-index: 5;
 
-  width: 3rem !important;
-  height: 3rem !important;
+  top: 50% !important;
+
+  z-index: 20;
+
+  width: 48px !important;
+  height: 48px !important;
 
   display: grid !important;
   place-items: center;
+
+  padding: 0 !important;
 
   border: 1px solid var(--ic-border-strong) !important;
   border-radius: 50%;
@@ -410,17 +471,23 @@
 .arrow:hover {
   background: var(--ic-ink) !important;
   border-color: var(--ic-ink) !important;
-  color: var(--ic-white) !important;
+  color: #ffffff !important;
 
   box-shadow: var(--ic-shadow-lg);
 }
 
+
+/*
+  Because carousel has 56px horizontal padding,
+  these arrows remain inside the main container.
+*/
+
 .prev {
-  left: 0;
+  left: 0 !important;
 }
 
 .next {
-  right: 0;
+  right: 0 !important;
 }
 
 .prev:hover {
@@ -431,19 +498,28 @@
   transform: translate(2px, -50%);
 }
 
-/* =========================================
+
+/* =========================================================
    Dots
-========================================= */
+   ========================================================= */
 
 .carousel :global(.slick-dots) {
-  bottom: 0;
+  position: absolute;
 
-  height: 1.5rem;
+  left: 0;
+  right: 0;
+  bottom: 16px;
+
+  height: 20px;
 
   display: flex !important;
   align-items: center;
   justify-content: center;
-  gap: 0.35rem;
+
+  gap: 6px;
+
+  margin: 0;
+  padding: 0;
 }
 
 .carousel :global(.slick-dots li) {
@@ -451,15 +527,17 @@
   height: auto;
 
   margin: 0;
+  padding: 0;
 }
 
 .carousel :global(.slick-dots li button) {
-  width: 0.4rem;
-  height: 0.4rem;
+  width: 7px;
+  height: 7px;
 
   padding: 0;
 
-  border-radius: var(--ic-radius-pill);
+  border: 0;
+  border-radius: 999px;
 
   background: var(--ic-border-strong);
 
@@ -473,41 +551,56 @@
 }
 
 .carousel :global(.slick-dots li.slick-active button) {
-  width: 1.75rem;
+  width: 28px;
+
   background: var(--ic-accent);
 }
 
-/* =========================================
-   Swipe hint
-========================================= */
+
+/* =========================================================
+   Mobile Swipe Hint
+   ========================================================= */
 
 .carouselHint {
   display: none;
 }
 
-/* =========================================
+
+/* =========================================================
    Tablet
-========================================= */
+   ========================================================= */
 
 @media (max-width: 1180px) {
   .carousel {
-    padding-inline: 3rem;
+    padding-left: 52px;
+    padding-right: 52px;
   }
 
   .card {
     min-height: 350px;
+
+    padding: 24px;
+  }
+
+  .quote p {
+    font-size: 17px;
+  }
+
+  .featuredCard .quote p {
+    font-size: 18px;
   }
 }
 
-/* =========================================
+
+/* =========================================================
    Mobile
-========================================= */
+   ========================================================= */
 
 @media (max-width: 720px) {
   .trustBar {
-    margin-top: -0.5rem;
+    margin-top: -8px;
 
-    gap: 0.9rem;
+    gap: 14px;
   }
 
   .trustReviews {
@@ -519,59 +612,88 @@
   }
 
   .trustBadge {
-    padding: 0.4rem 0.6rem;
+    padding: 6px 9px;
   }
+
+
+  /* Carousel */
 
   .carousel {
-    margin-top: 2.5rem;
-    padding: 0 0 3.25rem;
+    margin-top: 40px;
+
+    padding-left: 0;
+    padding-right: 0;
+
+    padding-bottom: 76px;
   }
 
+
+  /*
+    One complete card only.
+  */
+
   .carousel :global(.slick-list) {
-    margin-inline: -0.35rem;
     overflow: hidden;
+
+    border-radius: 16px;
   }
 
   .carousel :global(.slick-slide) {
-    padding-inline: 0.35rem;
+    padding-left: 5px;
+    padding-right: 5px;
   }
+
+
+  /* Card */
 
   .card {
     min-height: 390px;
 
-    padding: 1.5rem;
+    padding: 24px;
 
-    border-radius: var(--ic-radius-md);
+    border-radius: 16px;
   }
 
   .quote {
-    margin-top: 1.35rem;
+    margin-top: 22px;
   }
 
   .quote p {
-    font-size: 1rem;
+    font-size: 16px;
   }
 
   .featuredCard .quote p {
-    font-size: 1.08rem;
+    font-size: 17px;
   }
+
+
+  /* Dots */
+
+  .carousel :global(.slick-dots) {
+    bottom: 12px;
+  }
+
+
+  /* Swipe hint */
 
   .carouselHint {
     display: flex;
+
     align-items: center;
     justify-content: center;
-    gap: 0.6rem;
 
-    margin-top: -2.25rem;
+    gap: 10px;
+
+    margin-top: -42px;
 
     color: var(--ic-text-subtle);
 
-    font-size: 0.68rem;
+    font-size: 11px;
     font-weight: 500;
   }
 
   .hintLine {
-    width: 2rem;
+    width: 32px;
     height: 1px;
 
     overflow: hidden;
@@ -587,9 +709,40 @@
 
     background: var(--ic-accent);
 
-    animation: testimonialHint 2s var(--ic-ease) infinite;
+    animation:
+      testimonialHint 2s var(--ic-ease) infinite;
   }
 }
+
+
+/* =========================================================
+   Small Mobile
+   ========================================================= */
+
+@media (max-width: 480px) {
+  .trustBar {
+    justify-content: space-between;
+  }
+
+  .trustRating>strong {
+    font-size: 22px;
+  }
+
+  .carousel {
+    margin-top: 36px;
+  }
+
+  .card {
+    min-height: 380px;
+
+    padding: 22px;
+  }
+}
+
+
+/* =========================================================
+   Swipe Animation
+   ========================================================= */
 
 @keyframes testimonialHint {
   0% {
@@ -605,9 +758,10 @@
   }
 }
 
-/* =========================================
-   Reduced motion
-========================================= */
+
+/* =========================================================
+   Reduced Motion
+   ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
   .card {
@@ -622,7 +776,6 @@
     animation: none;
   }
 }
-
 
 
 
