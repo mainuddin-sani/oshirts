@@ -1,6 +1,6 @@
 .ic_section_head {
     max-width: 704px;
-    margin-bottom: 60px;
+    margin-bottom: 50px;
 }
 
 .ic_section_head p {
@@ -52,7 +52,7 @@
 
 @media (max-width: 1024px) {
     .ic_section_head {
-        margin-bottom: 48px;
+        margin-bottom: 45px;
     }
 }
 

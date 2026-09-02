@@ -338,44 +338,6 @@ small {
 }
 
 
-/* ================================================================
-   SECTION HEADINGS
-   ================================================================ */
-.ic_section_heading_space {
-  margin-bottom: 50px;
-}
-
-
-
-
-/* ================================================================
-   LAYOUT
-   ================================================================ */
-
-.ic_container {
-  width: min(var(--ic-container),
-      calc(100% - 80px));
-
-  margin-inline: auto;
-}
-
-.ic_container_wide {
-  --ic-container: 1440px;
-}
-
-.ic_section_space {
-  padding-block: 96px;
-}
-
-.ic_section_space_sm {
-  padding-block: 58px;
-}
-
-
-/* ================================================================
-   BUTTONS
-   ================================================================ */
-
 .ic_btn {
   display: inline-flex;
   align-items: center;
@@ -567,8 +529,29 @@ small {
 }
 
 
-.mt-16 {
-  margin-top: 16px;
+/* ================================================================
+   LAYOUT
+   ================================================================ */
+
+.ic_container {
+  width: min(var(--ic-container), calc(100% - 80px));
+  margin-inline: auto;
+}
+
+.ic_container_wide {
+  --ic-container: 1440px;
+}
+
+.ic_section_space {
+  padding-block: 96px;
+}
+
+.ic_section_space_sm {
+  padding-block: 58px;
+}
+
+.ic_section_heading_space {
+  margin-bottom: 50px;
 }
 
 
@@ -604,9 +587,9 @@ small {
     padding-block: 48px;
   }
 
-  /* .ic_section_head {
-    margin-bottom: 48px;
-  } */
+  .ic_section_heading_space {
+    margin-bottom: 45px;
+  }
 }
 
 
@@ -663,9 +646,9 @@ small {
     padding-block: 40px;
   }
 
-  /* .ic_section_head {
+  .ic_section_heading_space {
     margin-bottom: 40px;
-  } */
+  }
 
   .ic_eyebrow {
     margin-bottom: 12px;
@@ -713,9 +696,9 @@ small {
     padding-block: 32px;
   }
 
-  /* .ic_section_head {
+  .ic_section_heading_space {
     margin-bottom: 32px;
-  } */
+  }
 
   .ic_btn {
     width: 100%;
