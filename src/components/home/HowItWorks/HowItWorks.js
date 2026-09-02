@@ -1,47 +1,91 @@
-import Image from "next/image";
-import Link from "next/link";
-import { FiArrowRight } from "react-icons/fi";
+import {
+  FiDollarSign,
+  FiAward,
+  FiMessageCircle,
+} from "react-icons/fi";
 import Reveal from "@/components/motion/Reveal";
 import SectionHeading from "@/components/ui/SectionHeading";
-import { steps, site } from "@/data/home";
 import styles from "./HowItWorks.module.css";
+
+const promises = [
+  {
+    number: "01",
+    eyebrow: "Low price",
+    title: "Low Price Guarantee",
+    text: "ooShirts.com was founded by a high school student in 2007 with an investment of just $2000. Our goal was to offer t-shirt printing that's actually affordable to school groups, nonprofits, families, and small businesses in the US. If you find a lower price online, simply send it to us and we'll match the price.",
+    icon: FiDollarSign,
+  },
+  {
+    number: "02",
+    eyebrow: "Quality shirts",
+    title: "Amazing Print Quality",
+    text: "High quality printing comes from years of printing experience, use of top-notch inks, and an unwavering commitment to producing well made t-shirt designs. We guarantee our prints will last wash after wash, and that our garments will come free of material defects -- or we'll redo your order from scratch.",
+    icon: FiAward,
+  },
+  {
+    number: "03",
+    eyebrow: "Rave-worthy service",
+    title: "Rave-worthy Service",
+    text: "Our support staff is available 7 days a week over the phone, email, and live chat. We welcome questions of all kind -- from questions about how to design your own t-shirt to explanations about the types of custom shirts you can order to any fun or off-topic question of your choice. Either way, we're here to help.",
+    icon: FiMessageCircle,
+  },
+];
 
 export default function HowItWorks() {
   return (
-    <section id="how-it-works" className="ic_section_space" aria-labelledby="how-title">
+    <section
+      id="our-promise"
+      className="ic_section_space"
+      aria-labelledby="promise-title"
+    >
       <div className="ic_container">
         <SectionHeading
-          eyebrow="How it works"
-          title={<span id="how-title">From blank to boxed in three steps.</span>}
-          description="No design skills, no minimums for DTG, and a specialist checking your artwork before it prints."
+          eyebrow="Our Promise"
+          title={
+            <span id="promise-title">
+              Great custom printing, without the compromise.
+            </span>
+          }
+          description="Affordable pricing, exceptional print quality, and real people ready to help. That's the ooShirts promise."
           align="center"
         />
 
-        <ol className={styles.steps}>
-          {steps.map((step, i) => (
-            <Reveal as="li" key={step.number} delay={i * 0.12} className={styles.step}>
-              <div className={styles.stage}>
-                <span className={styles.number}>{step.number}</span>
-                <Image src={step.image} alt={step.imageAlt} sizes="(min-width: 1024px) 26vw, 80vw" />
-                <span className={styles.stageIcon}>
-                  <step.icon size={18} aria-hidden="true" />
-                </span>
-              </div>
-              <h3>{step.title}</h3>
-              <p>{step.text}</p>
-            </Reveal>
-          ))}
-        </ol>
+        <div className={styles.promiseGrid}>
+          {promises.map((promise, i) => {
+            const Icon = promise.icon;
 
-        <Reveal className={styles.ctas} delay={0.2}>
-          <Link href={site.ctaPrimary.href} className="ic_btn ic_btn_primary ic_btn_lg">
-            {site.ctaPrimary.label}
-            <FiArrowRight aria-hidden="true" />
-          </Link>
-          <Link href="#faq" className="ic_link">
-            Talk to a print specialist first
-          </Link>
-        </Reveal>
+            return (
+              <Reveal
+                as="article"
+                key={promise.number}
+                className={styles.promise}
+                delay={i * 0.1}
+              >
+                <div className={styles.top}>
+                  <span className={styles.number}>
+                    {promise.number}
+                  </span>
+
+                  <span className={styles.icon}>
+                    <Icon size={21} aria-hidden="true" />
+                  </span>
+                </div>
+
+                <div className={styles.content}>
+                  <span className={styles.eyebrow}>
+                    {promise.eyebrow}
+                  </span>
+
+                  <h3>{promise.title}</h3>
+
+                  <p>{promise.text}</p>
+                </div>
+
+                <span className={styles.accent} aria-hidden="true" />
+              </Reveal>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
