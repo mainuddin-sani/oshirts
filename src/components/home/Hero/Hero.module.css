@@ -2,7 +2,8 @@
   position: relative;
   overflow: clip;
   isolation: isolate;
-  padding-block: clamp(3.5rem, 7vw, 6.5rem) clamp(4rem, 8vw, 8rem);
+  padding-block: 90px 120px;
+  /* padding-block: clamp(3.5rem, 7vw, 6.5rem) clamp(4rem, 8vw, 8rem); */
   background: var(--ic-background);
 }
 
@@ -430,6 +431,12 @@
 /* ==================================================
    TABLET
 ================================================== */
+@media (max-width: 1399px) {
+  .hero {
+    padding-block: 60px 100px;
+
+  }
+}
 
 @media (max-width: 1023px) {
   .hero {
