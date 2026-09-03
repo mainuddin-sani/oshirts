@@ -9,18 +9,12 @@ export default function Gallery() {
   return (
     <section id="gallery" className="ic_section_space" aria-labelledby="gallery-title">
       <div className="ic_container">
-        <div className={styles.head}>
+        <div className={`${styles.head} ic_section_heading_space`}>
           <SectionHeading
             eyebrow="Customer gallery"
             title={<span id="gallery-title">Real orders, straight off the press.</span>}
             description="Teams, brands and events who trusted us with their artwork — and let us show it off."
           />
-          <Reveal delay={0.1} className={styles.share}>
-            <FiCamera aria-hidden="true" />
-            <span>
-              Share yours with <strong>#ooShirts</strong>
-            </span>
-          </Reveal>
         </div>
 
         <ul className={styles.grid}>

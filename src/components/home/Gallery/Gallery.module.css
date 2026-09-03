@@ -6,26 +6,10 @@
   gap: var(--ic-space-4);
 }
 
-.head > :first-child {
+.head> :first-child {
   margin-bottom: 0;
 }
 
-.share {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  margin-bottom: clamp(2.5rem, 5vw, 4rem);
-  padding: 0.6rem 1rem;
-  border-radius: var(--ic-radius-pill);
-  border: 1px solid var(--ic-border);
-  background: var(--ic-surface);
-  font-size: 0.9rem;
-  color: var(--ic-text-muted);
-}
-
-.share svg {
-  color: var(--ic-accent);
-}
 
 .grid {
   display: grid;
@@ -75,6 +59,15 @@
   grid-column: span 2;
 }
 
+/* The last card is also flagged .tall in the data (to match the first card
+   at the desktop breakpoint below), but as the final item in a dense grid
+   it has nothing after it to backfill the leftover column — it just
+   stretches tall with an empty gap beside it. Below 1024px, override it to
+   sit flat instead. */
+.item:nth-child(6) {
+  grid-row: span 1;
+}
+
 .item figure {
   position: relative;
   height: 100%;
@@ -122,9 +115,17 @@
     grid-auto-rows: 200px;
     gap: var(--ic-space-4);
   }
+
+  /* Wide and flat, filling the row alongside card 5 instead of the
+     narrow/tall shape it'd get from its .tall class. */
+  .item:nth-child(6) {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
 }
 
 @media (min-width: 1024px) {
+
   /* Asymmetric bento layout: card 1 and card 6 anchor the far left/right as
      equal-sized tall columns; cards 2–5 fill the middle two columns as a
      wide / medium-pair / wide sandwich for varied rhythm. Explicit
