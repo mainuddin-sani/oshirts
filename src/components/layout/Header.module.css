@@ -4,10 +4,12 @@
   z-index: 50;
   background: transparent;
   border-bottom: 1px solid transparent;
+  /* border-bottom: 1px solid var(--ic-border-strong); */
   transition:
     background-color var(--ic-dur) var(--ic-ease),
     border-color var(--ic-dur) var(--ic-ease),
-    box-shadow var(--ic-dur) var(--ic-ease);
+    box-shadow var(--ic-radius-lg) var(--ic-ease);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.048);
 }
 
 .scrolled {
@@ -17,21 +19,7 @@
   border-bottom-color: var(--ic-border);
 }
 
-.skip {
-  position: absolute;
-  left: 1rem;
-  top: -100%;
-  z-index: 60;
-  padding: 0.6rem 1rem;
-  border-radius: var(--ic-radius-sm);
-  background: var(--ic-ink);
-  color: #fff;
-  font-weight: 600;
-}
 
-.skip:focus-visible {
-  top: 0.75rem;
-}
 
 .inner {
   display: flex;
@@ -65,7 +53,10 @@
   gap: 0.25rem;
 }
 
-.nav a {
+/* Scoped to direct children only — the mega panel nests its own <a> tags
+   several levels deep inside this same <li>, and must not inherit the
+   top-level trigger styling. */
+.nav>ul>li>a {
   display: inline-block;
   padding: 0.5rem 0.85rem;
   border-radius: var(--ic-radius-xs);
@@ -77,7 +68,7 @@
     background-color var(--ic-dur-fast) var(--ic-ease);
 }
 
-.nav a:hover {
+.nav>ul>li>a:hover {
   color: var(--ic-text);
   background: color-mix(in srgb, var(--ic-ink) 6%, transparent);
 }
@@ -93,7 +84,7 @@
   display: none;
 }
 
-.actions > a:not(.quote) {
+.actions>a:not(.quote) {
   display: none;
 }
 
@@ -101,8 +92,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2.75rem;
-  height: 2.75rem;
+  width: 42px;
+  height: 42px;
   border-radius: var(--ic-radius-sm);
   border: 1px solid var(--ic-border-strong);
   background: var(--ic-surface);
@@ -125,10 +116,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.9rem 0.25rem;
+  padding: 12px 4px;
   border-bottom: 1px solid var(--ic-border);
   font-family: var(--ic-font-display);
-  font-size: 1.25rem;
+  font-size: 16px;
   font-weight: 500;
 }
 
@@ -142,10 +133,11 @@
   margin-top: var(--ic-space-5);
 }
 
-@media (min-width: 480px) {
-  .actions > a:not(.quote) {
+@media (min-width: 575px) {
+  .actions>a:not(.quote) {
     display: inline-flex;
   }
+
 }
 
 @media (min-width: 1024px) {
@@ -161,4 +153,203 @@
   .mobile {
     display: none;
   }
+
+}
+
+/* ==================================================
+   PRODUCTS MEGA MENU (desktop)
+================================================== */
+
+.nav .navMegaTrigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.chevron {
+  width: 14px;
+  height: 14px;
+  transition: transform var(--ic-dur-fast) var(--ic-ease);
+}
+
+.navMegaTrigger[aria-expanded="true"] .chevron,
+.navMegaItem:hover .chevron {
+  transform: rotate(180deg);
+}
+
+.navMegaItem {
+  position: relative;
+}
+
+.megaPanel {
+  position: absolute;
+  top: calc(100% + 14px);
+  left: 0;
+  z-index: 40;
+  width: min(600px, calc(100vw - 3rem));
+  padding: 1.5rem;
+  border-radius: var(--ic-radius-lg);
+  border: 1px solid var(--ic-border);
+  background: var(--ic-surface);
+  box-shadow: var(--ic-shadow-lg);
+}
+
+.megaGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--ic-space-5) var(--ic-space-5);
+}
+
+.megaCol {
+  min-width: 0;
+}
+
+.megaColHead {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.4rem;
+  margin-bottom: 0.6rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--ic-border);
+}
+
+.megaColHead::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--ic-accent);
+}
+
+.megaColHead a {
+  font-family: var(--ic-font-display);
+  font-size: 0.92rem;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--ic-text);
+  transition: color var(--ic-dur-fast) var(--ic-ease);
+}
+
+.megaColHead a:hover {
+  color: var(--ic-accent);
+}
+
+.megaCol ul {
+  display: grid;
+  gap: 0.1rem;
+}
+
+.megaCol ul a {
+  display: block;
+  margin-inline: -0.5rem;
+  padding: 0.4rem 0.5rem;
+  border-radius: var(--ic-radius-xs);
+  font-size: 0.85rem;
+  color: var(--ic-text-muted);
+  transition:
+    color var(--ic-dur-fast) var(--ic-ease),
+    background-color var(--ic-dur-fast) var(--ic-ease);
+}
+
+.megaCol ul a:hover {
+  color: var(--ic-text);
+  background: color-mix(in srgb, var(--ic-ink) 6%, transparent);
+}
+
+@media (max-width: 1023px) {
+  .megaPanel {
+    display: none;
+  }
+}
+
+/* ==================================================
+   PRODUCTS ACCORDION (mobile)
+================================================== */
+
+.mobileMegaRow {
+  display: flex;
+  align-items: stretch;
+  border-bottom: 1px solid var(--ic-border);
+}
+
+.mobile nav .mobileMegaLabel {
+  flex: 1;
+  border-bottom: 0;
+  padding-right: 0.5rem;
+}
+
+.mobileMegaToggle {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-left: 0.25rem;
+  border-radius: var(--ic-radius-sm);
+  color: var(--ic-text-subtle);
+  transition:
+    background-color var(--ic-dur-fast) var(--ic-ease),
+    color var(--ic-dur-fast) var(--ic-ease);
+}
+
+.mobileMegaToggle:hover,
+.mobileMegaToggle:focus-visible {
+  background: color-mix(in srgb, var(--ic-ink) 6%, transparent);
+  color: var(--ic-text);
+}
+
+.mobileMegaToggle .chevron {
+  width: 18px;
+  height: 18px;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+.mobileMegaPanel {
+  display: grid;
+  gap: var(--ic-space-4);
+  overflow: hidden;
+  padding: var(--ic-space-4) 0.25rem var(--ic-space-5);
+}
+
+.mobileMegaCol+.mobileMegaCol {
+  padding-top: var(--ic-space-3);
+  border-top: 1px solid var(--ic-border);
+}
+
+.mobile nav .mobileMegaColTitle {
+  display: block;
+  padding: 0.3rem 0;
+  border-bottom: 0;
+  font-family: var(--ic-font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ic-text);
+}
+
+.mobileMegaCol ul {
+  display: grid;
+  gap: 0.1rem;
+  margin-top: 0.2rem;
+}
+
+.mobile nav .mobileMegaSubLink {
+  display: block;
+  padding: 0.45rem 0 0.45rem 0.6rem;
+  border-bottom: 0;
+  font-family: var(--ic-font-body);
+  font-size: 0.92rem;
+  font-weight: 400;
+  color: var(--ic-text-muted);
+}
+
+.mobileMegaCol ul a:hover,
+.mobileMegaCol ul a:active {
+  color: var(--ic-text);
 }

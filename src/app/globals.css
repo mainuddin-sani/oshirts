@@ -73,6 +73,7 @@
   /* --ic-container: 1440px; */
   --ic-gutter: 40px;
   --ic-header-h: 72px;
+  /* --ic-header-h: 74px; */
 
   /* ---------- Motion ---------- */
   --ic-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
@@ -692,8 +693,8 @@ small {
   }
 
   .ic_btn {
-    min-height: 46px;
-    padding: 0 18px;
+    min-height: 42px;
+    padding: 0 12px;
   }
 
   .ic_btn_lg {

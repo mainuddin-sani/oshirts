@@ -79,11 +79,44 @@ export const site = {
 };
 
 export const nav = [
-  { label: "Products", href: "#products" },
+  { label: "Products", href: "#products", mega: true },
   { label: "How it works", href: "#how-it-works" },
   { label: "Gallery", href: "#gallery" },
   { label: "Pricing", href: "#pricing" },
   { label: "FAQ", href: "#faq" },
+];
+
+export const productsMenu = [
+  {
+    title: "T-Shirts",
+    slug: "t-shirts",
+    items: ["Short Sleeve", "Long Sleeve", "Sleeveless"],
+  },
+  {
+    title: "Youth Shirts",
+    slug: "youth-shirts",
+    items: ["T-Shirts", "Sweats"],
+  },
+  {
+    title: "Women's T-Shirts",
+    slug: "womens-t-shirts",
+    items: ["Short Sleeve", "Long Sleeve", "Tank Tops", "Underwear"],
+  },
+  {
+    title: "Athletic Shirts",
+    slug: "athletic-shirts",
+    items: ["Performance Shirts", "Ladies Performance"],
+  },
+  {
+    title: "Sweatshirts",
+    slug: "sweats-sweatshirts",
+    items: ["Sweatshirts", "Hoodies", "Zip Hoodies"],
+  },
+  {
+    title: "Pants",
+    slug: "pants",
+    items: ["Sweatpants", "Shorts", "Ladies Pants"],
+  },
 ];
 
 export const hero = {
