@@ -10,7 +10,7 @@ function Track({ hidden = false }) {
       className={styles.track}
       aria-hidden={hidden || undefined}
     >
-      {Array.from({ length: 6 }).map((_, index) =>
+      {Array.from({ length: 4 }).map((_, index) =>
         brandLogos.map((logo, logoIndex) => (
           <li
             key={`${index}-${logoIndex}`}

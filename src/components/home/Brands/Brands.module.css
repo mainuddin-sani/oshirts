@@ -1,37 +1,36 @@
+/* ==================================================
+   SECTION
+   Fluid sizing throughout (clamp) instead of fixed
+   breakpoint values, so the marquee scales smoothly
+   with no visual "jumps" at any viewport width.
+================================================== */
+
 .section {
   position: relative;
-
-  padding-block: var(--ic-space-8);
-
+  padding-block: clamp(2.25rem, 3vw + 1rem, var(--ic-space-8));
   border-block: 1px solid var(--ic-border);
-
   background: var(--ic-surface);
-
   overflow: hidden;
 }
-
 
 /* ==================================================
    LABEL
 ================================================== */
 
 .label {
-  margin-bottom: var(--ic-space-6);
-
+  max-width: 46ch;
+  margin: 0 auto 24px auto;
+  padding-inline: 1rem;
   text-align: center;
-
   color: var(--ic-text-muted);
-
   font-size: 20px;
-  line-height: 1.5;
+  line-height: 1.55;
 }
 
 .label strong {
   color: var(--ic-text);
-
   font-weight: 700;
 }
-
 
 /* ==================================================
    MARQUEE
@@ -39,54 +38,31 @@
 
 .marquee {
   position: relative;
-
   width: 100%;
-
   overflow: hidden;
-
-  mask-image:
-    linear-gradient(90deg,
-      transparent 0%,
-      #000 8%,
-      #000 92%,
-      transparent 100%);
-
-  -webkit-mask-image:
-    linear-gradient(90deg,
-      transparent 0%,
-      #000 8%,
-      #000 92%,
-      transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
 }
-
 
 /* ==================================================
    MOVING RAIL
+   One fixed, unhurried pace at every screen size —
+   no per-breakpoint duration overrides to drift out
+   of sync with each other.
 ================================================== */
 
 .rail {
   display: flex;
-
   width: max-content;
-
-  animation:
-    brands-scroll 300s linear infinite;
-
+  animation: brands-scroll 150s linear infinite;
   will-change: transform;
-
-  transform:
-    translate3d(0, 0, 0);
-
+  transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
 }
-
-
-/* Pause when hovered */
 
 .marquee:hover .rail {
   animation-play-state: paused;
 }
-
 
 /* ==================================================
    TRACK
@@ -94,22 +70,13 @@
 
 .track {
   display: flex;
-
   align-items: center;
-
   flex-shrink: 0;
-
-  gap:
-    clamp(2rem, 4vw, 4rem);
-
+  gap: clamp(1.75rem, 1.1rem + 2.6vw, 4rem);
   margin: 0;
-
-  padding-inline:
-    clamp(2rem, 4vw, 4rem);
-
+  padding-inline: clamp(1.75rem, 1.1rem + 2.6vw, 4rem);
   list-style: none;
 }
-
 
 /* ==================================================
    LOGO ITEM
@@ -117,35 +84,20 @@
 
 .item {
   display: flex;
-
   align-items: center;
   justify-content: center;
-
   flex: 0 0 auto;
-
-  width:
-    clamp(130px, 15vw, 190px);
-
-  height:
-    clamp(50px, 6vw, 70px);
-
-  opacity: 0.62;
-
-  transform:
-    translate3d(0, 0, 0);
-
-  transition:
-    opacity 350ms var(--ic-ease),
-    transform 350ms var(--ic-ease);
+  width: clamp(96px, 70px + 14vw, 190px);
+  height: clamp(40px, 30px + 5vw, 70px);
+  opacity: 0.6;
+  transform: translate3d(0, 0, 0);
+  transition: opacity 300ms var(--ic-ease), transform 300ms var(--ic-ease);
 }
 
 .item:hover {
   opacity: 1;
-
-  transform:
-    translate3d(0, -2px, 0);
+  transform: translate3d(0, -2px, 0);
 }
-
 
 /* ==================================================
    LOGO IMAGE
@@ -153,307 +105,57 @@
 
 .logo {
   display: block;
-
   width: 100%;
   height: 100%;
-
   object-fit: contain;
-
-  filter:
-    grayscale(100%);
-
-  transform:
-    translate3d(0, 0, 0);
-
-  transition:
-    filter 350ms var(--ic-ease);
+  filter: grayscale(100%);
+  transition: filter 300ms var(--ic-ease);
 }
 
 .item:hover .logo {
   filter: grayscale(0%);
 }
 
-
 /* ==================================================
    INFINITE SCROLL
 ================================================== */
 
 @keyframes brands-scroll {
-
   from {
-    transform:
-      translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
   }
 
   to {
-    transform:
-      translate3d(-50%, 0, 0);
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
-
 /* ==================================================
-   TABLET
+   SMALL SCREENS — tighten only spacing, never speed
 ================================================== */
 
-@media (max-width: 1024px) {
-
-  .section {
-    padding-block:
-      var(--ic-space-6);
-  }
-
+@media (max-width: 1399px) {
 
   .label {
-    margin-bottom:
-      var(--ic-space-5);
-  }
-
-
-  .track {
-    gap: 3rem;
-
-    padding-inline: 3rem;
-  }
-
-
-  .item {
-    width: 160px;
-    height: 58px;
-  }
-
-
-  .rail {
-    animation-duration:
-      50s;
+    font-size: 1px;
+    margin: 0 auto 20px auto;
   }
 }
 
-
-/* ==================================================
-   MOBILE
-================================================== */
-
-@media (max-width: 639px) {
-
+@media (max-width: 480px) {
   .section {
-    padding-block:
-      2rem;
+    padding-block: 2rem;
   }
-
 
   .label {
-    padding-inline:
-      1rem;
-
-    margin-bottom:
-      1.5rem;
-
-    font-size:
-      0.8rem;
-  }
-
-
-  .marquee {
-    mask-image:
-      linear-gradient(90deg,
-        transparent 0%,
-        #000 5%,
-        #000 95%,
-        transparent 100%);
-
-    -webkit-mask-image:
-      linear-gradient(90deg,
-        transparent 0%,
-        #000 5%,
-        #000 95%,
-        transparent 100%);
-  }
-
-
-  .track {
-    gap:
-      2rem;
-
-    padding-inline:
-      2rem;
-  }
-
-
-  .item {
-    width:
-      125px;
-
-    height:
-      48px;
-
-    opacity:
-      0.65;
-  }
-
-
-  .rail {
-    animation-duration:
-      42s;
+    font-size: 16px;
+    margin: 0 auto 16px auto;
   }
 }
-
-
-/* ==================================================
-   SMALL MOBILE
-================================================== */
-
-@media (max-width: 380px) {
-
-  .track {
-    gap:
-      1.5rem;
-
-    padding-inline:
-      1.5rem;
-  }
-
-
-  .item {
-    width:
-      110px;
-
-    height:
-      44px;
-  }
-
-
-  .rail {
-    animation-duration:
-      38s;
-  }
-}
-
 
 /* ==================================================
    REDUCED MOTION
 ================================================== */
-
-@media (prefers-reduced-motion: reduce) {
-
-  .rail {
-    animation: none;
-
-    width: auto;
-
-    justify-content: center;
-  }
-
-
-  .rail> :last-child {
-    display: none;
-  }
-
-
-  .marquee {
-    mask-image: none;
-
-    -webkit-mask-image: none;
-  }
-
-
-  .item,
-  .logo {
-    transition: none;
-  }
-}
-
-
-/* .section {
-  padding-block: var(--ic-space-7);
-  border-block: 1px solid var(--ic-border);
-  background: var(--ic-surface);
-  overflow: hidden;
-}
-
-.label {
-  margin-bottom: var(--ic-space-5);
-  text-align: center;
-  font-size: 0.9rem;
-}
-
-.marquee {
-  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
-}
-
-.rail {
-  display: flex;
-  width: max-content;
-  animation: scroll 42s linear infinite;
-}
-
-.marquee:hover .rail {
-  animation-play-state: paused;
-}
-
-.track {
-  display: flex;
-  align-items: center;
-  gap: clamp(2.5rem, 6vw, 5rem);
-  padding-right: clamp(2.5rem, 6vw, 5rem);
-}
-
-.track li {
-  white-space: nowrap;
-  font-size: 1.35rem;
-  color: var(--ic-text-subtle);
-  opacity: 0.85;
-  transition: color var(--ic-dur) var(--ic-ease);
-}
-
-.track li:hover {
-  color: var(--ic-text);
-}
-
-.serif {
-  font-family: Georgia, "Times New Roman", serif;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-}
-
-.caps {
-  font-size: 1rem !important;
-  font-weight: 700;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-}
-
-.bold {
-  font-family: var(--ic-font-display);
-  font-weight: 800;
-  letter-spacing: -0.03em;
-}
-
-.italic {
-  font-family: Georgia, serif;
-  font-style: italic;
-  font-weight: 500;
-}
-
-.mono {
-  font-family: var(--ic-font-mono);
-  font-size: 1.05rem !important;
-  letter-spacing: -0.02em;
-}
-
-.script {
-  font-family: var(--ic-font-display);
-  font-weight: 300;
-  font-style: italic;
-  letter-spacing: 0.01em;
-}
-
-@keyframes scroll {
-  to {
-    transform: translateX(-50%);
-  }
-}
 
 @media (prefers-reduced-motion: reduce) {
   .rail {
@@ -463,7 +165,7 @@
     justify-content: center;
   }
 
-  .rail > :last-child {
+  .rail> :last-child {
     display: none;
   }
 
@@ -471,4 +173,9 @@
     mask-image: none;
     -webkit-mask-image: none;
   }
-} */
+
+  .item,
+  .logo {
+    transition: none;
+  }
+}
