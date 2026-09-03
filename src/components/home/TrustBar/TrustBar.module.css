@@ -8,7 +8,6 @@
 
 .section {
   position: relative;
-  padding-top: 60px;
   /* padding-block: clamp(1.75rem, 4vw, 2.5rem) clamp(2.5rem, 5vw, 4rem); */
 }
 
@@ -75,10 +74,36 @@
 }
 
 /* ==================================================
+   SMALL MOBILE — a 2-up grid is too tight for this
+   copy below ~480px (titles and body text wrap
+   heavily), so drop to a single column.
+================================================== */
+
+@media (max-width: 479px) {
+  .list {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==================================================
+   MOBILE / NARROW TABLET
+   Stay in the 2-up row layout through 767px — at
+   640px the four-column divided-row treatment below
+   is too narrow for this copy (titles wrap, dividers
+   crowd the text), so it only kicks in from 768px.
+================================================== */
+
+@media (max-width: 767px) {
+  .list {
+    gap: 1.5rem;
+  }
+}
+
+/* ==================================================
    TABLET+ — divided row, no card
 ================================================== */
 
-@media (min-width: 640px) {
+@media (min-width: 768px) {
   .list {
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 0;
@@ -114,13 +139,7 @@
   .item {
     flex-direction: row;
     align-items: flex-start;
-    gap: 1rem;
+    gap: 12px;
     padding-inline: clamp(1.25rem, 2vw, 1.75rem);
-  }
-}
-
-@media (max-width: 639px) {
-  .list {
-    gap: 1.5rem;
   }
 }

@@ -4,7 +4,7 @@ import styles from "./TrustBar.module.css";
 
 export default function TrustBar() {
   return (
-    <section className={styles.section} aria-label="Why customers choose us">
+    <section className={`${styles.section} ic_section_space_top`} aria-label="Why customers choose us">
       <div className="ic_container">
         <ul className={styles.list}>
           {benefits.map(({ icon: Icon, title, text }, i) => (
