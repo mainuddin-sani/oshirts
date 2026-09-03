@@ -35,7 +35,7 @@ export default function Categories() {
             description="Choose a category to explore available styles, colours and sizes."
           />
 
-          <Reveal
+          {/* <Reveal
             delay={0.1}
             className={styles.headLink}
           >
@@ -46,7 +46,7 @@ export default function Categories() {
               Browse all styles
               <FiArrowUpRight aria-hidden="true" />
             </Link>
-          </Reveal>
+          </Reveal> */}
         </div>
 
         {/* ================================================
