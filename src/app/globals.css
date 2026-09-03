@@ -747,6 +747,10 @@ small {
   .ic_btn {
     width: 100%;
   }
+
+  .ic_eyebrow {
+    margin-bottom: 10px;
+  }
 }
 
 

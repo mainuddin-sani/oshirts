@@ -31,7 +31,7 @@ export default function Hero() {
 
       <div className={`ic_container ${styles.grid}`}>
         <div className={styles.copy}>
-          <motion.span className="ic_eyebrow" {...fadeUp(0)}>
+          <motion.span className={styles.ic_eyebrow} {...fadeUp(0)}>
             {hero.eyebrow}
           </motion.span>
 

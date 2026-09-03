@@ -418,6 +418,27 @@
    DESKTOP
 ================================================== */
 
+.ic_eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 12px;
+  font-family: var(--ic-font-body);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: var(--ic-tracking-caps);
+  text-transform: uppercase;
+  color: var(--ic-accent);
+}
+
+.ic_eyebrow::before {
+  content: "";
+  width: 24px;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+}
+
 @media (min-width: 1024px) {
   .grid {
     grid-template-columns: minmax(0, 1.03fr) minmax(0, 0.97fr);
@@ -461,6 +482,10 @@
 
   .chipShip {
     right: 0;
+  }
+
+  .ic_eyebrow {
+    margin-bottom: 8px;
   }
 }
 
@@ -547,6 +572,10 @@
   .chipShip {
     right: 2%;
     bottom: 5%;
+  }
+
+  .ic_eyebrow {
+    margin-bottom: 5px;
   }
 }
 
@@ -639,6 +668,10 @@
   .chipShip {
     right: 1%;
     bottom: 5%;
+  }
+
+  .ic_eyebrow {
+    margin-bottom: 2px;
   }
 }
 
