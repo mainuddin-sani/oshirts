@@ -43,6 +43,8 @@ import printPinkMountain from "@/assets/images/custom-sweatshirts.png";
 import badgeMountain from "@/assets/images/badge-mountain.webp";
 import badgeWild from "@/assets/images/badge-wild.webp";
 import badgeGarage from "@/assets/images/badge-garage.webp";
+import logo1 from "@/assets/images/logo1.png";
+import logo2 from "@/assets/images/logo2.png";
 
 export const images = {
   teeBlack,
@@ -247,18 +249,32 @@ export const categories = [
 
 
 
-export const brands = [
-  { name: "Northwind Outfitters", style: "serif" },
-  { name: "Lakeside Academy", style: "caps" },
-  { name: "Foundry Fitness", style: "bold" },
-  { name: "Harbor & Vale", style: "serif" },
-  { name: "Redline Motorsport", style: "italic" },
-  { name: "Summit Robotics", style: "mono" },
-  { name: "Bluebird Bakery", style: "script" },
-  { name: "Atlas Youth League", style: "caps" },
-  { name: "Pinecrest Church", style: "serif" },
-  { name: "Volt Esports", style: "bold" },
+// export const brands = [
+//   { name: "Northwind Outfitters", style: "serif" },
+//   { name: "Lakeside Academy", style: "caps" },
+//   { name: "Foundry Fitness", style: "bold" },
+//   { name: "Harbor & Vale", style: "serif" },
+//   { name: "Redline Motorsport", style: "italic" },
+//   { name: "Summit Robotics", style: "mono" },
+//   { name: "Bluebird Bakery", style: "script" },
+//   { name: "Atlas Youth League", style: "caps" },
+//   { name: "Pinecrest Church", style: "serif" },
+//   { name: "Volt Esports", style: "bold" },
+// ];
+
+export const brandLogos = [
+  { src: logo1, alt: "Brand logo 1" },
+  { src: logo2, alt: "Brand logo 2" },
+  { src: logo1, alt: "Brand logo 1" },
+  { src: logo2, alt: "Brand logo 2" },
+  { src: logo1, alt: "Brand logo 1" },
+  { src: logo2, alt: "Brand logo 2" },
+  { src: logo1, alt: "Brand logo 1" },
+  { src: logo2, alt: "Brand logo 2" },
+  { src: logo1, alt: "Brand logo 1" },
+  { src: logo2, alt: "Brand logo 2" },
 ];
+
 
 export const gallery = [
   {

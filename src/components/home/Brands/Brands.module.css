@@ -1,4 +1,370 @@
 .section {
+  position: relative;
+
+  padding-block: var(--ic-space-8);
+
+  border-block: 1px solid var(--ic-border);
+
+  background: var(--ic-surface);
+
+  overflow: hidden;
+}
+
+
+/* ==================================================
+   LABEL
+================================================== */
+
+.label {
+  margin-bottom: var(--ic-space-6);
+
+  text-align: center;
+
+  color: var(--ic-text-muted);
+
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+.label strong {
+  color: var(--ic-text);
+
+  font-weight: 700;
+}
+
+
+/* ==================================================
+   MARQUEE
+================================================== */
+
+.marquee {
+  position: relative;
+
+  width: 100%;
+
+  overflow: hidden;
+
+  mask-image:
+    linear-gradient(90deg,
+      transparent 0%,
+      #000 8%,
+      #000 92%,
+      transparent 100%);
+
+  -webkit-mask-image:
+    linear-gradient(90deg,
+      transparent 0%,
+      #000 8%,
+      #000 92%,
+      transparent 100%);
+}
+
+
+/* ==================================================
+   MOVING RAIL
+================================================== */
+
+.rail {
+  display: flex;
+
+  width: max-content;
+
+  animation:
+    brands-scroll 300s linear infinite;
+
+  will-change: transform;
+
+  transform:
+    translate3d(0, 0, 0);
+
+  backface-visibility: hidden;
+}
+
+
+/* Pause when hovered */
+
+.marquee:hover .rail {
+  animation-play-state: paused;
+}
+
+
+/* ==================================================
+   TRACK
+================================================== */
+
+.track {
+  display: flex;
+
+  align-items: center;
+
+  flex-shrink: 0;
+
+  gap:
+    clamp(2rem, 4vw, 4rem);
+
+  margin: 0;
+
+  padding-inline:
+    clamp(2rem, 4vw, 4rem);
+
+  list-style: none;
+}
+
+
+/* ==================================================
+   LOGO ITEM
+================================================== */
+
+.item {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex: 0 0 auto;
+
+  width:
+    clamp(130px, 15vw, 190px);
+
+  height:
+    clamp(50px, 6vw, 70px);
+
+  opacity: 0.62;
+
+  transform:
+    translate3d(0, 0, 0);
+
+  transition:
+    opacity 350ms var(--ic-ease),
+    transform 350ms var(--ic-ease);
+}
+
+.item:hover {
+  opacity: 1;
+
+  transform:
+    translate3d(0, -2px, 0);
+}
+
+
+/* ==================================================
+   LOGO IMAGE
+================================================== */
+
+.logo {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  filter:
+    grayscale(100%);
+
+  transform:
+    translate3d(0, 0, 0);
+
+  transition:
+    filter 350ms var(--ic-ease);
+}
+
+.item:hover .logo {
+  filter: grayscale(0%);
+}
+
+
+/* ==================================================
+   INFINITE SCROLL
+================================================== */
+
+@keyframes brands-scroll {
+
+  from {
+    transform:
+      translate3d(0, 0, 0);
+  }
+
+  to {
+    transform:
+      translate3d(-50%, 0, 0);
+  }
+}
+
+
+/* ==================================================
+   TABLET
+================================================== */
+
+@media (max-width: 1024px) {
+
+  .section {
+    padding-block:
+      var(--ic-space-6);
+  }
+
+
+  .label {
+    margin-bottom:
+      var(--ic-space-5);
+  }
+
+
+  .track {
+    gap: 3rem;
+
+    padding-inline: 3rem;
+  }
+
+
+  .item {
+    width: 160px;
+    height: 58px;
+  }
+
+
+  .rail {
+    animation-duration:
+      50s;
+  }
+}
+
+
+/* ==================================================
+   MOBILE
+================================================== */
+
+@media (max-width: 639px) {
+
+  .section {
+    padding-block:
+      2rem;
+  }
+
+
+  .label {
+    padding-inline:
+      1rem;
+
+    margin-bottom:
+      1.5rem;
+
+    font-size:
+      0.8rem;
+  }
+
+
+  .marquee {
+    mask-image:
+      linear-gradient(90deg,
+        transparent 0%,
+        #000 5%,
+        #000 95%,
+        transparent 100%);
+
+    -webkit-mask-image:
+      linear-gradient(90deg,
+        transparent 0%,
+        #000 5%,
+        #000 95%,
+        transparent 100%);
+  }
+
+
+  .track {
+    gap:
+      2rem;
+
+    padding-inline:
+      2rem;
+  }
+
+
+  .item {
+    width:
+      125px;
+
+    height:
+      48px;
+
+    opacity:
+      0.65;
+  }
+
+
+  .rail {
+    animation-duration:
+      42s;
+  }
+}
+
+
+/* ==================================================
+   SMALL MOBILE
+================================================== */
+
+@media (max-width: 380px) {
+
+  .track {
+    gap:
+      1.5rem;
+
+    padding-inline:
+      1.5rem;
+  }
+
+
+  .item {
+    width:
+      110px;
+
+    height:
+      44px;
+  }
+
+
+  .rail {
+    animation-duration:
+      38s;
+  }
+}
+
+
+/* ==================================================
+   REDUCED MOTION
+================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .rail {
+    animation: none;
+
+    width: auto;
+
+    justify-content: center;
+  }
+
+
+  .rail> :last-child {
+    display: none;
+  }
+
+
+  .marquee {
+    mask-image: none;
+
+    -webkit-mask-image: none;
+  }
+
+
+  .item,
+  .logo {
+    transition: none;
+  }
+}
+
+
+/* .section {
   padding-block: var(--ic-space-7);
   border-block: 1px solid var(--ic-border);
   background: var(--ic-surface);
@@ -105,4 +471,4 @@
     mask-image: none;
     -webkit-mask-image: none;
   }
-}
+} */

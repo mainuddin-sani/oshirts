@@ -70,6 +70,7 @@
 
   /* ---------- Layout ---------- */
   --ic-container: 1240px;
+  /* --ic-container: 1440px; */
   --ic-gutter: 40px;
   --ic-header-h: 72px;
 
@@ -549,6 +550,14 @@ small {
 
 /* RESPONSIVE */
 @media (max-width: 1299px) {
+
+  :root {
+    --ic-space-7: 40px;
+    --ic-space-8: 74px;
+  }
+
+
+
   h1 {
     font-size: 60px;
   }
