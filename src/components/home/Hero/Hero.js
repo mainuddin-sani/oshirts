@@ -35,13 +35,21 @@ export default function Hero() {
             {hero.eyebrow}
           </motion.span>
 
-          <motion.h1 id="hero-title" {...fadeUp(0.08)}>
+          {/* <motion.h1 id="hero-title" {...fadeUp(0.08)}>
             {hero.title.map((line, i) => (
               <span key={line} className={i === hero.title.length - 1 ? styles.accentLine : undefined}>
                 {line}
               </span>
             ))}
+          </motion.h1> */}
+
+          <motion.h1 id="hero-title" {...fadeUp(0.08)}>
+            <span>
+              {hero.title.replace("want to wear.", "")}
+            </span>
+            <span className={styles.accentLine}>want to wear.</span>
           </motion.h1>
+
 
           <motion.p className={`ic_lead ${styles.lead}`} {...fadeUp(0.18)}>
             {hero.description}

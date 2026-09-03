@@ -121,7 +121,8 @@ export const productsMenu = [
 
 export const hero = {
   eyebrow: "Custom T-shirts & apparel printing",
-  title: ["Print the shirt", "people actually", "want to wear."],
+  title: "Print the shirt people actually want to wear.",
+  // title: ["Print the shirt", "people actually", "want to wear."],
   description:
     "Premium blanks, colour-true prints and a real human checking every design before it hits the press. From 12 shirts to 12,000 — priced honestly, shipped free.",
   proof: [
