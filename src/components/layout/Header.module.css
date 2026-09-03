@@ -69,7 +69,8 @@
   border-radius: var(--ic-radius-xs);
   font-size: 0.95rem;
   font-weight: 500;
-  color: var(--ic-text-muted);
+  /* color: var(--ic-text-muted); */
+  color: var(--ic-text);
   transition:
     color var(--ic-dur-fast) var(--ic-ease),
     background-color var(--ic-dur-fast) var(--ic-ease);
