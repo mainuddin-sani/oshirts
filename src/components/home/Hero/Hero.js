@@ -65,14 +65,14 @@ export default function Hero() {
             </Link>
           </motion.div>
 
-          <motion.ul className={styles.assurances} {...fadeUp(0.32)}>
+          {/* <motion.ul className={styles.assurances} {...fadeUp(0.32)}>
             {assurances.map((item) => (
               <li key={item} className={styles.assuranceItem}>
                 <FiCheckCircle aria-hidden="true" />
                 {item}
               </li>
             ))}
-          </motion.ul>
+          </motion.ul> */}
 
           {/* <motion.div className={styles.proof} {...fadeUp(0.4)}>
             <div className={styles.proofRating}>

@@ -111,7 +111,7 @@
   transition: transform 250ms var(--ic-ease), box-shadow 250ms var(--ic-ease), background-color 250ms var(--ic-ease);
 }
 
-.ctas :global(.ic_btn_primary) {
+/* .ctas :global(.ic_btn_primary) {
   box-shadow:
     0 18px 34px -16px rgba(228, 87, 46, 0.48),
     0 2px 5px rgba(18, 20, 26, 0.06);
@@ -122,7 +122,7 @@
   box-shadow:
     0 22px 40px -16px rgba(228, 87, 46, 0.52),
     0 5px 12px rgba(18, 20, 26, 0.08);
-}
+} */
 
 .ctas :global(.ic_btn_secondary:hover) {
   transform: translateY(-2px);
@@ -440,7 +440,7 @@
 
 @media (max-width: 1023px) {
   .hero {
-    padding-block: 4rem 5.5rem;
+    padding-block: 3rem 4.5rem;
   }
 
   .grid {
