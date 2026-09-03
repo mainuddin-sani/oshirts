@@ -2,9 +2,7 @@
   position: relative;
 }
 
-/* ==================================================
-   SECTION HEADER
-================================================== */
+
 
 .head {
   display: flex;
@@ -24,9 +22,7 @@
   margin-bottom: clamp(2.25rem, 4vw, 3.5rem);
 }
 
-/* ==================================================
-   CATEGORY GRID
-================================================== */
+
 
 .grid {
   display: grid;
@@ -37,9 +33,7 @@
   gap: var(--ic-space-4);
 }
 
-/* ==================================================
-   FEATURED CATEGORY CARDS
-================================================== */
+
 
 .feature {
   position: relative;
@@ -65,9 +59,7 @@
     box-shadow 400ms var(--ic-ease);
 }
 
-/* ==================================================
-   FEATURED CARD INNER EDGE
-================================================== */
+
 
 .feature::after {
   content: "";
@@ -85,9 +77,7 @@
   pointer-events: none;
 }
 
-/* ==================================================
-   FEATURED BACKGROUNDS
-================================================== */
+
 
 .feature[data-tone="paper"] {
   background:
@@ -119,84 +109,49 @@
     0 18px 42px rgba(18, 20, 26, 0.075);
 }
 
-/* ==================================================
-   FEATURED LINK
-================================================== */
 
 .featureLink {
   position: relative;
-
   display: grid;
-
   grid-template-columns: 1fr 1fr;
-
-  min-height: 410px;
-
+  /* min-height: 410px; */
   height: 100%;
-
   overflow: hidden;
-
   color: inherit;
+  padding: 30px 5px 30px 30px;
 }
 
-/* ==================================================
-   FEATURE COPY
-================================================== */
+
 
 .featureCopy {
   position: relative;
-
   z-index: 3;
-
   display: flex;
   flex-direction: column;
-
   min-width: 0;
   min-height: 100%;
-
-  padding: 2.5rem;
 }
 
-/* ==================================================
-   CATEGORY LABEL
-================================================== */
+
 
 .label {
   display: inline-flex;
   align-items: center;
-
   gap: 0.4rem;
-
   align-self: flex-start;
-
   width: fit-content;
-
   min-height: 1.8rem;
-
-  padding:
-    0.28rem 0.72rem 0.28rem 0.58rem;
-
+  padding: 0.28rem 0.72rem 0.28rem 0.58rem;
   border: 1px solid rgba(18, 20, 26, 0.1);
-
   border-radius: var(--ic-radius-pill);
-
   background: rgba(255, 255, 255, 0.62);
-
   color: var(--ic-text);
-
   font-size: 0.66rem;
-
   font-weight: 800;
-
   line-height: 1;
-
   letter-spacing: 0.1em;
-
   text-transform: uppercase;
-
-  box-shadow:
-    0 2px 8px rgba(18, 20, 26, 0.035);
-
+  box-shadow: 0 2px 8px rgba(18, 20, 26, 0.035);
   backdrop-filter: blur(10px);
 }
 
@@ -213,9 +168,7 @@
   background: var(--ic-accent);
 }
 
-/* ==================================================
-   FEATURE CONTENT
-================================================== */
+
 
 .featureContent {
   display: flex;
@@ -231,19 +184,15 @@
   gap: 1.75rem;
 }
 
-/* ==================================================
-   FEATURE INFO
-================================================== */
+
 
 .featureInfo {
   max-width: 27rem;
 }
 
 .featureInfo h3 {
-  margin: 0;
-
+  margin-top: 16px;
   max-width: 12ch;
-
   color: var(--ic-text);
 
   font-family: var(--ic-font-display);
@@ -254,69 +203,45 @@
       2.45rem);
 
   font-weight: 700;
-
   line-height: 1.02;
-
   letter-spacing: -0.045em;
 }
 
 .featureInfo p {
   max-width: 30ch;
-
   margin: 0.7rem 0 0;
-
   color: var(--ic-text-muted);
-
   font-size: 0.92rem;
-
   line-height: 1.6;
 }
 
-/* ==================================================
-   FEATURE CTA
-================================================== */
+
 
 .featureCta {
   display: inline-flex;
   align-items: center;
-
-  gap: 0.65rem;
-
+  gap: 20px;
   margin-top: auto;
-
   color: var(--ic-text);
-
-  font-size: 0.8rem;
-
+  font-size: 20px;
   font-weight: 800;
-
   white-space: nowrap;
 }
 
-/* ==================================================
-   FEATURE ARROW
-================================================== */
+
+
 
 .arrow {
   display: inline-flex;
-
   align-items: center;
   justify-content: center;
-
-  width: 2.7rem;
-  height: 2.7rem;
-
+  width: 36px;
+  height: 36px;
   border: 1px solid var(--ic-border-strong);
-
   border-radius: 50%;
-
   background: rgba(255, 255, 255, 0.72);
-
   color: var(--ic-text);
-
-  box-shadow:
-    0 3px 10px rgba(18, 20, 26, 0.05);
-
+  box-shadow: 0 3px 10px rgba(18, 20, 26, 0.05);
   transition:
     background-color 300ms var(--ic-ease),
     border-color 300ms var(--ic-ease),
@@ -327,76 +252,46 @@
 
 .feature:hover .arrow {
   background: var(--ic-ink);
-
   border-color: var(--ic-ink);
-
   color: var(--ic-white);
-
-  transform:
-    translate(2px, -2px);
-
-  box-shadow:
-    0 8px 18px rgba(18, 20, 26, 0.14);
+  transform: translate(2px, -2px);
+  box-shadow: 0 8px 18px rgba(18, 20, 26, 0.14);
 }
 
-/* ==================================================
-   FEATURE IMAGE
-================================================== */
 
 .featureImage {
   position: relative;
-
-  align-self: end;
-  justify-self: end;
-
+  /* align-self: end;
+  justify-self: end; */
   width: 100%;
   aspect-ratio: 704 / 628;
-
-  margin:
-    0 -1rem -8% 0;
-
-  transition:
-    transform 550ms var(--ic-ease);
+  margin: 0 -1rem -8% 0;
+  transition: transform 550ms var(--ic-ease);
 }
 
 .featureImage img {
   display: block;
-
   width: 100%;
   height: auto;
-
   object-fit: contain;
-
-  filter:
-    drop-shadow(0 24px 20px rgba(18, 20, 26, 0.15));
+  filter: drop-shadow(0 24px 20px rgba(18, 20, 26, 0.15));
 }
 
 .feature:hover .featureImage {
-  transform:
-    translateY(-7px) rotate(-1deg);
+  /* transform: translateY(-7px) rotate(-1deg); */
+  transform: translateY(-7px);
 }
 
-/* ==================================================
-   STANDARD TILES
-================================================== */
 
 .tile {
   position: relative;
-
   grid-column: span 1;
-
   min-width: 0;
-
   overflow: hidden;
-
   border: 1px solid var(--ic-border);
-
   border-radius: var(--ic-radius-md);
-
   background: var(--ic-surface);
-
   box-shadow: var(--ic-shadow-sm);
-
   transition:
     transform 350ms var(--ic-ease),
     border-color 350ms var(--ic-ease),
@@ -405,38 +300,24 @@
 
 .tile:hover {
   transform: translateY(-4px);
-
   border-color: var(--ic-border-strong);
-
   box-shadow: var(--ic-shadow-md);
 }
-
-/* ==================================================
-   TILE LINK
-================================================== */
 
 .tileLink {
   display: flex;
   flex-direction: column;
-
   height: 100%;
-
   min-width: 0;
-
   color: inherit;
 }
 
-/* ==================================================
-   TILE IMAGE
-================================================== */
+
 
 .tileImage {
   position: relative;
-
   aspect-ratio: 1 / 0.88;
-
   overflow: hidden;
-
   background:
     linear-gradient(145deg,
       var(--ic-paper) 0%,
@@ -445,19 +326,12 @@
 
 .tileImage img {
   display: block;
-
   width: 100%;
   height: 100%;
-
   padding: 0.75rem;
-
   object-fit: contain;
-
-  filter:
-    drop-shadow(0 13px 12px rgba(18, 20, 26, 0.1));
-
-  transition:
-    transform 500ms var(--ic-ease);
+  filter: drop-shadow(0 13px 12px rgba(18, 20, 26, 0.1));
+  transition: transform 500ms var(--ic-ease);
 }
 
 .tile:hover .tileImage img {
@@ -560,12 +434,10 @@
    max-width based
 ================================================== */
 
-@media (max-width: 1023px) {
+@media (max-width: 1024px) {
 
   .grid {
-    grid-template-columns:
-      repeat(3, minmax(0, 1fr));
-
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: var(--ic-space-4);
   }
 
@@ -575,7 +447,6 @@
 
   .featureLink {
     grid-template-columns: 1.05fr 0.95fr;
-
     min-height: 360px;
   }
 
@@ -585,9 +456,8 @@
 
   .featureImage {
     width: 100%;
-
-    margin:
-      0 -0.5rem -7% 0;
+    margin: 0 -0.5rem -7% 0;
+    aspect-ratio: 504 / 428;
   }
 
   .tile {
@@ -638,9 +508,6 @@
     gap: var(--ic-space-4);
   }
 
-  /* --------------------------------
-     Featured card
-  --------------------------------- */
 
   .feature {
     grid-column: 1 / -1;
@@ -650,8 +517,7 @@
 
   .featureLink {
     grid-template-columns: 1fr;
-
-    min-height: 480px;
+    /* min-height: 480px; */
   }
 
   .featureCopy {
@@ -732,9 +598,9 @@
     gap: 0.65rem;
   }
 
-  .featureLink {
+  /* .featureLink {
     min-height: 450px;
-  }
+  } */
 
   .featureCopy {
     padding: 1.25rem;
