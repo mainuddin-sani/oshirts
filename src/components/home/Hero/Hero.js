@@ -3,8 +3,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
-import { FiArrowRight, FiTruck, FiTag } from "react-icons/fi";
-import { hero, images, site } from "@/data/home";
+import { FiArrowRight, FiTruck, FiTag, FiCheckCircle } from "react-icons/fi";
+import { FaStar } from "react-icons/fa";
+import { hero, images, site, pricing } from "@/data/home";
+import Stars from "@/components/ui/Stars";
 import styles from "./Hero.module.css";
 
 const EASE = [0.2, 0.7, 0.2, 1];
@@ -15,13 +17,18 @@ export default function Hero() {
     reduce
       ? {}
       : {
-          initial: { opacity: 0, y: 22 },
-          animate: { opacity: 1, y: 0 },
-          transition: { duration: 0.7, delay, ease: EASE },
-        };
+        initial: { opacity: 0, y: 22 },
+        animate: { opacity: 1, y: 0 },
+        transition: { duration: 0.7, delay, ease: EASE },
+      };
+
+  const [ratingProof, ...statProof] = hero.proof;
+  const assurances = pricing.includes.slice(0, 3);
 
   return (
     <section className={styles.hero} aria-labelledby="hero-title">
+      <div className={styles.bgGrid} aria-hidden="true" />
+
       <div className={`ic_container ${styles.grid}`}>
         <div className={styles.copy}>
           <motion.span className="ic_eyebrow" {...fadeUp(0)}>
@@ -50,17 +57,37 @@ export default function Hero() {
             </Link>
           </motion.div>
 
-          <motion.dl className={styles.proof} {...fadeUp(0.36)}>
-            {hero.proof.map((item) => (
-              <div key={item.label}>
-                <dt>{item.value}</dt>
-                <dd>{item.label}</dd>
-              </div>
+          <motion.ul className={styles.assurances} {...fadeUp(0.32)}>
+            {assurances.map((item) => (
+              <li key={item} className={styles.assuranceItem}>
+                <FiCheckCircle aria-hidden="true" />
+                {item}
+              </li>
             ))}
-          </motion.dl>
+          </motion.ul>
+
+          {/* <motion.div className={styles.proof} {...fadeUp(0.4)}>
+            <div className={styles.proofRating}>
+              <Stars rating={4.9} size={16} />
+              <div>
+                <strong>{ratingProof.value}</strong>
+                <span>{ratingProof.label}</span>
+              </div>
+            </div>
+
+            <dl className={styles.proofStats}>
+              {statProof.map((item) => (
+                <div key={item.label} className={styles.statItem}>
+                  <dt>{item.value}</dt>
+                  <dd>{item.label}</dd>
+                </div>
+              ))}
+            </dl>
+          </motion.div> */}
         </div>
 
         <div className={styles.visual}>
+          <div className={styles.visualGlow} aria-hidden="true" />
           <motion.div
             className={styles.stage}
             initial={reduce ? false : { opacity: 0, scale: 0.96 }}
@@ -117,6 +144,21 @@ export default function Hero() {
             <span>
               <strong>{hero.chips[1].label}</strong>
               <small>{hero.chips[1].sub}</small>
+            </span>
+          </motion.div>
+
+          <motion.div
+            className={`${styles.chip} ${styles.chipRating}`}
+            initial={reduce ? false : { opacity: 0, y: -12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.9, ease: EASE }}
+          >
+            <span className={styles.chipIcon}>
+              <FaStar aria-hidden="true" />
+            </span>
+            <span>
+              <strong>{ratingProof.value} rating</strong>
+              <small>{site.name} customers</small>
             </span>
           </motion.div>
         </div>

@@ -539,6 +539,12 @@ small {
 
 
 /* RESPONSIVE */
+@media (max-width: 1299px) {
+  h1 {
+    font-size: 60px;
+  }
+}
+
 @media (max-width: 1024px) {
 
   :root {
