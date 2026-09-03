@@ -12,10 +12,17 @@
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.048);
 }
 
-.scrolled {
+/* .scrolled {
   background: color-mix(in srgb, var(--ic-paper) 86%, transparent);
   backdrop-filter: saturate(160%) blur(14px);
   -webkit-backdrop-filter: saturate(160%) blur(14px);
+  border-bottom-color: var(--ic-border);
+} */
+
+.scrolled {
+  background: #fff;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
   border-bottom-color: var(--ic-border);
 }
 
