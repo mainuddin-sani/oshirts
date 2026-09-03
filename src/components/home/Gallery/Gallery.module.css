@@ -125,8 +125,46 @@
 }
 
 @media (min-width: 1024px) {
+  /* Asymmetric bento layout: card 1 and card 6 anchor the far left/right as
+     equal-sized tall columns; cards 2–5 fill the middle two columns as a
+     wide / medium-pair / wide sandwich for varied rhythm. Explicit
+     placement (rather than the .tall/.wide utility classes used at
+     smaller breakpoints) is what makes this exact 6-card composition
+     possible. */
   .grid {
-    grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: 220px;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(3, 200px);
+    grid-auto-flow: row;
+    gap: var(--ic-space-4);
+  }
+
+  .item:nth-child(1) {
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 3;
+  }
+
+  .item:nth-child(2) {
+    grid-column: 3 / span 2;
+    grid-row: 1;
+  }
+
+  .item:nth-child(3) {
+    grid-column: 3;
+    grid-row: 2;
+  }
+
+  .item:nth-child(4) {
+    grid-column: 4;
+    grid-row: 2;
+  }
+
+  .item:nth-child(5) {
+    grid-column: 3 / span 2;
+    grid-row: 3;
+  }
+
+  .item:nth-child(6) {
+    grid-column: 5 / span 2;
+    grid-row: 1 / span 3;
   }
 }

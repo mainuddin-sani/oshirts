@@ -319,14 +319,14 @@ export const gallery = [
     size: "tall",
   },
   {
-    image: printSkyWild,
+    image: printBlackMountain,
     alt: "Sky blue T-shirt printed with a camping badge",
     title: "Camp Always Wild",
     meta: "64 tees · DTG",
     tone: "sky",
   },
   {
-    image: printBlackDemon,
+    image: printBlackMountain,
     alt: "Black T-shirt printed with a purple skull graphic",
     title: "Demon Tapstitch",
     meta: "300 tees · Screen print",
@@ -341,14 +341,14 @@ export const gallery = [
     tone: "paper",
   },
   {
-    image: printBlueGarage,
+    image: printCreamMountain,
     alt: "Navy T-shirt printed with a motorcycle garage badge",
     title: "Garage Crew Edition",
     meta: "24 tees · Embroidery",
     tone: "navy",
   },
   {
-    image: printGrayWild,
+    image: printCreamMountain,
     alt: "Grey T-shirt printed with a camping badge",
     title: "Scout Troop 212",
     meta: "80 tees · Screen print",
