@@ -11,7 +11,7 @@ const promises = [
   {
     eyebrow: "Low price",
     title: "Low Price Guarantee",
-    text: "ooShirts.com was founded by a high school student in 2007 with an investment of just $2000. Our goal was to If you find a lower price online, simply send it to us and we'll match the price.",
+    text: "Founded in 2007 by a high school student with an initial investment of just $2,000, provide custom shirts at affordable prices. If you find a lower price online, just send it our way, and we'll match it!",
     icon: FiDollarSign,
   },
   {
