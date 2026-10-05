@@ -1,0 +1,193 @@
+/* ==================================================
+   PROGRESS STEPPER — minimal horizontal wizard
+================================================== */
+
+.steps {
+    margin-bottom: var(--ic-space-6);
+}
+
+.stepsList {
+    display: flex;
+    align-items: center;
+    gap: var(--ic-space-3);
+}
+
+/* Every step but the last stretches so its connector fills the gap. */
+.step {
+    display: flex;
+    align-items: center;
+    gap: var(--ic-space-3);
+    min-width: 0;
+}
+
+.step:not(:last-child) {
+    flex: 1;
+}
+
+.stepLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    min-width: 0;
+    color: inherit;
+}
+
+/* .stepIndex {
+    display: inline-flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 50%;
+    border: 1.5px solid var(--ic-border-strong);
+    background: var(--ic-surface);
+    font-size: 12.5px;
+    font-weight: 600;
+    line-height: 1;
+    color: var(--ic-text-subtle);
+
+    transition:
+        background-color var(--ic-dur) var(--ic-ease),
+        border-color var(--ic-dur) var(--ic-ease),
+        color var(--ic-dur) var(--ic-ease);
+} */
+
+
+.stepIndex {
+    display: inline-flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 50%;
+    border: 2px solid var(--ic-border-strong);
+    background: var(--ic-surface);
+    font-size: 12.5px;
+    font-weight: 600;
+    line-height: 1;
+    color: var(--ic-text-subtle);
+
+    transition:
+        background-color var(--ic-dur) var(--ic-ease),
+        border-color var(--ic-dur) var(--ic-ease),
+        color var(--ic-dur) var(--ic-ease);
+}
+
+.stepIndex svg {
+    width: 13px;
+    height: 13px;
+    stroke-width: 4;
+}
+
+.stepLabel {
+    overflow: hidden;
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: var(--ic-text-subtle);
+    transition: color var(--ic-dur) var(--ic-ease);
+}
+
+/* Thin light-grey line between one step and the next. */
+/* .connector {
+    flex: 1;
+    min-width: 1rem;
+    height: 1px;
+    background: var(--ic-border);
+    transition: background-color var(--ic-dur-slow) var(--ic-ease);
+} */
+
+.connector {
+    flex: 1;
+    min-width: 1rem;
+    height: 2px;
+    background: var(--ic-border);
+    border-radius: 999px;
+    transition: background-color var(--ic-dur-slow) var(--ic-ease);
+}
+
+/* ---------- States ---------- */
+
+.stepDone .stepIndex {
+    border-color: var(--ic-accent);
+    color: var(--ic-accent);
+}
+
+.stepDone .stepLabel {
+    color: var(--ic-text-muted);
+}
+
+/* Completed steps hand a filled line to the next one. */
+.stepDone .connector {
+    background: var(--ic-accent);
+}
+
+.stepActive .stepIndex {
+    border-color: var(--ic-accent);
+    background: var(--ic-accent);
+    color: #ffffff;
+}
+
+.stepActive .stepLabel {
+    font-weight: 600;
+    color: var(--ic-accent);
+}
+
+/* ---------- Completed step hover ---------- */
+
+.step a:hover .stepIndex {
+    background: var(--ic-accent-soft);
+}
+
+.step a:hover .stepLabel {
+    color: var(--ic-accent);
+}
+
+/* ==================================================
+   RESPONSIVE
+================================================== */
+
+@media (max-width: 768px) {
+    .stepsList {
+        gap: 0.5rem;
+    }
+
+    .step {
+        gap: 0.5rem;
+    }
+
+    .stepIndex {
+        width: 1.6rem;
+        height: 1.6rem;
+        font-size: 12px;
+    }
+
+    .stepIndex svg {
+        width: 12px;
+        height: 12px;
+    }
+
+    .stepLabel {
+        font-size: 13px;
+    }
+
+    .connector {
+        min-width: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+
+    /* Only the current step keeps its label; the others reduce to numbered
+       badges so all four stay on one line. */
+    .step:not(.stepActive) .stepLabel {
+        display: none;
+    }
+
+    .stepLink {
+        gap: 0.45rem;
+    }
+}

@@ -1,0 +1,783 @@
+/* ==================================================
+   DESIGN DETAIL
+   Head → preview + info → detail cards
+
+   Fluid throughout: the layout switches to two columns
+   at 760px and the type/spacing scale with the
+   viewport, so there are no dead steps between the
+   breakpoints.
+================================================== */
+
+.page {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  padding-block: clamp(20px, 3vw, 44px) clamp(64px, 8vw, 110px);
+  background: var(--ic-bg);
+}
+
+.page::before {
+  content: "";
+  position: absolute;
+  top: -26%;
+  right: -12%;
+  z-index: -3;
+  width: min(50vw, 720px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle,
+      rgba(228, 87, 46, 0.11) 0%,
+      rgba(228, 87, 46, 0.04) 40%,
+      transparent 72%);
+  pointer-events: none;
+}
+
+.bgGrid {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background-image: radial-gradient(circle at 1px 1px,
+      rgba(18, 20, 26, 0.07) 1px,
+      transparent 0);
+  background-size: 30px 30px;
+  -webkit-mask-image: radial-gradient(ellipse 66% 48% at 72% 8%, #000 0%, transparent 72%);
+  mask-image: radial-gradient(ellipse 66% 48% at 72% 8%, #000 0%, transparent 72%);
+  pointer-events: none;
+}
+
+.inner {
+  display: grid;
+  gap: clamp(18px, 3vw, 24px);
+}
+
+/* ==================================================
+   HEAD
+================================================== */
+
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ic-space-3) var(--ic-space-4);
+}
+
+.crumbs {
+  min-width: 0;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  /* padding: 7px 14px 7px 10px; */
+  border: 1px solid transparent;
+  border-radius: var(--ic-radius-pill);
+  font-size: 13.5px;
+  font-weight: 600;
+  white-space: nowrap;
+  color: var(--ic-text-muted);
+  transition:
+    color var(--ic-dur-fast) var(--ic-ease),
+    border-color var(--ic-dur-fast) var(--ic-ease),
+    background-color var(--ic-dur-fast) var(--ic-ease);
+  margin-bottom: 22px;
+}
+
+.backLink svg {
+  width: 15px;
+  height: 15px;
+  transition: transform var(--ic-dur) var(--ic-ease);
+}
+
+/* .backLink:hover {
+  color: var(--ic-text);
+  border-color: var(--ic-border);
+  background: var(--ic-surface);
+} */
+
+.backLink:hover svg {
+  transform: translateX(-3px);
+}
+
+/* ==================================================
+   MAIN — preview + info
+================================================== */
+
+.main {
+  display: grid;
+  gap: clamp(24px, 4vw, 56px);
+  align-items: start;
+}
+
+/* In one column the preview would stretch to the full content width and
+   swallow the screen, so it stays capped and centred until there are two. */
+.previewCol {
+  width: 100%;
+  max-width: 440px;
+  /* margin-inline: auto; */
+}
+
+/* ---------- Preview ---------- */
+
+.preview {
+  display: grid;
+  gap: var(--ic-space-4);
+}
+
+.stage {
+  position: relative;
+  aspect-ratio: 1;
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--ic-radius-lg);
+  /* The garment photos ship on a white background, so the frame is white too
+     and they sit in it seamlessly — the ring and shadow do the framing. */
+  background: var(--ic-surface);
+  box-shadow:
+    inset 0 0 0 1px var(--ic-border),
+    0 1px 2px rgba(18, 20, 26, 0.04)
+}
+
+.stageInner {
+  position: absolute;
+  inset: 0;
+}
+
+/* No padding: the mockup is square like the frame, so it fills it exactly and
+   the garment reads as large as the source allows. Non-square mockups
+   letterbox onto the white behind them. */
+.stageImage {
+  object-fit: contain;
+}
+
+/* ---------- View switcher ---------- */
+
+.views {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.view {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 14px 5px 5px;
+  border: 1px solid var(--ic-border);
+  border-radius: var(--ic-radius-pill);
+  background: var(--ic-surface);
+  cursor: pointer;
+  transition:
+    border-color var(--ic-dur-fast) var(--ic-ease),
+    box-shadow var(--ic-dur-fast) var(--ic-ease),
+    background-color var(--ic-dur-fast) var(--ic-ease),
+    transform var(--ic-dur) var(--ic-ease);
+}
+
+.view:hover {
+  border-color: var(--ic-border-strong);
+  transform: translateY(-2px);
+}
+
+.view:focus-visible {
+  outline: none;
+  border-color: var(--ic-accent);
+  box-shadow: 0 0 0 4px var(--ic-accent-soft);
+}
+
+.viewActive,
+.viewActive:hover {
+  border-color: var(--ic-ink);
+  background: var(--ic-ink);
+  transform: none;
+}
+
+.viewThumb {
+  position: relative;
+  flex: none;
+  width: 30px;
+  height: 30px;
+  overflow: hidden;
+  border-radius: 50%;
+  background: var(--ic-surface);
+}
+
+.viewThumb img {
+  object-fit: contain;
+  padding: 3px;
+}
+
+.viewLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--ic-text-muted);
+}
+
+.viewActive .viewLabel {
+  color: var(--ic-paper);
+}
+
+.viewDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ic-accent);
+}
+
+/* ==================================================
+   INFO COLUMN
+================================================== */
+
+.infoCol {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 13px;
+  border-radius: var(--ic-radius-pill);
+  border: 1px solid var(--ic-border);
+  background: var(--ic-surface);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--ic-text-muted);
+}
+
+.pill svg {
+  width: 13px;
+  height: 13px;
+}
+
+.pill_accent {
+  border-color: color-mix(in srgb, var(--ic-accent) 35%, transparent);
+  background: var(--ic-accent-soft);
+  color: var(--ic-accent-deep);
+}
+
+.pill_amber {
+  border-color: color-mix(in srgb, var(--ic-star) 45%, transparent);
+  background: color-mix(in srgb, var(--ic-star) 14%, var(--ic-surface));
+  color: color-mix(in srgb, var(--ic-star) 70%, var(--ic-ink));
+}
+
+.pill_success {
+  border-color: color-mix(in srgb, var(--ic-success) 35%, transparent);
+  background: color-mix(in srgb, var(--ic-success) 10%, var(--ic-surface));
+  color: var(--ic-success);
+}
+
+.title {
+  margin-top: var(--ic-space-4);
+  font-size: clamp(27px, 3.4vw, 44px);
+  line-height: 1.04;
+  letter-spacing: -0.028em;
+  text-wrap: unset;
+}
+
+.statusText {
+  max-width: 52ch;
+  margin-top: var(--ic-space-3);
+  font-size: clamp(14.5px, 1.2vw, 16px);
+  line-height: 1.6;
+  color: var(--ic-text-muted);
+}
+
+/* ---------- Four facts ---------- */
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1px;
+  width: 100%;
+  margin-top: var(--ic-space-5);
+  overflow: hidden;
+  border-radius: var(--ic-radius-md);
+  /* The 1px gap plus this backing paints the hairline rules between cells. */
+  background: var(--ic-border);
+  box-shadow: inset 0 0 0 1px var(--ic-border);
+}
+
+.fact {
+  padding: var(--ic-space-4);
+  background: var(--ic-surface);
+}
+
+.fact dt {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: var(--ic-tracking-caps);
+  text-transform: uppercase;
+  color: var(--ic-text-subtle);
+}
+
+.fact dt svg {
+  flex: none;
+  width: 12px;
+  height: 12px;
+}
+
+.fact dd {
+  margin-top: 0.45rem;
+  font-size: 15px;
+  line-height: 1.35;
+  color: var(--ic-text);
+}
+
+.factMono {
+  font-family: var(--ic-font-mono);
+  font-size: 14px;
+  letter-spacing: 0.04em;
+}
+
+.factStrong {
+  font-weight: 600;
+}
+
+/* ---------- Actions ---------- */
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  width: 100%;
+  margin-top: var(--ic-space-5);
+}
+
+.actions :global(.ic_btn_primary) {
+  box-shadow: 0 16px 30px -18px rgba(18, 20, 26, 0.55);
+}
+
+.actionNote {
+  margin-top: var(--ic-space-3);
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--ic-text-subtle);
+}
+
+/* ---------- Share ---------- */
+
+.share {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  width: 100%;
+  margin-top: var(--ic-space-5);
+  padding-top: var(--ic-space-5);
+  border-top: 1px solid var(--ic-border);
+}
+
+.shareBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 9px 16px;
+  border: 1px solid var(--ic-border);
+  border-radius: var(--ic-radius-pill);
+  background: var(--ic-surface);
+  font-size: 13.5px;
+  font-weight: 600;
+  white-space: nowrap;
+  color: var(--ic-text-muted);
+  cursor: pointer;
+  transition:
+    color var(--ic-dur-fast) var(--ic-ease),
+    border-color var(--ic-dur-fast) var(--ic-ease),
+    background-color var(--ic-dur-fast) var(--ic-ease),
+    transform var(--ic-dur) var(--ic-ease);
+}
+
+.shareBtn svg {
+  flex: none;
+  width: 15px;
+  height: 15px;
+}
+
+.shareBtn:hover {
+  color: var(--ic-text);
+  border-color: var(--ic-border-strong);
+  transform: translateY(-2px);
+}
+
+.shareCopied,
+.shareCopied:hover {
+  color: var(--ic-on-accent);
+  border-color: var(--ic-accent);
+  background: var(--ic-accent);
+}
+
+/* ==================================================
+   DETAIL CARDS
+   auto-fit so the row flows 1 → 2 → 3 columns with the
+   available width rather than at fixed steps.
+================================================== */
+
+.details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: clamp(16px, 2vw, 28px);
+  align-items: stretch;
+  margin-top: 10px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: clamp(18px, 2vw, 28px);
+  border: 1px solid var(--ic-border);
+  border-radius: var(--ic-radius-md);
+  background: var(--ic-surface);
+  box-shadow:
+    0 1px 2px rgba(18, 20, 26, 0.04),
+    0 10px 30px rgba(18, 20, 26, 0.03);
+  transition:
+    border-color var(--ic-dur) var(--ic-ease),
+    box-shadow var(--ic-dur) var(--ic-ease);
+}
+
+.card:hover {
+  border-color: var(--ic-border-strong);
+  box-shadow:
+    0 2px 4px rgba(18, 20, 26, 0.04),
+    0 16px 38px rgba(18, 20, 26, 0.06);
+}
+
+.cardHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--ic-space-3);
+  padding-bottom: var(--ic-space-4);
+  margin-bottom: var(--ic-space-4);
+  border-bottom: 1px solid var(--ic-border);
+}
+
+.cardHead h2 {
+  font-family: var(--ic-font-body);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: var(--ic-tracking-caps);
+  text-transform: uppercase;
+  color: var(--ic-text-subtle);
+}
+
+.cardHead svg {
+  width: 14px;
+  height: 14px;
+}
+
+.cardNote {
+  font-family: var(--ic-font-mono);
+  font-size: 11.5px;
+  color: var(--ic-text-subtle);
+}
+
+.garmentName {
+  font-family: var(--ic-font-display);
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: var(--ic-tracking-tight);
+  color: var(--ic-text);
+}
+
+.garmentText {
+  margin-top: 0.45rem;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--ic-text-muted);
+}
+
+/* ---------- Key/value rows ---------- */
+
+.rows {
+  display: grid;
+  margin-top: var(--ic-space-4);
+}
+
+/* Only the size-run card pins its totals to the bottom — elsewhere the rows
+   are the card body and should follow the text directly. */
+.card:has(.sizes) .rows {
+  margin-top: auto;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--ic-space-3);
+  padding-block: 0.65rem;
+  border-top: 1px solid var(--ic-border);
+}
+
+.row dt {
+  flex: none;
+  font-size: 12.5px;
+  color: var(--ic-text-subtle);
+}
+
+.row dd {
+  font-size: 13.5px;
+  line-height: 1.5;
+  /* text-align: right; */
+  color: var(--ic-text);
+}
+
+.rowColor {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.swatch {
+  flex: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid var(--ic-border-strong);
+}
+
+.rowTotal {
+  border-top-color: var(--ic-border-strong);
+}
+
+.rowTotal dt {
+  font-weight: 600;
+  color: var(--ic-text);
+}
+
+.rowTotal dd {
+  font-family: var(--ic-font-display);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: var(--ic-tracking-tight);
+}
+
+.perShirt {
+  display: block;
+  margin-top: 2px;
+  font-family: var(--ic-font-body);
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--ic-text-subtle);
+}
+
+.estimateNote {
+  margin-top: var(--ic-space-4);
+  font-size: 11.5px;
+  line-height: 1.55;
+  color: var(--ic-text-subtle);
+}
+
+/* ---------- Print locations ---------- */
+
+.prints {
+  display: grid;
+  gap: var(--ic-space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.print {
+  display: grid;
+  gap: 3px;
+  padding: var(--ic-space-4);
+  border: 1px solid var(--ic-border);
+  border-radius: var(--ic-radius-sm);
+  background: var(--ic-bg);
+}
+
+.printView {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ic-text);
+}
+
+.printMeta {
+  font-size: 12.5px;
+  color: var(--ic-text-muted);
+}
+
+.inks {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 0.45rem;
+}
+
+.ink {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid var(--ic-border-strong);
+}
+
+.inkCount {
+  margin-left: 0.25rem;
+  font-family: var(--ic-font-mono);
+  font-size: 11px;
+  color: var(--ic-text-subtle);
+}
+
+/* ---------- Size run ---------- */
+
+.sizes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(54px, 1fr));
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.size {
+  display: grid;
+  gap: 2px;
+  padding: 0.65rem 0.4rem;
+  border: 1px solid var(--ic-border);
+  border-radius: var(--ic-radius-sm);
+  background: var(--ic-bg);
+  text-align: center;
+}
+
+.sizeLabel {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ic-text-subtle);
+}
+
+.sizeQty {
+  font-family: var(--ic-font-display);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ic-text);
+}
+
+.noSizes {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ic-space-3);
+  margin-top: auto;
+}
+
+.noSizes p {
+  font-size: 13.5px;
+  color: var(--ic-text-muted);
+}
+
+/* ==================================================
+   RESPONSIVE
+================================================== */
+
+/* Two columns as soon as there is room — without this a tablet gets a
+   full-width preview tall enough to push the name and every action off
+   the first screen. */
+@media (min-width: 760px) {
+  .main {
+    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1fr);
+  }
+
+  .previewCol {
+    max-width: none;
+    margin-inline: 0;
+    /* Holds the mockup in place while the longer info column scrolls past. */
+    position: sticky;
+    top: calc(var(--ic-header-h) + 20px);
+  }
+}
+
+@media (max-width: 768px) {
+  .backLink {
+    margin-bottom: 16px;
+  }
+
+  .facts {
+    border-radius: var(--ic-radius-sm);
+  }
+
+}
+
+@media (max-width: 560px) {
+
+  .stage {
+    aspect-ratio: 1;
+  }
+
+  .previewCol {
+    max-width: 340px;
+  }
+
+  .head {
+    gap: 0;
+  }
+
+  /* .backLink {
+    padding-inline: 10px 12px;
+  } */
+
+  .actions :global(.ic_btn) {
+    flex: 1 1 100%;
+  }
+
+  .shareBtn {
+    flex: 1 1 auto;
+    justify-content: center;
+  }
+
+  .row dd {
+    text-align: left;
+  }
+}
+
+@media (max-width: 380px) {
+  .previewCol {
+    max-width: 100%;
+  }
+
+  .views {
+    gap: 0.4rem;
+  }
+
+  .view {
+    padding-right: 11px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .backLink svg,
+  .shareBtn,
+  .view,
+  .card {
+    transition: none;
+  }
+
+  .shareBtn:hover,
+  .view:hover {
+    transform: none;
+  }
+
+  .previewCol {
+    position: static;
+  }
+}

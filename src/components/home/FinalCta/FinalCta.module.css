@@ -6,6 +6,8 @@
   position: relative;
   isolation: isolate;
   display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  align-items: center;
   gap: var(--ic-space-6);
   padding: clamp(2rem, 5vw, 4rem);
   border-radius: var(--ic-radius-lg);
@@ -21,7 +23,104 @@
   width: 60%;
   aspect-ratio: 1;
   border-radius: 50%;
-  /* background: radial-gradient(closest-side, rgba(228, 87, 46, 0.35), transparent 70%); */
+  background: radial-gradient(closest-side,
+      rgba(112, 53, 35, 0.35),
+      transparent 70%);
+  pointer-events: none;
+}
+
+.copy {
+  position: relative;
+  z-index: 1;
+  max-width: 34rem;
+}
+
+.copy h2 {
+  margin-top: 0;
+}
+
+.copy p {
+  margin-top: var(--ic-space-4);
+}
+
+.ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: var(--ic-space-6);
+}
+
+.visual {
+  position: relative;
+  justify-self: end;
+  width: 100%;
+  max-width: 420px;
+  transform: rotate(6deg);
+  margin: -8% -4% -14% 0;
+}
+
+.visual img {
+  filter: drop-shadow(0 30px 40px rgba(0, 0, 0, 0.45));
+}
+
+.ic_cta_bottom {
+  display: none;
+}
+
+/* Tablet + Mobile */
+@media (max-width: 1023px) {
+  .panel {
+    grid-template-columns: 1fr;
+    align-items: initial;
+  }
+
+  .visual {
+    width: min(70%, 320px);
+    justify-self: center;
+    margin: 0;
+  }
+
+  .copy {
+    max-width: 100%;
+  }
+
+  .ic_cta_top {
+    display: none;
+  }
+
+  .ic_cta_bottom {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+
+
+/* .section {
+  padding-block: 0 var(--ic-section-y);
+}
+
+.panel {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  gap: var(--ic-space-6);
+  padding: clamp(2rem, 5vw, 4rem);
+  border-radius: var(--ic-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--ic-shadow-lg);
+}
+
+.panel::before {
+  content: "";
+  position: absolute;
+  top: -40%;
+  right: -10%;
+  width: 60%;
+  aspect-ratio: 1;
+  border-radius: 50%;
   background: radial-gradient(closest-side, rgba(112, 53, 35, 0.35), transparent 70%);
   pointer-events: none;
 }
@@ -70,4 +169,4 @@
     justify-self: end;
     margin: -8% -4% -14% 0;
   }
-}
+} */

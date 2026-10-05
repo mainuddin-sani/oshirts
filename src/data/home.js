@@ -79,11 +79,11 @@ export const site = {
 };
 
 export const nav = [
-  { label: "Products", href: "#products", mega: true },
-  { label: "How it works", href: "#how-it-works" },
-  { label: "Gallery", href: "#gallery" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "FAQ", href: "#faq" },
+  { label: "Products", href: "", mega: true },
+  { label: "Order status", href: "/order-status" },
+  { label: "Contact us", href: "/contact" },
+  // { label: "Pricing", href: "#pricing" },
+  { label: "Blog", href: "/blog" },
 ];
 
 export const productsMenu = [
@@ -144,83 +144,6 @@ export const benefits = [
 ];
 
 
-
-// export const categories = [
-//   {
-//     slug: "t-shirts",
-//     name: "Custom T-Shirts",
-//     blurb:
-//       "Classic, heavyweight and premium ring-spun tees in 40+ colours.",
-//     price: "From $4.99",
-//     image: printBlackMountain,
-//     imageAlt:
-//       "Black custom T-shirt with a full-colour mountain graphic printed on the chest",
-//     featured: true,
-//     tone: "paper",
-//     label: "Most popular",
-//   },
-//   {
-//     slug: "womens",
-//     name: "Custom Women's T-Shirts",
-//     blurb:
-//       "Relaxed, fitted and cropped styles designed for everyday wear.",
-//     price: "From $6.49",
-//     image: printPinkMountain,
-//     imageAlt:
-//       "Pink women's T-shirt with a custom mountain graphic",
-//     featured: true,
-//     tone: "blush",
-//     label: "Women's fit",
-//   },
-//   {
-//     slug: "hoodies",
-//     name: "Hoodies",
-//     blurb: "Heavyweight and everyday hoodies made for comfort.",
-//     price: "From $18.99",
-//     image: printBlackMountain,
-//     imageAlt: "Custom printed hoodie",
-//   },
-//   {
-//     slug: "sweatshirts",
-//     name: "Sweatshirts",
-//     blurb: "Classic crewnecks with soft, durable construction.",
-//     price: "From $14.99",
-//     image: printPinkMountain,
-//     imageAlt: "Custom printed sweatshirt",
-//   },
-//   {
-//     slug: "youth",
-//     name: "Youth",
-//     blurb: "Comfortable styles made for kids and growing teams.",
-//     price: "From $4.49",
-//     image: printBlackMountain,
-//     imageAlt: "Custom printed youth T-shirt",
-//   },
-//   {
-//     slug: "performance",
-//     name: "Performance",
-//     blurb: "Lightweight performance styles built for active wear.",
-//     price: "From $7.99",
-//     image: printPinkMountain,
-//     imageAlt: "Custom printed performance shirt",
-//   },
-//   {
-//     slug: "long-sleeve",
-//     name: "Long Sleeve",
-//     blurb: "Versatile long-sleeve styles for cooler days.",
-//     price: "From $7.49",
-//     image: printBlackMountain,
-//     imageAlt: "Custom printed long-sleeve shirt",
-//   },
-//   {
-//     slug: "jackets",
-//     name: "Jackets",
-//     blurb: "Layer-ready jackets for teams, events and everyday wear.",
-//     price: "From $29.99",
-//     image: printPinkMountain,
-//     imageAlt: "Custom printed jacket",
-//   },
-// ];
 
 export const categories = [
   {
@@ -337,7 +260,7 @@ export const gallery = [
   {
     image: printWhiteGarage,
     alt: "White T-shirt printed with a motorcycle garage badge",
-    title: "Motorcycle Garage '98",
+    title: "Motorcycle Garage",
     meta: "48 tees · DTG",
     tone: "paper",
   },
@@ -496,16 +419,42 @@ export const footer = {
   columns: [
     {
       title: "Products",
-      links: ["T-Shirts", "Hoodies", "Sweatshirts", "Youth", "Performance", "Long Sleeve", "Women's Apparel", "Jackets"],
+      links: [
+        { label: "T-Shirts", href: "/products/t-shirts" },
+        { label: "Hoodies", href: "/products/hoodies" },
+        { label: "Sweatshirts", href: "/products/sweatshirts" },
+        { label: "Youth", href: "/products/youth" },
+        { label: "Performance", href: "/products/performance" },
+        { label: "Long Sleeve", href: "/products/long-sleeve" },
+        { label: "Women's Apparel", href: "/products/womens-t-shirts" },
+        { label: "Jackets", href: "/products/jackets" },
+      ],
     },
     {
       title: "Company",
-      links: ["About us", "Reviews", "Sustainability", "Careers", "Press", "Blog"],
+      links: [
+        { label: "About us", href: "/about" },
+        { label: "Reviews", href: "/reviews" },
+        { label: "Contract printing", href: "/contract-printing" },
+        { label: "Fulfillment API", href: "/fulfillment-api" },
+        { label: "Press", href: "/press" },
+        { label: "Blog", href: "/blog" },
+      ],
     },
     {
       title: "Support",
-      links: ["Help center", "Order status", "Shipping & delivery", "Returns & reprints", "Design guidelines", "Contact"],
+      links: [
+        { label: "Contact us", href: "/contact" },
+        { label: "Order status", href: "/order-status" },
+        { label: "Shipping & delivery", href: "/terms#production" },
+        { label: "Returns & reprints", href: "/terms#reprints" },
+        { label: "Design guidelines", href: "/blog/artwork-that-prints-well" },
+        { label: "Sign in", href: "/login" },
+      ],
     },
   ],
-  legal: ["Privacy", "Terms", "Accessibility"],
+  legal: [
+    { label: "Privacy", href: "/privacy" },
+    { label: "Terms", href: "/terms" },
+  ],
 };

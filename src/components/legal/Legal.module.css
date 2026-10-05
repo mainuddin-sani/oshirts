@@ -1,0 +1,333 @@
+/* ==================================================
+   LEGAL DOCUMENT — shell
+================================================== */
+
+.page {
+  padding-block: var(--ic-space-7) var(--ic-space-8);
+  background: var(--ic-bg);
+}
+
+.inner {
+  display: grid;
+  gap: var(--ic-space-7);
+}
+
+/* ---------- Head ---------- */
+
+.head {
+  /* max-width: 760px; */
+  padding-bottom: var(--ic-space-6);
+  border-bottom: 1px solid var(--ic-border);
+}
+
+.head h1 {
+  font-size: 44px;
+  line-height: 1.04;
+}
+
+.lead {
+  max-width: 84ch;
+  margin-top: var(--ic-space-4);
+  font-size: 18px;
+}
+
+.updated {
+  margin-top: var(--ic-space-4);
+  font-family: var(--ic-font-mono);
+  font-size: 12.5px;
+  color: var(--ic-text-subtle);
+}
+
+/* ---------- Layout ---------- */
+
+.layout {
+  display: grid;
+  gap: var(--ic-space-6);
+  align-items: start;
+}
+
+/* .article {
+  min-width: 0;
+  max-width: 720px;
+} */
+
+/* ==================================================
+   TABLE OF CONTENTS
+================================================== */
+
+.toc {
+  padding: var(--ic-space-4) var(--ic-space-5);
+  border-radius: var(--ic-radius-md);
+  border: 1px solid var(--ic-border);
+  background: var(--ic-surface);
+}
+
+.tocTitle {
+  margin-bottom: 0.6rem;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: var(--ic-tracking-caps);
+  text-transform: uppercase;
+  color: var(--ic-text-subtle);
+}
+
+.tocList {
+  display: grid;
+  gap: 2px;
+  counter-reset: toc;
+}
+
+.tocList li {
+  counter-increment: toc;
+}
+
+.tocLink {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  padding: 0.35rem 0.5rem 0.35rem 0.6rem;
+  border-radius: var(--ic-radius-xs);
+  font-size: 14px;
+  color: var(--ic-text-muted);
+  transition:
+    color var(--ic-dur-fast) var(--ic-ease),
+    background-color var(--ic-dur-fast) var(--ic-ease);
+}
+
+.tocLink::before {
+  content: counter(toc, decimal-leading-zero);
+  flex: none;
+  font-family: var(--ic-font-mono);
+  font-size: 14px;
+  color: var(--ic-text-subtle);
+}
+
+.tocLink:hover {
+  color: var(--ic-text);
+  background: var(--ic-bg);
+}
+
+.tocLinkActive,
+.tocLinkActive:hover {
+  font-weight: 600;
+  color: var(--ic-text);
+  background: var(--ic-accent-soft);
+}
+
+.tocLinkActive::before {
+  color: var(--ic-accent);
+}
+
+/* ==================================================
+   SUMMARY + SECTIONS
+================================================== */
+
+.summary {
+  margin-bottom: var(--ic-space-7);
+  padding: var(--ic-space-5);
+  border-radius: var(--ic-radius-md);
+  border: 1px solid var(--ic-border);
+  background: var(--ic-surface);
+}
+
+.summaryTitle {
+  font-size: 18px;
+}
+
+.summaryList {
+  display: grid;
+  gap: 0.6rem;
+  margin-top: var(--ic-space-4);
+}
+
+.summaryList li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ic-text);
+}
+
+.summaryList svg {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  margin-top: 3px;
+  color: var(--ic-success);
+}
+
+.summaryNote {
+  margin-top: var(--ic-space-4);
+  font-size: 12.5px;
+  color: var(--ic-text-subtle);
+}
+
+.section {
+  padding-bottom: var(--ic-space-6);
+  margin-bottom: var(--ic-space-6);
+  border-bottom: 1px solid var(--ic-border);
+  /* Land anchors clear of the sticky site header. */
+  scroll-margin-top: calc(var(--ic-header-h) + 24px);
+}
+
+.section:last-of-type {
+  border-bottom: 0;
+}
+
+.section h2 {
+  margin-bottom: var(--ic-space-4);
+  font-size: 22px;
+  line-height: 1.25;
+}
+
+.section p {
+  /* font-size: 15.5px; */
+  line-height: 1.7;
+}
+
+.section p+p,
+.section ul+p,
+.section p+ul {
+  margin-top: var(--ic-space-4);
+}
+
+.section ul {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.section li {
+  position: relative;
+  padding-left: 1.4rem;
+  color: var(--ic-text-muted);
+}
+
+.section li::before {
+  content: "";
+  position: absolute;
+  left: 0.3rem;
+  top: 0.68rem;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--ic-accent);
+}
+
+/* ---------- Foot ---------- */
+
+.foot {
+  display: grid;
+  gap: var(--ic-space-4);
+  margin-top: var(--ic-space-4);
+  padding: var(--ic-space-5);
+  border-radius: var(--ic-radius-md);
+  background: var(--ic-surface-muted);
+  border: 1px solid var(--ic-border);
+}
+
+.foot h3 {
+  font-size: 18px;
+}
+
+.foot p {
+  margin-top: 0.3rem;
+  font-size: 14px;
+}
+
+.footActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+/* ==================================================
+   RESPONSIVE
+================================================== */
+
+
+@media (min-width: 991px) {
+  .page {
+    padding-block: var(--ic-space-8) var(--ic-space-9);
+  }
+
+  .head h1 {
+    font-size: 52px;
+  }
+
+  .layout {
+    grid-template-columns: 250px minmax(0, 1fr);
+    gap: var(--ic-space-7);
+  }
+
+  .side {
+    position: sticky;
+    top: calc(var(--ic-header-h) + 24px);
+  }
+
+  .foot {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .page {
+    padding-block: var(--ic-space-6) var(--ic-space-7);
+  }
+
+  .inner {
+    gap: var(--ic-space-6);
+  }
+
+  .head {
+    padding-bottom: var(--ic-space-5);
+  }
+
+  .head h1 {
+    font-size: 32px;
+  }
+
+  .lead {
+    font-size: 16px;
+  }
+
+  /* Contents become a compact two-column index above the text. */
+  .tocList {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0;
+  }
+
+  /* .tocLink {
+    font-size: 13.5px;
+  } */
+
+  .section h2 {
+    font-size: 20px;
+  }
+
+  /* .section p,
+  .section li {
+    font-size: 15px;
+  } */
+
+  .footActions :global(.ic_btn) {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .head h1 {
+    font-size: 28px;
+  }
+
+  .tocList {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .summary,
+  .foot {
+    padding: var(--ic-space-4);
+  }
+}

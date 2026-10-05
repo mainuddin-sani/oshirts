@@ -17,18 +17,36 @@ export default function FinalCta() {
               Free design review, free shipping, and a low price guarantee on every order. It takes about four minutes
               to get a quote.
             </p>
-            <div className={styles.ctas}>
-              <Link href={site.ctaPrimary.href} className="ic_btn ic_btn_primary ic_btn_lg">
-                {site.ctaPrimary.label}
-                <FiArrowRight aria-hidden="true" />
-              </Link>
-              <Link href={site.ctaSecondary.href} className="ic_btn ic_btn_secondary ic_btn_lg">
-                {site.ctaSecondary.label}
-              </Link>
+
+            <div className={styles.ic_cta_top}>
+              <div className={styles.ctas}>
+                <Link href={site.ctaPrimary.href} className="ic_btn ic_btn_primary ic_btn_lg">
+                  {site.ctaPrimary.label}
+                  <FiArrowRight aria-hidden="true" />
+                </Link>
+                <Link href={site.ctaSecondary.href} className="ic_btn ic_btn_secondary ic_btn_lg">
+                  {site.ctaSecondary.label}
+                </Link>
+              </div>
             </div>
           </div>
-          <div className={styles.visual} aria-hidden="true">
-            <Image src={images.printWhiteGarage} alt="" sizes="(min-width: 1024px) 34vw, 60vw" />
+
+          <div>
+            <div className={styles.visual} aria-hidden="true">
+              <Image src={images.printWhiteGarage} alt="" sizes="(min-width: 1024px) 34vw, 60vw" />
+            </div>
+
+            <div className={styles.ic_cta_bottom}>
+              <div className={styles.ctas}>
+                <Link href={site.ctaPrimary.href} className="ic_btn ic_btn_primary ic_btn_lg">
+                  {site.ctaPrimary.label}
+                  <FiArrowRight aria-hidden="true" />
+                </Link>
+                <Link href={site.ctaSecondary.href} className="ic_btn ic_btn_secondary ic_btn_lg">
+                  {site.ctaSecondary.label}
+                </Link>
+              </div>
+            </div>
           </div>
         </Reveal>
       </div>

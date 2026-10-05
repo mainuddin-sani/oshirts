@@ -12,6 +12,7 @@
 .brand p {
   max-width: 34ch;
   margin: var(--ic-space-4) 0 var(--ic-space-5);
+  font-size: 15px;
 }
 
 .logo {
@@ -64,20 +65,20 @@
 
 .col h6 {
   margin-bottom: var(--ic-space-4);
-  color: var(--ic-text-subtle);
-  text-transform: uppercase;
-  letter-spacing: var(--ic-tracking-caps);
+  /* color: var(--ic-text-subtle); */
+  /* text-transform: uppercase; */
+  /* letter-spacing: var(--ic-tracking-caps); */
   font-family: var(--ic-font-body);
-  font-size: 0.75rem;
+  font-size: 16px;
 }
 
 .col ul {
   display: grid;
-  gap: 0.6rem;
+  gap: 10px;
 }
 
 .col a {
-  font-size: 0.95rem;
+  font-size: 15px;
   color: var(--ic-text-muted);
   transition: color var(--ic-dur-fast) var(--ic-ease);
 }
@@ -118,6 +119,35 @@
   gap: 0.6rem;
   margin-left: auto;
   color: var(--ic-text-subtle);
+}
+
+
+@media (max-width: 768px) {
+  .col h6 {
+    margin-bottom: var(--ic-space-3);
+  }
+
+  .col ul {
+    gap: 5px;
+  }
+
+  .brand p {
+    max-width: 34ch;
+    margin: var(--ic-space-3) 0 var(--ic-space-4);
+    font-size: 15px;
+  }
+
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding-block: var(--ic-space-7) var(--ic-space-5);
+  }
+
+  .top {
+    gap: var(--ic-space-6) var(--ic-space-6);
+    padding-bottom: var(--ic-space-6);
+  }
 }
 
 @media (min-width: 640px) {

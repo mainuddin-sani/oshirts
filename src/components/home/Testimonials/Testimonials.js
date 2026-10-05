@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Slider from "react-slick";
 import Stars from "@/components/ui/Stars";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -53,6 +54,24 @@ function Arrow({ className, onClick, direction }) {
 
 export default function Testimonials() {
   const { featured, items, rating, count } = testimonials;
+  const [slidesToShow, setSlidesToShow] = useState(null);
+
+  useEffect(() => {
+    const updateSlidesToShow = () => {
+      if (window.matchMedia("(max-width: 720px)").matches) {
+        setSlidesToShow(1);
+      } else if (window.matchMedia("(max-width: 1179px)").matches) {
+        setSlidesToShow(2);
+      } else {
+        setSlidesToShow(3);
+      }
+    };
+
+    updateSlidesToShow();
+    window.addEventListener("resize", updateSlidesToShow);
+
+    return () => window.removeEventListener("resize", updateSlidesToShow);
+  }, []);
 
   const allTestimonials = [
     {
@@ -70,11 +89,11 @@ export default function Testimonials() {
 
   const sliderSettings = {
     dots: true,
-    arrows: true,
+    arrows: slidesToShow !== 1,
     infinite: true,
     speed: 700,
     cssEase: "cubic-bezier(0.2, 0.7, 0.2, 1)",
-    slidesToShow: 3,
+    slidesToShow,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 5500,
@@ -83,31 +102,8 @@ export default function Testimonials() {
     swipeToSlide: true,
     draggable: true,
     adaptiveHeight: false,
-    prevArrow: (
-      <Arrow direction="prev" />
-    ),
-    nextArrow: (
-      <Arrow direction="next" />
-    ),
-    responsive: [
-      {
-        breakpoint: 1180,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-        },
-      },
-
-      {
-        breakpoint: 720,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          arrows: false,
-          autoplaySpeed: 4800,
-        },
-      },
-    ],
+    prevArrow: <Arrow direction="prev" />,
+    nextArrow: <Arrow direction="next" />,
   };
 
 
@@ -180,31 +176,33 @@ export default function Testimonials() {
 
         {/* Carousel */}
         <div className={`${styles.carousel}`}>
-          <Slider {...sliderSettings}>
-            {allTestimonials.map(
-              (testimonial, index) => (
-                <div
-                  className={styles.slide}
-                  key={`${testimonial.name}-${index}`}
-                >
+          {slidesToShow !== null && (
+            <Slider key={slidesToShow} {...sliderSettings}>
+              {allTestimonials.map(
+                (testimonial, index) => (
+                  <div
+                    className={styles.slide}
+                    key={`${testimonial.name}-${index}`}
+                  >
 
-                  <TestimonialCard
-                    testimonial={testimonial}
-                    featured={
-                      testimonial.featured
-                    }
-                  />
-                </div>
-              )
-            )}
+                    <TestimonialCard
+                      testimonial={testimonial}
+                      featured={
+                        testimonial.featured
+                      }
+                    />
+                  </div>
+                )
+              )}
 
-          </Slider>
+            </Slider>
+          )}
 
         </div>
 
 
 
-        {/* Mobile Hint */}
+        {/* Mobile Hint ..*/}
         <div
           className={styles.carouselHint}
           aria-hidden="true"

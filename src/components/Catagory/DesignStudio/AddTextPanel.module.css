@@ -1,0 +1,178 @@
+.undoButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 26px;
+  height: 26px;
+
+  border-radius: var(--ic-radius-xs);
+  color: var(--ic-text-muted);
+
+  transition:
+    color var(--ic-dur-fast) var(--ic-ease),
+    background-color var(--ic-dur-fast) var(--ic-ease);
+}
+
+.undoButton:hover:not(:disabled) {
+  color: var(--ic-text);
+  background: var(--ic-surface-muted);
+}
+
+.undoButton:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.elementList {
+  display: grid;
+  gap: 6px;
+}
+
+.elementItem {
+  width: 100%;
+  padding: 8px 10px;
+
+  border: 1px solid var(--ic-border);
+  border-radius: var(--ic-radius-xs);
+  background: var(--ic-bg);
+
+  font-size: 12px;
+  font-weight: 600;
+  text-align: left;
+  color: var(--ic-text-muted);
+
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.elementItemActive {
+  border-color: var(--ic-text);
+  color: var(--ic-text);
+}
+
+.fieldRow {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr 1fr;
+}
+
+.field {
+  display: grid;
+  gap: 8px;
+}
+
+.field label,
+.fieldLabel {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ic-text);
+}
+
+.field textarea {
+  width: 100%;
+  padding: 8px 10px;
+
+  border: 1px solid var(--ic-border);
+  border-radius: var(--ic-radius-xs);
+  background: var(--ic-bg);
+  color: var(--ic-text);
+
+  font: inherit;
+  resize: vertical;
+}
+
+.field select {
+  padding: 8px 10px;
+
+  border: 1px solid var(--ic-border);
+  border-radius: var(--ic-radius-xs);
+  background: var(--ic-bg);
+  color: var(--ic-text);
+
+  font: inherit;
+}
+
+.field input[type="range"] {
+  width: 100%;
+}
+
+.colorPickerRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.colorPickerRow input[type="color"] {
+  width: 36px;
+  height: 32px;
+  padding: 2px;
+
+  border: 1px solid var(--ic-border);
+  border-radius: var(--ic-radius-xs);
+  background: var(--ic-bg);
+
+  cursor: pointer;
+}
+
+.colorPickerRow span {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ic-text-muted);
+  text-transform: uppercase;
+}
+
+.outlineToggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ic-text);
+  cursor: pointer;
+}
+
+.outlineToggle input {
+  width: 15px;
+  height: 15px;
+}
+
+.alignRow {
+  display: inline-flex;
+  border: 1px solid var(--ic-border);
+  border-radius: var(--ic-radius-xs);
+  overflow: hidden;
+  width: fit-content;
+}
+
+.alignRow button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 34px;
+  height: 32px;
+
+  color: var(--ic-text-muted);
+  border-right: 1px solid var(--ic-border);
+}
+
+.alignRow button:last-child {
+  border-right: none;
+}
+
+.alignActive {
+  background: var(--ic-ink);
+  color: #fff !important;
+}
+
+.warning {
+  color: var(--ic-accent-deep);
+}
+
+.hint {
+  font-size: 13px;
+  color: var(--ic-text-subtle);
+}

@@ -1,0 +1,84 @@
+/* ==================================================
+   BLOG FILTERS
+================================================== */
+
+.filters {
+    display: flex;
+    gap: 0.5rem;
+    min-width: 0;
+    max-width: 100%;
+    padding-block: 2px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: var(--ic-space-6);
+}
+
+.filters::-webkit-scrollbar {
+    display: none;
+}
+
+.filter {
+    position: relative;
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+    padding: 0 16px;
+    border: 1px solid var(--ic-border-strong);
+    border-radius: var(--ic-radius-pill);
+    background: transparent;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: -0.005em;
+    color: var(--ic-text);
+    white-space: nowrap;
+    cursor: pointer;
+    transition:
+        transform 160ms var(--ic-ease),
+        background-color 240ms var(--ic-ease),
+        border-color 240ms var(--ic-ease),
+        color 240ms var(--ic-ease);
+}
+
+.filter:hover {
+    transform: translateY(-1px);
+    background: var(--ic-bg);
+    border-color: var(--ic-text);
+}
+
+.filter:active {
+    transform: translateY(0) scale(0.985);
+}
+
+.filterLabel {
+    position: relative;
+    z-index: 1;
+}
+
+.filterPill {
+    position: absolute;
+    inset: -1px;
+    z-index: 0;
+    border-radius: var(--ic-radius-pill);
+    background: var(--ic-ink);
+    box-shadow: var(--ic-shadow-sm);
+}
+
+.filterActive,
+.filterActive:hover {
+    border-color: var(--ic-ink);
+    background: transparent;
+    color: #ffffff;
+}
+
+/* ---------- Mobile ---------- */
+
+@media (max-width: 480px) {
+    .filter {
+        min-height: 36px;
+        padding: 0 13px;
+        font-size: 13.5px;
+    }
+}

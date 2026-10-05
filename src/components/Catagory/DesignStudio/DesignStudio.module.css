@@ -1,0 +1,143 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  background: var(--ic-bg);
+}
+
+/* =========================================================
+   TOP BAR
+   ========================================================= */
+
+.topBar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  flex: none;
+  height: 64px;
+  padding: 0 16px;
+
+  border-bottom: 1px solid var(--ic-border);
+  background: var(--ic-surface);
+}
+
+.backLink {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+
+  width: 36px;
+  height: 36px;
+
+  border-radius: var(--ic-radius-sm);
+  color: var(--ic-text-muted);
+
+  transition:
+    color var(--ic-dur-fast) var(--ic-ease),
+    background-color var(--ic-dur-fast) var(--ic-ease);
+}
+
+.backLink:hover {
+  color: var(--ic-text);
+  background: var(--ic-surface-muted);
+}
+
+.tools {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  height: 100%;
+  overflow-x: auto;
+}
+
+.toolButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+
+  flex: none;
+  min-width: 82px;
+  height: 100%;
+  padding: 0 10px;
+
+  border-bottom: 2px solid transparent;
+
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  color: var(--ic-text-subtle);
+
+  transition: color var(--ic-dur-fast) var(--ic-ease);
+}
+
+.toolButton:hover {
+  color: var(--ic-text-muted);
+}
+
+.toolButtonActive {
+  color: var(--ic-accent);
+  border-bottom-color: var(--ic-accent);
+}
+
+.actions {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 12px;
+
+  margin-left: auto;
+}
+
+.priceBox {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  line-height: 1.2;
+}
+
+.priceBox strong {
+  font-family: var(--ic-font-display);
+  font-size: 18px;
+  color: var(--ic-text);
+}
+
+.priceBox span {
+  font-size: 11px;
+  color: var(--ic-text-subtle);
+  white-space: nowrap;
+}
+
+/* =========================================================
+   STAGE
+   ========================================================= */
+
+.stage {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+}
+
+.comingSoon {
+  font-size: 13px;
+  color: var(--ic-text-subtle);
+}
+
+@media (max-width: 720px) {
+  .btnLabel {
+    display: none;
+  }
+
+  .priceBox span {
+    display: none;
+  }
+
+  .actions {
+    gap: 8px;
+  }
+}

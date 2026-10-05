@@ -439,6 +439,20 @@
   background: currentColor;
 }
 
+.ic_cta_top {
+  display: none;
+}
+
+.ic_cta_bottom {
+  display: block;
+  width: 100%;
+  margin-top: 65px;
+}
+
+.ic_cta_bottom .ctas {
+  justify-content: center;
+}
+
 @media (min-width: 1024px) {
   .grid {
     grid-template-columns: minmax(0, 1.03fr) minmax(0, 0.97fr);
@@ -446,6 +460,14 @@
 
   .visual {
     margin-right: 0;
+  }
+
+  .ic_cta_top {
+    display: block;
+  }
+
+  .ic_cta_bottom {
+    display: none;
   }
 }
 
@@ -576,6 +598,12 @@
 
   .ic_eyebrow {
     margin-bottom: 5px;
+  }
+
+  .ic_cta_bottom {
+    display: block;
+    width: 100%;
+    margin-top: 55px;
   }
 }
 

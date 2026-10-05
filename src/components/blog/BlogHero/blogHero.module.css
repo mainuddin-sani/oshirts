@@ -1,0 +1,95 @@
+/* ==================================================
+   BLOG HERO — dark ink banner, same palette as the
+   site's dark panels (CTA, footer). Colours come from
+   the ic_theme_dark tokens; only the atmosphere is here.
+================================================== */
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  min-height: 370px;
+  display: flex;
+  align-items: center;
+}
+
+/* Warm highlight top-left, accent glow bottom-right — the same radial the
+   homepage CTA panel uses, instead of a photo. */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+
+  background:
+    radial-gradient(circle at 15% 25%,
+      rgba(246, 243, 237, 0.07),
+      transparent 32%),
+    radial-gradient(closest-side at 85% 80%,
+      rgba(228, 87, 46, 0.28),
+      transparent 70%);
+  pointer-events: none;
+}
+
+/* Concentric rings, tinted with the accent rather than blue. */
+.hero::after {
+  content: "";
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  right: -110px;
+  top: -180px;
+
+  border: 1px solid rgba(228, 87, 46, 0.22);
+  border-radius: 50%;
+
+  box-shadow:
+    0 0 0 70px rgba(228, 87, 46, 0.045),
+    0 0 0 140px rgba(228, 87, 46, 0.025);
+
+  pointer-events: none;
+}
+
+.inner {
+  width: 100%;
+}
+
+.content {
+  max-width: 760px;
+  padding: 80px 0;
+}
+
+.content h2 {
+  /* max-width: 14ch; */
+  color: #ffffff;
+}
+
+.content p {
+  max-width: 54ch;
+  margin-top: var(--ic-space-5);
+}
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: 300px;
+  }
+
+  .content {
+    padding: 80px 0;
+  }
+
+  .content p {
+    margin-top: var(--ic-space-4);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    min-height: 280px;
+  }
+
+  .content {
+    padding: 50px 0;
+  }
+}

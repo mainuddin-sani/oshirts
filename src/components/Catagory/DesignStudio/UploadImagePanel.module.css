@@ -1,0 +1,79 @@
+/* Global base styles (block svg, 16px p, p+p margin) leak into antd's dragger,
+   so its inner pieces are re-pinned here. */
+.uploader :global(.ant-upload-drag) {
+  background: var(--ic-surface-muted);
+}
+
+.uploader :global(.ant-upload-btn) {
+  padding: 24px 16px !important;
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 12px;
+  color: var(--ic-text-muted);
+}
+
+.uploader p.title {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--ic-text);
+}
+
+.uploader p.hint {
+  margin: 4px 0 0;
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--ic-text-subtle);
+}
+
+.uploader p.hint:first-of-type {
+  margin-top: 6px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  width: 100%;
+  padding: 8px 12px;
+
+  border: 1px solid var(--ic-border);
+  border-radius: var(--ic-radius-sm);
+  background: var(--ic-surface);
+  cursor: pointer;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ic-text);
+}
+
+.item:hover {
+  border-color: var(--ic-accent);
+}
+
+.itemActive {
+  border-color: var(--ic-accent);
+  background: var(--ic-accent-soft);
+}
+
+.thumb {
+  flex: none;
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  border-radius: 6px;
+  background: var(--ic-surface-muted);
+}
+
+.list {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}

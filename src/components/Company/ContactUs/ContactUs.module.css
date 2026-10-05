@@ -1,0 +1,425 @@
+/* ==================================================
+   CONTACT US — ONLY USED STYLES
+================================================== */
+
+.panel {
+  padding: var(--ic-space-5);
+  border-radius: var(--ic-radius-md);
+  border: 1px solid var(--ic-border);
+  background: var(--ic-surface);
+  box-shadow: var(--ic-shadow-sm);
+}
+
+/* ---------- Contact channels ---------- */
+
+.cards {
+  display: grid;
+  gap: var(--ic-space-4);
+}
+
+.channelCard {
+  display: grid;
+  gap: 0.35rem;
+  padding: var(--ic-space-5);
+  border-radius: var(--ic-radius-md);
+  border: 1px solid var(--ic-border);
+  background: var(--ic-surface);
+  transition:
+    transform var(--ic-dur) var(--ic-ease),
+    border-color var(--ic-dur) var(--ic-ease),
+    box-shadow var(--ic-dur) var(--ic-ease);
+}
+
+.channelCard:hover {
+  transform: translateY(-2px);
+  border-color: var(--ic-border-strong);
+  box-shadow: var(--ic-shadow-md);
+}
+
+.cardIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-bottom: var(--ic-space-4);
+  border-radius: var(--ic-radius-sm);
+  background: var(--ic-accent-soft);
+  color: var(--ic-accent);
+}
+
+.channelCard h3 {
+  font-size: 16px;
+  font-family: var(--ic-font-body);
+  font-weight: 600;
+}
+
+.channelValue {
+  font-size: 15.5px;
+  font-weight: 600;
+  color: var(--ic-accent);
+  transition: color var(--ic-dur-fast) var(--ic-ease);
+}
+
+.channelValue:hover {
+  color: var(--ic-accent-deep);
+}
+
+.channelText {
+  font-size: 13px;
+  color: var(--ic-text-subtle);
+}
+
+/* ---------- Section title ---------- */
+
+.sectionTitle {
+  margin-bottom: var(--ic-space-5);
+  font-size: 22px;
+}
+
+/* ---------- Contact form ---------- */
+
+.form {
+  display: grid;
+  gap: var(--ic-space-4);
+}
+
+.formRow {
+  display: grid;
+  align-items: start;
+  gap: var(--ic-space-4);
+}
+
+.field {
+  display: grid;
+  gap: 0.4rem;
+  min-width: 0;
+  align-content: start;
+}
+
+.field label {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--ic-text);
+}
+
+.optional {
+  margin-left: 0.4rem;
+  padding: 2px 7px;
+  border-radius: var(--ic-radius-pill);
+  background: var(--ic-surface-muted);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ic-text-subtle);
+}
+
+.control {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.control input,
+.control select,
+.textarea {
+  width: 100%;
+  min-height: 50px;
+  padding: 0 16px;
+  border: 1px solid var(--ic-border-strong);
+  border-radius: var(--ic-radius-sm);
+  background: var(--ic-bg);
+  font-size: 15px;
+  color: var(--ic-text);
+  transition:
+    border-color var(--ic-dur) var(--ic-ease),
+    background-color var(--ic-dur) var(--ic-ease),
+    box-shadow var(--ic-dur) var(--ic-ease);
+}
+
+.control select {
+  appearance: none;
+  padding-right: 40px;
+  cursor: pointer;
+}
+
+.selectIcon {
+  position: absolute;
+  right: 15px;
+  width: 16px;
+  height: 16px;
+  color: var(--ic-text-subtle);
+  pointer-events: none;
+}
+
+.textarea {
+  min-height: 140px;
+  padding: 14px 16px;
+  line-height: 1.6;
+  resize: vertical;
+}
+
+.control input::placeholder,
+.textarea::placeholder {
+  color: var(--ic-text-subtle);
+}
+
+.control input:hover,
+.control select:hover,
+.textarea:hover {
+  border-color: var(--ic-text-subtle);
+}
+
+.control input:focus,
+.control select:focus,
+.textarea:focus {
+  outline: none;
+  background: var(--ic-surface);
+  border-color: var(--ic-accent);
+  box-shadow: 0 0 0 4px var(--ic-accent-soft);
+}
+
+.fieldError .control input,
+.fieldError .control select,
+.fieldError .textarea {
+  border-color: var(--ic-accent);
+  background: color-mix(in srgb,
+      var(--ic-accent-soft) 55%,
+      var(--ic-bg));
+}
+
+/* ---------- Validation error ---------- */
+
+.error {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--ic-accent-deep);
+}
+
+.error svg {
+  flex: none;
+  width: 14px;
+  height: 14px;
+}
+
+/* ---------- Success state ---------- */
+
+.formDone {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  padding: var(--ic-space-5);
+  border-radius: var(--ic-radius-sm);
+  border: 1px solid color-mix(in srgb, var(--ic-success) 40%, transparent);
+  background: color-mix(in srgb, var(--ic-success) 8%, var(--ic-surface));
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--ic-text-muted);
+}
+
+.formDone svg {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  color: var(--ic-success);
+}
+
+.formDone strong {
+  display: block;
+  color: var(--ic-text);
+}
+
+/* ---------- Loading spinner ---------- */
+
+.spinner {
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #ffffff;
+  animation: spin 720ms linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ---------- Offices ---------- */
+
+.office {
+  padding: var(--ic-space-5);
+  border-radius: var(--ic-radius-sm);
+  border: 1px solid var(--ic-border);
+  /* background: var(--ic-bg); */
+
+  background: var(--ic-surface);
+  box-shadow: var(--ic-shadow-sm);
+  transition:
+    transform var(--ic-dur) var(--ic-ease),
+    border-color var(--ic-dur) var(--ic-ease),
+    box-shadow var(--ic-dur) var(--ic-ease);
+}
+
+.office h4 {
+  font-size: 15.5px;
+  font-family: var(--ic-font-body);
+  font-weight: 600;
+}
+
+.office p {
+  margin-top: 0.3rem;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.officeLine {
+  display: block;
+}
+
+.officeNote {
+  margin-top: 0.4rem;
+  font-size: 12.5px;
+  color: var(--ic-text-subtle);
+}
+
+/* ==================================================
+   RESPONSIVE
+================================================== */
+
+
+/* ---------- Channels ---------- */
+
+.channels {
+  display: grid;
+  gap: var(--ic-space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.channel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  height: 100%;
+  padding: var(--ic-space-5);
+  border: 1px solid var(--ic-border);
+  border-radius: var(--ic-radius-md);
+  background: var(--ic-surface);
+  box-shadow: var(--ic-shadow-sm);
+  transition:
+    transform var(--ic-dur) var(--ic-ease),
+    border-color var(--ic-dur) var(--ic-ease),
+    box-shadow var(--ic-dur) var(--ic-ease);
+}
+
+.channel:hover {
+  transform: translateY(-3px);
+  border-color: var(--ic-border-strong);
+  box-shadow: var(--ic-shadow-md);
+}
+
+.channelIcon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: var(--ic-ink);
+  color: var(--ic-paper);
+  transition: background-color var(--ic-dur) var(--ic-ease);
+}
+
+.channel:hover .channelIcon {
+  background: var(--ic-accent);
+}
+
+.channelBody {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  width: 100%;
+  min-width: 0;
+}
+
+.channelTitle {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ic-text-subtle);
+}
+
+.channelValue {
+  font-family: var(--ic-font-display);
+  font-size: 17.5px;
+  font-weight: 600;
+  letter-spacing: var(--ic-tracking-tight);
+  color: var(--ic-text);
+  overflow-wrap: anywhere;
+}
+
+.channelText {
+  margin-top: 2px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ic-text-muted);
+}
+
+.channelArrow {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 16px;
+  height: 16px;
+  color: var(--ic-text-subtle);
+  transition:
+    color var(--ic-dur) var(--ic-ease),
+    transform var(--ic-dur) var(--ic-ease);
+}
+
+.channel:hover .channelArrow {
+  color: var(--ic-accent);
+  transform: translate(2px, -2px);
+}
+
+@media (min-width: 720px) {
+  .channels {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+
+
+
+/* .....................................................................  */
+@media (min-width: 641px) {
+  .cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .formRow {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .panel {
+    padding: var(--ic-space-6);
+  }
+}
+
+@media (max-width: 768px) {
+  .panel {
+    padding: var(--ic-space-4);
+  }
+}

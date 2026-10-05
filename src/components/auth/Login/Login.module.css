@@ -1,0 +1,591 @@
+.page {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  padding-block: 72px 110px;
+  background: var(--ic-bg);
+}
+
+.page::before {
+  content: "";
+  position: absolute;
+  top: -22%;
+  right: -10%;
+  z-index: -3;
+  width: min(52vw, 760px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle,
+      rgba(228, 87, 46, 0.13) 0%,
+      rgba(228, 87, 46, 0.05) 38%,
+      transparent 72%);
+  pointer-events: none;
+}
+
+.bgGrid {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background-image: radial-gradient(circle at 1px 1px,
+      rgba(18, 20, 26, 0.07) 1px,
+      transparent 0);
+  background-size: 30px 30px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 55% at 72% 20%,
+      #000 0%,
+      transparent 72%);
+  mask-image: radial-gradient(ellipse 70% 55% at 72% 20%,
+      #000 0%,
+      transparent 72%);
+  pointer-events: none;
+}
+
+.grid {
+  max-width: 630px;
+  width: 100%;
+}
+
+
+
+.panel {
+  position: relative;
+  padding: var(--ic-space-7);
+  border-radius: var(--ic-radius-lg);
+  border: 1px solid var(--ic-border);
+  background: var(--ic-surface);
+  box-shadow: var(--ic-shadow-md);
+  align-self: center;
+}
+
+.panelHead h1 {
+  font-size: 34px;
+  line-height: 1.1;
+}
+
+.panelHead p {
+  margin-top: 0.4rem;
+  font-size: 15px;
+}
+
+
+.socials {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--ic-space-4);
+  margin-top: var(--ic-space-5);
+}
+
+.social {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  min-height: 48px;
+  padding: 0 18px;
+  border: 1px solid var(--ic-border-strong);
+  border-radius: var(--ic-radius-sm);
+  background: var(--ic-surface);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ic-text);
+  transition:
+    transform var(--ic-dur-fast) var(--ic-ease),
+    background-color var(--ic-dur) var(--ic-ease),
+    border-color var(--ic-dur) var(--ic-ease),
+    box-shadow var(--ic-dur) var(--ic-ease);
+}
+
+.social svg {
+  width: 17px;
+  height: 17px;
+}
+
+.social:hover {
+  transform: translateY(-1px);
+  border-color: var(--ic-text);
+  box-shadow: var(--ic-shadow-sm);
+}
+
+.social:active {
+  transform: translateY(0) scale(0.99);
+}
+
+
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: var(--ic-space-4);
+  margin: var(--ic-space-5) 0;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: var(--ic-tracking-caps);
+  text-transform: uppercase;
+  color: var(--ic-text-subtle);
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--ic-border);
+}
+
+
+
+
+.form {
+  display: grid;
+  gap: var(--ic-space-4);
+}
+
+.banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  padding: 0.85rem 1rem;
+  border-radius: var(--ic-radius-sm);
+  border: 1px solid color-mix(in srgb,
+      var(--ic-accent) 40%,
+      transparent);
+  background: var(--ic-accent-soft);
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--ic-accent-deep);
+}
+
+.banner svg {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  margin-top: 2px;
+}
+
+
+
+
+.field {
+  display: grid;
+  gap: 0.4rem;
+
+  /* Pack the rows to the top. Without this, a field stretched to match a
+     taller neighbour spreads the spare height across its own rows and its
+     input drifts down when the neighbour shows a validation message. */
+  align-content: start;
+}
+
+.field label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  color: var(--ic-text);
+}
+
+.labelRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--ic-space-4);
+}
+
+.forgot {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ic-text-muted);
+  transition: color var(--ic-dur-fast) var(--ic-ease);
+}
+
+.forgot:hover {
+  color: var(--ic-accent);
+}
+
+
+
+.control {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.control input {
+  width: 100%;
+  min-height: 52px;
+  padding: 0 44px;
+  border: 1px solid var(--ic-border-strong);
+  border-radius: var(--ic-radius-sm);
+  background: var(--ic-bg);
+  font-size: 15px;
+  color: var(--ic-text);
+  transition:
+    border-color var(--ic-dur) var(--ic-ease),
+    background-color var(--ic-dur) var(--ic-ease),
+    box-shadow var(--ic-dur) var(--ic-ease);
+}
+
+.control input::placeholder {
+  color: var(--ic-text-subtle);
+}
+
+.control input:hover {
+  border-color: var(--ic-text-subtle);
+}
+
+.control input:focus {
+  outline: none;
+  background: var(--ic-surface);
+  border-color: var(--ic-accent);
+  box-shadow: 0 0 0 4px var(--ic-accent-soft);
+}
+
+
+
+.control input:-webkit-autofill,
+.control input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--ic-text);
+  -webkit-box-shadow: 0 0 0 40px var(--ic-surface) inset;
+}
+
+
+
+.leadIcon {
+  position: absolute;
+  left: 15px;
+  width: 17px;
+  height: 17px;
+  color: var(--ic-text-subtle);
+  pointer-events: none;
+  transition: color var(--ic-dur) var(--ic-ease);
+}
+
+.control:focus-within .leadIcon {
+  color: var(--ic-accent);
+}
+
+.validIcon {
+  position: absolute;
+  right: 15px;
+  width: 17px;
+  height: 17px;
+  color: var(--ic-success);
+  pointer-events: none;
+}
+
+
+
+
+.reveal {
+  position: absolute;
+  right: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--ic-radius-xs);
+  color: var(--ic-text-subtle);
+  transition:
+    color var(--ic-dur-fast) var(--ic-ease),
+    background-color var(--ic-dur-fast) var(--ic-ease);
+}
+
+.reveal:hover {
+  color: var(--ic-text);
+  background: var(--ic-surface-muted);
+}
+
+.reveal svg {
+  width: 17px;
+  height: 17px;
+}
+
+
+
+
+.fieldValid .control input {
+  border-color: color-mix(in srgb,
+      var(--ic-success) 45%,
+      var(--ic-border-strong));
+  padding-right: 42px;
+}
+
+.fieldError .control input {
+  border-color: var(--ic-accent);
+  background: color-mix(in srgb,
+      var(--ic-accent-soft) 55%,
+      var(--ic-bg));
+}
+
+.fieldError .control input:focus {
+  box-shadow: 0 0 0 4px var(--ic-accent-soft);
+}
+
+.fieldError .leadIcon {
+  color: var(--ic-accent);
+}
+
+
+
+.error {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--ic-accent-deep);
+}
+
+.error svg {
+  flex: none;
+  width: 14px;
+  height: 14px;
+}
+
+.hint {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 13px;
+  color: var(--ic-text-muted);
+}
+
+.hint svg {
+  flex: none;
+  width: 14px;
+  height: 14px;
+  color: var(--ic-star);
+}
+
+
+
+
+.check label {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 0.7rem;
+  cursor: pointer;
+}
+
+.check input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--ic-border-strong);
+  border-radius: var(--ic-radius-xs);
+  background: var(--ic-surface);
+  color: transparent;
+  transition:
+    background-color var(--ic-dur-fast) var(--ic-ease),
+    border-color var(--ic-dur-fast) var(--ic-ease),
+    color var(--ic-dur-fast) var(--ic-ease),
+    transform var(--ic-dur-fast) var(--ic-ease);
+}
+
+.box svg {
+  width: 13px;
+  height: 13px;
+}
+
+.check label:hover .box {
+  border-color: var(--ic-text);
+}
+
+.check input:checked+.box {
+  background: var(--ic-ink);
+  border-color: var(--ic-ink);
+  color: #ffffff;
+  transform: scale(1.04);
+}
+
+.check input:focus-visible+.box {
+  outline: 2px solid var(--ic-accent);
+  outline-offset: 3px;
+}
+
+.checkText {
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--ic-text-muted);
+}
+
+
+
+
+.submit {
+  width: 100%;
+  margin-top: var(--ic-space-2);
+  box-shadow: 0 18px 34px -18px rgba(18, 20, 26, 0.5);
+}
+
+.submit:hover {
+  box-shadow: 0 20px 38px -16px rgba(228, 87, 46, 0.5);
+}
+
+.spinner {
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #ffffff;
+  animation: spin 720ms linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+.assurance {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  font-size: 12.5px;
+  color: var(--ic-text-subtle);
+}
+
+.assurance svg {
+  flex: none;
+  width: 14px;
+  height: 14px;
+  color: var(--ic-success);
+}
+
+
+
+.success {
+  display: grid;
+  justify-items: center;
+  gap: var(--ic-space-4);
+  padding: var(--ic-space-5) 0;
+  text-align: center;
+}
+
+.successIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: color-mix(in srgb,
+      var(--ic-success) 12%,
+      transparent);
+  color: var(--ic-success);
+  animation: pop 420ms var(--ic-ease);
+}
+
+.successIcon svg {
+  width: 32px;
+  height: 32px;
+}
+
+@keyframes pop {
+  from {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.success p {
+  max-width: 44ch;
+}
+
+.successActions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.7rem;
+  margin-top: var(--ic-space-2);
+}
+
+
+
+@media (max-width: 1199px) {
+  .page {
+    padding-block: 64px 96px;
+  }
+
+  .grid {
+    max-width: 600px;
+    width: 100%;
+    padding: 0 16px;
+  }
+
+  .panel {
+    padding: var(--ic-space-6);
+  }
+}
+
+
+@media (max-width: 1023px) {
+  .page {
+    padding-block: 56px 80px;
+  }
+
+  .panel {
+    padding: var(--ic-space-6);
+  }
+}
+
+
+@media (max-width: 768px) {
+  .page {
+    padding-block: 40px 64px;
+  }
+
+  .panel {
+    padding: var(--ic-space-5);
+  }
+
+  .panelHead h1 {
+    font-size: 28px;
+  }
+
+  .socials {
+    gap: var(--ic-space-3);
+  }
+
+  .successActions :global(.ic_btn) {
+    width: 100%;
+  }
+}
+
+
+@media (max-width: 575px) {
+  .socials {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .page {
+    padding-block: 32px 52px;
+  }
+
+  .panel {
+    padding: var(--ic-space-4);
+    border-radius: var(--ic-radius-md);
+  }
+}

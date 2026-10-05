@@ -38,8 +38,8 @@ export default function Footer() {
               <h6>{col.title}</h6>
               <ul>
                 {col.links.map((link) => (
-                  <li key={link}>
-                    <Link href="#">{link}</Link>
+                  <li key={link.label}>
+                    <Link href={link.href}>{link.label}</Link>
                   </li>
                 ))}
               </ul>
@@ -53,8 +53,8 @@ export default function Footer() {
           </p>
           <ul className={styles.legal}>
             {footer.legal.map((item) => (
-              <li key={item}>
-                <Link href="#">{item}</Link>
+              <li key={item.label}>
+                <Link href={item.href}>{item.label}</Link>
               </li>
             ))}
           </ul>

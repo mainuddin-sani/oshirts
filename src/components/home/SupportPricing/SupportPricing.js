@@ -29,6 +29,7 @@ export default function SupportPricing() {
             </span>
           }
           description="Not sure which print method, garment or artwork setup is right for your project? Our team is here to make the process simple from first idea to final print."
+          align="center"
         />
 
         <div className={styles.grid}>
@@ -149,7 +150,7 @@ export default function SupportPricing() {
 
               <p>
                 Have a question about your artwork, garment or print method?
-                Reach out and we'll help you figure it out.
+                Reach out and we&apos;ll help you figure it out.
               </p>
             </div>
 

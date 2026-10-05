@@ -1,0 +1,247 @@
+/* ==================================================
+   SAVED DESIGN CARD
+   Grid card for the retrieve results and the detail
+   page's "more from this account" row.
+================================================== */
+
+.card {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid var(--ic-border);
+  border-radius: var(--ic-radius-md);
+  background: var(--ic-surface);
+  box-shadow:
+    0 1px 2px rgba(18, 20, 26, 0.04),
+    0 10px 30px rgba(18, 20, 26, 0.035);
+  transition:
+    transform 400ms var(--ic-ease),
+    border-color 400ms var(--ic-ease),
+    box-shadow 400ms var(--ic-ease);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  border-color: var(--ic-border-strong);
+  box-shadow:
+    0 2px 4px rgba(18, 20, 26, 0.04),
+    0 18px 42px rgba(18, 20, 26, 0.075);
+}
+
+/* The media link is the card's hit area; the title link sits on top of it
+   so the card still exposes one clear accessible name per target. */
+.card:focus-within {
+  border-color: var(--ic-border-strong);
+}
+
+/* ---------- Media ---------- */
+
+.media {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  /* background-color: bisque; */
+  background: var(--ic-surface-muted);
+  border-bottom: 1px solid var(--ic-border);
+  /* background: var(--ic-surface); */
+  margin: 12px;
+  border-radius: 8px;
+}
+
+.image {
+  object-fit: contain;
+  padding: 8%;
+  transition: transform 700ms var(--ic-ease);
+}
+
+.card:hover .image {
+  transform: translateY(-4px) scale(1.03);
+}
+
+/* ---------- Status pill ---------- */
+
+.pill {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 11px;
+  border-radius: var(--ic-radius-pill);
+  border: 1px solid var(--ic-border);
+  background: var(--ic-surface);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--ic-text-muted);
+  box-shadow: var(--ic-shadow-sm);
+}
+
+.pill svg {
+  width: 12px;
+  height: 12px;
+}
+
+.pill_accent {
+  border-color: color-mix(in srgb, var(--ic-accent) 35%, transparent);
+  background: var(--ic-accent-soft);
+  color: var(--ic-accent-deep);
+}
+
+.pill_amber {
+  border-color: color-mix(in srgb, var(--ic-star) 45%, transparent);
+  background: color-mix(in srgb, var(--ic-star) 14%, var(--ic-surface));
+  color: color-mix(in srgb, var(--ic-star) 70%, var(--ic-ink));
+}
+
+.pill_success {
+  border-color: color-mix(in srgb, var(--ic-success) 35%, transparent);
+  background: color-mix(in srgb, var(--ic-success) 10%, var(--ic-surface));
+  color: var(--ic-success);
+}
+
+/* ---------- Body ---------- */
+
+.body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 8px 16px 16px 16px;
+}
+
+.id {
+  font-family: var(--ic-font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.04em;
+  color: var(--ic-text-subtle);
+}
+
+.title {
+  font-size: 17.5px;
+  line-height: 1.28;
+  letter-spacing: var(--ic-tracking-tight);
+}
+
+.title a {
+  color: var(--ic-text);
+  transition: color var(--ic-dur) var(--ic-ease);
+}
+
+/* Stretch the title link across the card so the whole surface is clickable,
+   while the media link underneath keeps its own image alt text. */
+.title a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+.card:hover .title a {
+  color: var(--ic-accent);
+}
+
+.garment {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--ic-text-muted);
+}
+
+.swatch {
+  flex: none;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  border: 1px solid var(--ic-border-strong);
+}
+
+/* ---------- Foot ---------- */
+
+.foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ic-space-3);
+  margin-top: auto;
+  padding-top: var(--ic-space-4);
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--ic-font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.01em;
+  color: var(--ic-text-subtle);
+}
+
+.meta svg {
+  width: 12px;
+  height: 12px;
+}
+
+.dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.6;
+}
+
+.arrow {
+  display: inline-grid;
+  flex: none;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid var(--ic-border);
+  color: var(--ic-text-muted);
+  transition:
+    color var(--ic-dur) var(--ic-ease),
+    border-color var(--ic-dur) var(--ic-ease),
+    background-color var(--ic-dur) var(--ic-ease),
+    transform var(--ic-dur) var(--ic-ease);
+}
+
+.arrow svg {
+  width: 14px;
+  height: 14px;
+}
+
+.card:hover .arrow {
+  color: var(--ic-on-accent);
+  border-color: var(--ic-accent);
+  background: var(--ic-accent);
+  transform: translateX(3px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .card,
+  .image,
+  .arrow,
+  .title a {
+    transition: none;
+  }
+
+  .card:hover {
+    transform: none;
+  }
+
+  .card:hover .image,
+  .card:hover .arrow {
+    transform: none;
+  }
+}

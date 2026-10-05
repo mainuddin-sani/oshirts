@@ -1,0 +1,225 @@
+/* ==================================================
+   POST CARD
+   Extracted from Blog CSS
+================================================== */
+
+/* ---------- Card ---------- */
+
+.card {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    border: 1px solid var(--ic-border);
+    border-radius: var(--ic-radius-md);
+    background: var(--ic-surface);
+    box-shadow:
+        0 1px 2px rgba(18, 20, 26, 0.04),
+        0 10px 30px rgba(18, 20, 26, 0.035);
+    transition:
+        transform 400ms var(--ic-ease),
+        border-color 400ms var(--ic-ease),
+        box-shadow 400ms var(--ic-ease);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: var(--ic-border-strong);
+    box-shadow:
+        0 2px 4px rgba(18, 20, 26, 0.04),
+        0 18px 42px rgba(18, 20, 26, 0.075);
+}
+
+
+/* ---------- Card Media ---------- */
+
+.cardMedia {
+    position: relative;
+    border-bottom: 1px solid var(--ic-border);
+}
+
+
+/* ---------- Category Chip ---------- */
+
+.chip {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    z-index: 1;
+    padding: 4px 10px;
+    border-radius: var(--ic-radius-pill);
+    border: 1px solid var(--ic-border);
+    background: var(--ic-surface);
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    color: var(--ic-text-muted);
+    box-shadow: var(--ic-shadow-sm);
+}
+
+
+/* ---------- Cover ---------- */
+
+.cover {
+    position: relative;
+    display: grid;
+    place-items: center;
+    aspect-ratio: 4 / 3;
+    padding: 9%;
+    overflow: hidden;
+    background: var(--ic-paper-deep);
+}
+
+
+/* ---------- Cover Tones ---------- */
+
+.cover[data-tone="sand"] {
+    background: #efe4d2;
+}
+
+.cover[data-tone="sky"] {
+    background: #dcebf5;
+}
+
+.cover[data-tone="stone"] {
+    background: #e7e6e2;
+}
+
+.cover[data-tone="blush"] {
+    background: #fbeeea;
+}
+
+
+/* ---------- Cover Artwork ---------- */
+
+.cover .coverArt {
+    width: 80%;
+    height: auto;
+    max-height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 16px 22px rgba(18, 20, 26, 0.16));
+    transition: transform var(--ic-dur-slow) var(--ic-ease);
+}
+
+.card:hover .coverArt {
+    transform: translateY(-4px) scale(1.04);
+}
+
+
+/* ---------- Card Body ---------- */
+
+.cardBody {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: var(--ic-space-5);
+}
+
+
+/* ---------- Card Title ---------- */
+
+.cardTitle {
+    font-size: 19px;
+    line-height: 1.28;
+    transition: color var(--ic-dur) var(--ic-ease);
+    text-wrap: unset;
+}
+
+.card:hover .cardTitle {
+    color: var(--ic-accent);
+}
+
+
+/* ---------- Excerpt ---------- */
+
+.excerpt {
+    margin-top: 0.55rem;
+    font-size: 14.5px;
+    line-height: 1.6;
+}
+
+
+/* ---------- Card Footer ---------- */
+
+.cardFoot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--ic-space-4);
+    margin-top: auto;
+    padding-top: var(--ic-space-4);
+}
+
+
+/* ---------- Metadata ---------- */
+
+.cardMeta {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 13px;
+    color: var(--ic-text-subtle);
+}
+
+.cardMeta svg {
+    width: 13px;
+    height: 13px;
+}
+
+.metaDot {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: currentColor;
+    opacity: 0.6;
+}
+
+
+/* ---------- Arrow ---------- */
+
+.cardArrow {
+    display: inline-flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    width: 2.1rem;
+    height: 2.1rem;
+    border-radius: 50%;
+    border: 1px solid var(--ic-border-strong);
+    color: var(--ic-text-subtle);
+    transition:
+        transform var(--ic-dur) var(--ic-ease),
+        background-color var(--ic-dur) var(--ic-ease),
+        border-color var(--ic-dur) var(--ic-ease),
+        color var(--ic-dur) var(--ic-ease);
+}
+
+.cardArrow svg {
+    width: 15px;
+    height: 15px;
+}
+
+.card:hover .cardArrow {
+    transform: translateX(3px);
+    background: var(--ic-ink);
+    border-color: var(--ic-ink);
+    color: #ffffff;
+}
+
+
+/* ==================================================
+   RESPONSIVE
+================================================== */
+
+@media (max-width: 768px) {
+    .cardBody {
+        padding: var(--ic-space-4);
+    }
+
+    .cardTitle {
+        font-size: 18px;
+    }
+}

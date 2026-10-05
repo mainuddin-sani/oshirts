@@ -1,0 +1,229 @@
+.productCard {
+    display: flex;
+    flex-direction: column;
+
+    min-width: 0;
+    padding: 12px;
+
+    border: 1px solid var(--ic-border);
+    border-radius: var(--ic-radius-md);
+
+    background: var(--ic-surface);
+
+    transition:
+        transform var(--ic-dur) var(--ic-ease),
+        border-color var(--ic-dur) var(--ic-ease),
+        box-shadow var(--ic-dur) var(--ic-ease);
+}
+
+.productCard:hover {
+    transform: translateY(-3px);
+    border-color: var(--ic-border-strong);
+    box-shadow: var(--ic-shadow-md);
+}
+
+.imageWrap {
+    position: relative;
+
+    display: block;
+    overflow: hidden;
+
+    aspect-ratio: 1 / 1;
+
+    border-radius: var(--ic-radius-sm);
+    background: var(--ic-surface-muted);
+}
+
+.productImage {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: transform var(--ic-dur-slow) var(--ic-ease);
+}
+
+.productCard:hover .productImage {
+    transform: scale(1.04);
+}
+
+.quickView {
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 40px;
+
+    border-radius: var(--ic-radius-xs);
+
+    background: rgba(255, 255, 255, 0.95);
+    color: var(--ic-text);
+    box-shadow: var(--ic-shadow-sm);
+
+    font-size: 14px;
+    font-weight: 600;
+
+    opacity: 0;
+    transform: translateY(8px);
+
+    transition:
+        opacity var(--ic-dur) var(--ic-ease),
+        transform var(--ic-dur) var(--ic-ease);
+}
+
+.productCard:hover .quickView,
+.imageWrap:focus-visible .quickView {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.productInfo {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+    padding: 16px 6px 6px;
+}
+
+.brand {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--ic-text-subtle);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.productName {
+    margin: 0;
+    font-family: var(--ic-font-body);
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1.35;
+    text-wrap: unset;
+    /* letter-spacing: -0.01em; */
+}
+
+.productName a {
+    transition: color var(--ic-dur-fast) var(--ic-ease);
+}
+
+.productName a:hover {
+    color: var(--ic-accent);
+}
+
+.description {
+    display: -webkit-box;
+
+    margin-top: 7px;
+
+    overflow: hidden;
+    font-size: 14px;
+    line-height: 1.5;
+
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.productBottom {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+
+    padding-top: 14px;
+    margin-top: auto;
+}
+
+.starting {
+    display: block;
+
+    margin-bottom: 2px;
+
+    color: var(--ic-text-subtle);
+    font-size: 11.8px;
+    line-height: 1;
+}
+
+.price {
+    color: var(--ic-text);
+    font-size: 19px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+.colorList {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.colorDot {
+    width: 15px;
+    height: 15px;
+
+    border: 1px solid rgba(18, 20, 26, 0.15);
+    border-radius: 50%;
+
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+.colorMore {
+    color: var(--ic-text-subtle);
+    font-size: 11px;
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+    .productCard {
+        padding: 12px;
+    }
+
+    .quickView {
+        display: none;
+    }
+
+    .productInfo {
+        padding: 12px 4px 4px;
+    }
+
+    /* .productName {
+        font-size: 14px;
+    }
+
+    .description {
+        font-size: 12px;
+    } */
+
+    /* .price {
+        font-size: 15px;
+    } */
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+    .productBottom {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .colorList {
+        order: 2;
+    }
+}

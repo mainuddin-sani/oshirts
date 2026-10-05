@@ -114,6 +114,16 @@
   background: var(--ic-paper);
   border-bottom: 1px solid var(--ic-border);
   box-shadow: var(--ic-shadow-lg);
+
+  /* The panel hangs below the sticky header, so it can only use what is left
+     of the viewport — otherwise an expanded Products accordion runs off the
+     bottom of the screen with no way to reach it. dvh keeps that honest while
+     mobile browser chrome shows and hides. */
+  max-height: calc(100vh - var(--ic-header-h));
+  max-height: calc(100dvh - var(--ic-header-h));
+  overflow-y: auto;
+  /* Keep the swipe inside the menu: no page scroll behind it, no pull-to-refresh. */
+  overscroll-behavior: contain;
 }
 
 .mobile ul {

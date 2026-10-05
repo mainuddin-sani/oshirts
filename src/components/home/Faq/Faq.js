@@ -20,7 +20,7 @@ export default function Faq() {
           <h2 id="faq-title">Questions we get before the first order.</h2>
           <p>Straight answers on minimums, turnaround, files and what happens if something goes wrong.</p>
 
-          <div className={styles.contact}>
+          {/* <div className={styles.contact}>
             <h6>Still have a question?</h6>
             <Link href="#chat" className={styles.contactLink}>
               <FiMessageCircle aria-hidden="true" /> Chat with a specialist
@@ -28,7 +28,7 @@ export default function Faq() {
             <a href={`mailto:${site.email}`} className={styles.contactLink}>
               <FiMail aria-hidden="true" /> {site.email}
             </a>
-          </div>
+          </div> */}
         </Reveal>
 
         <Reveal as="ul" className={styles.list} delay={0.1}>

@@ -59,7 +59,8 @@
 }
 
 .feature div {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 0.25rem;
 }
 
@@ -69,7 +70,7 @@
 
 .feature div span {
   max-width: 420px;
-  font-size: 0.875rem;
+  font-size: 15px;
   line-height: 1.55;
   color: var(--ic-text-muted);
 }
@@ -92,7 +93,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.82rem;
+  font-size: 15px;
   color: var(--ic-text-muted);
 }
 
@@ -133,8 +134,8 @@
 
 .channels {
   display: grid;
-  margin-top: var(--ic-space-6);
-  border-top: 1px solid var(--ic-border);
+  margin-top: var(--ic-space-4);
+  /* border-top: 1px solid var(--ic-border); */
 }
 
 .channels li {
@@ -146,13 +147,17 @@
   border-bottom: 1px solid var(--ic-border);
 }
 
+.channels li:last-child {
+  border-bottom: none;
+}
+
 .channels li>div {
   display: grid;
   gap: 0.1rem;
 }
 
 .channels li>div span {
-  font-size: 0.82rem;
+  font-size: 14px;
   color: var(--ic-text-muted);
 }
 
@@ -220,11 +225,11 @@
 }
 
 .reviewNote strong {
-  font-size: 0.85rem;
+  font-size: 15px;
 }
 
 .reviewNote .ic_botton_review span {
-  font-size: 0.78rem;
+  font-size: 14px;
   line-height: 1.45;
   color: var(--ic-text-muted);
 }

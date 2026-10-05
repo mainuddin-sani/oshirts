@@ -3,8 +3,6 @@
   overflow: hidden;
 }
 
-
-
 .trustBar {
   width: 760px;
   max-width: 100%;
@@ -79,26 +77,21 @@
   flex: none;
   border-radius: 50%;
   background: var(--ic-success);
-  box-shadow:
-    0 0 0 3px rgba(46, 125, 91, 0.1);
+  box-shadow: 0 0 0 3px rgba(46, 125, 91, 0.1);
 }
 
 .carousel {
   position: relative;
   width: 100%;
-  /* margin-top: 64px; */
   padding: 0 50px;
 }
-
 
 .carousel :global(.slick-list) {
   width: 100%;
   margin: 0 auto;
-  /* padding: 10px 12px !important; */
   overflow: hidden;
   border-radius: 24px;
 }
-
 
 .carousel :global(.slick-track) {
   display: flex;
@@ -123,7 +116,6 @@
   height: 100%;
 }
 
-
 .card {
   position: relative;
   height: 100%;
@@ -147,22 +139,17 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background:
-    radial-gradient(circle at 100% 0%,
+  background: radial-gradient(circle at 100% 0%,
       rgba(228, 87, 46, 0.06),
       transparent 34%);
 }
 
 .card:hover {
-  /* transform: translateY(-5px); */
-  /* border-color: var(--ic-border-strong); */
   box-shadow: var(--ic-shadow-md);
 }
 
-
 .featuredCard {
-  background:
-    linear-gradient(145deg,
+  background: linear-gradient(145deg,
       var(--ic-ink) 0%,
       var(--ic-ink-soft) 100%);
   border-color: var(--ic-ink);
@@ -172,9 +159,7 @@
 
 .featuredCard::before {
   background:
-    radial-gradient(circle at 100% 0%,
-      rgba(228, 87, 46, 0.2),
-      transparent 38%),
+    radial-gradient(circle at 100% 0%, rgba(228, 87, 46, 0.2), transparent 38%),
     radial-gradient(circle at 0% 100%,
       rgba(255, 255, 255, 0.05),
       transparent 30%);
@@ -183,8 +168,6 @@
 .featuredCard:hover {
   border-color: rgba(255, 255, 255, 0.2);
 }
-
-
 
 .cardHeader {
   position: relative;
@@ -198,7 +181,7 @@
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
   color: var(--ic-text-subtle);
 }
@@ -206,9 +189,6 @@
 .featuredCard .verified {
   color: rgba(255, 255, 255, 0.55);
 }
-
-
-
 
 .quote {
   position: relative;
@@ -240,9 +220,6 @@
   font-size: 19px;
   line-height: 1.62;
 }
-
-
-
 
 .cardFooter {
   position: relative;
@@ -289,7 +266,7 @@
 .author strong {
   overflow: hidden;
   color: var(--ic-text);
-  font-size: 13px;
+  font-size: 13.5px;
   line-height: 1.3;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -298,7 +275,7 @@
 .author span {
   overflow: hidden;
   color: var(--ic-text-subtle);
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.35;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -311,11 +288,6 @@
 .featuredCard .author span {
   color: rgba(255, 255, 255, 0.48);
 }
-
-
-/* =========================================================
-   Navigation Arrows
-   ========================================================= */
 
 .arrow {
   position: absolute !important;
@@ -351,12 +323,6 @@
   box-shadow: var(--ic-shadow-lg);
 }
 
-
-/*
-  Because carousel has 56px horizontal padding,
-  these arrows remain inside the main container.
-*/
-
 .prev {
   left: -45px !important;
 }
@@ -372,11 +338,6 @@
 .next:hover {
   transform: translate(2px, -50%);
 }
-
-
-/* =========================================================
-   Dots
-   ========================================================= */
 
 .carousel :global(.slick-dots) {
   position: static;
@@ -423,13 +384,9 @@
   box-shadow: 0 2px 8px rgba(228, 87, 46, 0.35);
 }
 
-
-
-
 .carouselHint {
   display: none;
 }
-
 
 .collapsedQuote {
   display: -webkit-box;
@@ -444,12 +401,10 @@
 
 .seeMore {
   position: relative;
-
   background: none;
   border: none;
   padding: 0;
   margin-top: 6px;
-
   color: var(--ic-accent);
   font-size: 14px;
   font-weight: 600;
@@ -480,7 +435,6 @@
 @media (max-width: 1180px) {
   .carousel {
     padding: 0 52px;
-
   }
 
   .card {
@@ -503,7 +457,6 @@
   }
 }
 
-
 @media (max-width: 720px) {
   .trustBar {
     margin-top: -8px;
@@ -525,6 +478,10 @@
 
   .carousel {
     padding: 0 0;
+  }
+
+  .carousel :global(.slick-arrow) {
+    display: none !important;
   }
 
   .carousel :global(.slick-list) {
@@ -558,7 +515,6 @@
     margin-top: 24px;
   }
 
-
   .carouselHint {
     display: flex;
     align-items: center;
@@ -582,11 +538,9 @@
     width: 45%;
     height: 100%;
     background: var(--ic-accent);
-    animation:
-      testimonialHint 2s var(--ic-ease) infinite;
+    animation: testimonialHint 2s var(--ic-ease) infinite;
   }
 }
-
 
 @media (max-width: 480px) {
   .trustBar {
@@ -607,7 +561,6 @@
   }
 }
 
-
 @keyframes testimonialHint {
   0% {
     transform: translateX(-120%);
@@ -622,9 +575,6 @@
   }
 }
 
-
-
-
 @media (prefers-reduced-motion: reduce) {
   .card {
     transition: none;
@@ -638,128 +588,3 @@
     animation: none;
   }
 }
-
-
-
-
-/* .section {
-  background: var(--ic-surface);
-  border-top: 1px solid var(--ic-border);
-}
-
-.grid {
-  display: grid;
-  gap: var(--ic-space-6);
-  align-items: start;
-}
-
-.featured {
-  position: relative;
-  padding: clamp(1.75rem, 4vw, 3rem);
-  border-radius: var(--ic-radius-lg);
-  background: var(--ic-paper);
-  border: 1px solid var(--ic-border);
-}
-
-.mark {
-  position: absolute;
-  top: 0.5rem;
-  left: 1.4rem;
-  font-family: var(--ic-font-display);
-  font-size: 7rem;
-  font-weight: 700;
-  line-height: 1;
-  color: var(--ic-accent);
-  opacity: 0.25;
-  pointer-events: none;
-}
-
-.featured blockquote p {
-  font-family: var(--ic-font-display);
-  font-size: clamp(1.25rem, 1.05rem + 0.9vw, 1.75rem);
-  font-weight: 500;
-  line-height: 1.35;
-  letter-spacing: -0.015em;
-  color: var(--ic-text);
-}
-
-.featured figcaption {
-  display: grid;
-  gap: 0.2rem;
-  margin-top: var(--ic-space-5);
-  font-size: 0.9rem;
-  color: var(--ic-text-muted);
-}
-
-.featured figcaption strong {
-  margin-top: 0.4rem;
-}
-
-.rating {
-  display: flex;
-  align-items: center;
-  gap: 0.9rem;
-  margin-top: var(--ic-space-6);
-  padding-top: var(--ic-space-5);
-  border-top: 1px solid var(--ic-border);
-}
-
-.rating small {
-  display: block;
-  margin-top: 0.2rem;
-  color: var(--ic-text-muted);
-}
-
-.ratingValue {
-  font-family: var(--ic-font-display);
-  font-size: 2.75rem;
-  font-weight: 700;
-  letter-spacing: var(--ic-tracking-tight);
-  line-height: 1;
-}
-
-.list {
-  display: grid;
-}
-
-.item {
-  padding: var(--ic-space-5) 0;
-  border-bottom: 1px solid var(--ic-border);
-}
-
-.item:first-child {
-  padding-top: 0;
-}
-
-.item:last-child {
-  border-bottom: 0;
-}
-
-.item blockquote {
-  margin-top: 0.75rem;
-}
-
-.item blockquote p {
-  font-size: 1.05rem;
-  color: var(--ic-text);
-}
-
-.item figcaption {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.25rem 0.6rem;
-  margin-top: 0.75rem;
-  font-size: 0.85rem;
-  color: var(--ic-text-muted);
-}
-
-.item figcaption strong {
-  font-size: 0.9rem;
-}
-
-@media (min-width: 1024px) {
-  .grid {
-    grid-template-columns: 7fr 5fr;
-    gap: var(--ic-space-8);
-  }
-} */

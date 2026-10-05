@@ -33,6 +33,7 @@ export default function Categories() {
               </span>
             }
             description="Choose a category to explore available styles, colours and sizes."
+            align="center"
           />
 
           {/* <Reveal

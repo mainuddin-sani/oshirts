@@ -1,7 +1,6 @@
 import { Geist, Geist_Mono, Bricolage_Grotesque } from "next/font/google";
 import Providers from "./providers";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
+import SiteChrome from "@/components/layout/SiteChrome";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -31,9 +30,7 @@ export default function RootLayout({ children }) {
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} ${display.variable}`}>
       <body>
         {/* <Providers> */}
-        <Header />
-        <main id="main">{children}</main>
-        <Footer />
+        <SiteChrome>{children}</SiteChrome>
         {/* </Providers> */}
       </body>
     </html>

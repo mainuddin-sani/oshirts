@@ -14,6 +14,7 @@ export default function Gallery() {
             eyebrow="Customer gallery"
             title={<span id="gallery-title">Real orders, straight off the press.</span>}
             description="Teams, brands and events who trusted us with their artwork — and let us show it off."
+            align="center"
           />
         </div>
 
