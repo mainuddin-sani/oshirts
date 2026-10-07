@@ -58,7 +58,7 @@ export default function ClipartPanel({ onAdd }) {
                 <button
                   type="button"
                   className={styles.item}
-                  onClick={() => onAdd({ src: item.src, naturalWidth: 200, naturalHeight: 200 })}
+                  onClick={() => onAdd({ src: item.src, naturalWidth: 200, naturalHeight: 200, origin: "clipart" })}
                   aria-label={`Add ${item.name}`}
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element -- inline SVG data URL */}

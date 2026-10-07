@@ -3,6 +3,7 @@
 import { useState, useSyncExternalStore } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useParams } from "next/navigation";
 import Slider from "react-slick";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import {
@@ -27,6 +28,7 @@ const product = {
   brand: "Hanes",
   name: "50/50 Hooded Sweatshirt",
   slug: "hanes-50-50-hooded-sweatshirt",
+  studioStyleId: "hanes-hooded-sweatshirt", // matches a style id in DesignStudio/designStudioData.js
   tagline: "Premium blank sweatshirt",
 
   category: {
@@ -150,6 +152,15 @@ export default function ProductDetails() {
   const [activeImage, setActiveImage] = useState(0);
   const [selectedColor, setSelectedColor] = useState(product.colors[0].name);
   const [selectedSize, setSelectedSize] = useState(product.sizes[1]);
+  const { category, productDetails } = useParams();
+
+  // Hand the chosen style/color/quantity to the design studio route.
+  const designQuery = new URLSearchParams({
+    style: product.studioStyleId,
+    color: selectedColor,
+    qty: String(minimumQuantity),
+  });
+  const designHref = `/products/${category}/${productDetails}/design?${designQuery}`;
   const [openDetail, setOpenDetail] = useState("features");
   const [favorite, setFavorite] = useState(false);
   const [mainSlider, setMainSlider] = useState(null);
@@ -537,13 +548,13 @@ export default function ProductDetails() {
             {/* CTA */}
 
             <div className={styles.actions}>
-              <button
-                type="button"
+              <Link
+                href={designHref}
                 className={`${styles.designButton} ic_btn ic_btn_primary ic_btn_lg`}
               >
                 <FiEdit3 size={17} aria-hidden="true" />
                 <span>{product.cta.label}</span>
-              </button>
+              </Link>
 
               {/* <p className={styles.actionHint}>
                                 <FiCheck size={14} aria-hidden="true" />

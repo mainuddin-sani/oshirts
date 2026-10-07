@@ -1,7 +1,7 @@
 "use client";
 
-import { Alert, Button, Checkbox, ColorPicker, Empty, Input, Segmented, Select, Slider, Tooltip, Typography } from "antd";
-import { FiAlignCenter, FiAlignLeft, FiAlignRight, FiCornerUpLeft, FiPlus } from "react-icons/fi";
+import { Alert, Button, Checkbox, ColorPicker, Empty, Input, Segmented, Select, Slider, Typography } from "antd";
+import { FiAlignCenter, FiAlignLeft, FiAlignRight, FiPlus } from "react-icons/fi";
 
 import {
   MAX_ARC,
@@ -42,19 +42,14 @@ function Field({ label, children }) {
   );
 }
 
-export default function AddTextPanel({ elements, selectedId, onSelect, onAdd, onUpdate, onUndo, canUndo }) {
+export default function AddTextPanel({ elements, selectedId, onSelect, onAdd, onUpdate }) {
   const textElements = elements.filter((el) => el.type === "text");
   const selected = textElements.find((el) => el.id === selectedId) || null;
   const isMultiLine = selected ? selected.text.includes("\n") : false;
 
   return (
     <div className={panelStyles.panel}>
-      <div className={panelStyles.panelHeader}>
-        <span>Add Text</span>
-        <Tooltip title="Undo">
-          <Button type="text" size="small" icon={<FiCornerUpLeft size={15} />} onClick={onUndo} disabled={!canUndo} aria-label="Undo" />
-        </Tooltip>
-      </div>
+      <div className={panelStyles.panelHeader}>Add Text</div>
 
       <div className={panelStyles.panelBody}>
         {textElements.length > 0 ? (

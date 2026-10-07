@@ -1,10 +1,19 @@
 "use client";
 
-import { useState } from "react";
-import { Button, Tooltip } from "antd";
+import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
+import { Button, Tooltip, message } from "antd";
 import Link from "next/link";
 import { GiTShirt } from "react-icons/gi";
-import { FiArrowLeft, FiImage, FiLayers, FiSave, FiShoppingCart, FiType } from "react-icons/fi";
+import {
+  FiArrowLeft,
+  FiCornerUpLeft,
+  FiCornerUpRight,
+  FiImage,
+  FiLayers,
+  FiSave,
+  FiShoppingCart,
+  FiType,
+} from "react-icons/fi";
 
 import {
   VIEWS,
@@ -14,6 +23,7 @@ import {
   findStyle,
   reorderElements,
 } from "./designStudioData";
+import { emptyByView, loadDesign, saveDesign } from "./designStorage";
 import DesignCanvas from "./DesignCanvas";
 import ChooseShirtPanel from "./ChooseShirtPanel";
 import AddTextPanel from "./AddTextPanel";
@@ -30,25 +40,45 @@ const TOOLS = [
   { id: "clipart", label: "Add Clipart", Icon: FiLayers },
 ];
 
-const emptyByView = () => Object.fromEntries(VIEWS.map((view) => [view.id, []]));
+/** Which tool panel edits a given element. */
+const toolForElement = (el) => (el.type === "text" ? "text" : el.origin === "clipart" ? "clipart" : "upload");
 
-export default function DesignStudio({ initialStyleId, initialColor, initialQuantity, backHref }) {
+const subscribeToNothing = () => () => {};
+const onClient = () => true;
+const onServer = () => false;
+
+/** Saved designs live in localStorage, which only exists in the browser. After
+ * hydration the studio is remounted once (via key) so it can start from the
+ * saved design without a server/client markup mismatch. */
+export default function DesignStudio(props) {
+  const hydrated = useSyncExternalStore(subscribeToNothing, onClient, onServer);
+  const storedDesign = useMemo(() => (hydrated ? loadDesign(props.backHref) : null), [hydrated, props.backHref]);
+
+  return <DesignStudioApp key={hydrated ? "client" : "server"} {...props} storedDesign={storedDesign} />;
+}
+
+function DesignStudioApp({ initialStyleId, initialColor, initialQuantity, backHref, storedDesign }) {
   const [activeTool, setActiveTool] = useState("shirt");
-  const [garment, setGarment] = useState(() =>
-    createGarment({
+  // The last saved (or freshly opened) garment/design; any later change differs from it by reference.
+  const [baseline, setBaseline] = useState(() => storedDesign || ({
+    garment: createGarment({
       styleId: initialStyleId || "classic-cotton-tee",
       color: initialColor || "White",
       quantity: initialQuantity,
-    })
-  );
+    }),
+    designByView: emptyByView(),
+  }));
+  const [garment, setGarment] = useState(baseline.garment);
   const [activeView, setActiveView] = useState("front");
-  const [designByView, setDesignByView] = useState(emptyByView);
-  const [historyByView, setHistoryByView] = useState(emptyByView);
+  const [designByView, setDesignByView] = useState(baseline.designByView);
+  // One undo/redo history for the whole design (every view and the shirt), as snapshots.
+  const [history, setHistory] = useState({ past: [], future: [] });
   const [selectedId, setSelectedId] = useState(null);
+  const [messageApi, messageContext] = message.useMessage();
 
   const style = findStyle(garment.styleId);
   const elements = designByView[activeView];
-  const history = historyByView[activeView];
+  const isDirty = baseline.garment !== garment || baseline.designByView !== designByView;
 
   const setElements = (updater) => {
     setDesignByView((current) => ({
@@ -57,38 +87,73 @@ export default function DesignStudio({ initialStyleId, initialColor, initialQuan
     }));
   };
 
-  const commit = (snapshot) => {
-    setHistoryByView((current) => ({ ...current, [activeView]: [...current[activeView], snapshot] }));
+  // Call right before a change so it can be undone; a new change drops any redo steps.
+  const commit = () => {
+    setHistory((current) => ({ past: [...current.past, { garment, designByView }], future: [] }));
   };
 
-  const updateGarment = (patch) => setGarment((current) => ({ ...current, ...patch }));
+  const updateGarment = (patch) => {
+    commit();
+    setGarment((current) => ({ ...current, ...patch }));
+  };
 
+  // Adding text/images/clipart is deliberately not an undo step.
   const addText = () => {
-    commit(elements);
     const el = createTextElement();
     setElements((current) => [...current, el]);
     setSelectedId(el.id);
   };
 
-  const addImage = ({ src, naturalWidth, naturalHeight }) => {
-    commit(elements);
-    const el = createImageElement({ src, naturalWidth, naturalHeight });
+  const addImage = ({ src, naturalWidth, naturalHeight, origin = "upload" }) => {
+    const el = createImageElement({ src, naturalWidth, naturalHeight, origin });
     setElements((current) => [...current, el]);
     setSelectedId(el.id);
   };
 
   const updateSelected = (patch, { record = false } = {}) => {
     if (!selectedId) return;
-    if (record) commit(elements);
+    if (record) commit();
     setElements((current) => current.map((el) => (el.id === selectedId ? { ...el, ...patch } : el)));
   };
 
-  const handleUndo = () => {
-    if (history.length === 0) return;
-    const previous = history[history.length - 1];
-    setDesignByView((current) => ({ ...current, [activeView]: previous }));
-    setHistoryByView((current) => ({ ...current, [activeView]: current[activeView].slice(0, -1) }));
+  // Undo/redo roll back edits to elements that existed at that point, but keep
+  // anything added afterwards, since adding isn't an undo step.
+  const restore = (snapshot) => {
+    setGarment(snapshot.garment);
+    setDesignByView((current) =>
+      Object.fromEntries(
+        VIEWS.map(({ id }) => {
+          const restored = snapshot.designByView[id];
+          const restoredIds = new Set(restored.map((el) => el.id));
+          return [id, [...restored, ...current[id].filter((el) => !restoredIds.has(el.id))]];
+        })
+      )
+    );
     setSelectedId(null);
+  };
+
+  const handleUndo = () => {
+    const previous = history.past.at(-1);
+    if (!previous) return;
+    setHistory({ past: history.past.slice(0, -1), future: [...history.future, { garment, designByView }] });
+    restore(previous);
+  };
+
+  const handleRedo = () => {
+    const next = history.future.at(-1);
+    if (!next) return;
+    setHistory({ past: [...history.past, { garment, designByView }], future: history.future.slice(0, -1) });
+    restore(next);
+  };
+
+  const handleSave = () => {
+    try {
+      saveDesign(backHref, { garment, designByView });
+      setBaseline({ garment, designByView });
+      messageApi.success("Design saved");
+    } catch {
+      messageApi.error("Couldn't save the design — the browser storage is full or unavailable.");
+    }
   };
 
   const handleDragMove = (id, x, y) => {
@@ -104,15 +169,47 @@ export default function DesignStudio({ initialStyleId, initialColor, initialQuan
   };
 
   const handleDelete = (id) => {
-    commit(elements);
+    commit();
     setElements((current) => current.filter((el) => el.id !== id));
     setSelectedId((current) => (current === id ? null : current));
   };
 
   const handleReorder = (id, action) => {
-    commit(elements);
+    commit();
     setElements((current) => reorderElements(current, id, action));
   };
+
+  // Ctrl/Cmd+Z undo, Ctrl/Cmd+Shift+Z or Ctrl+Y redo. Left alone while typing in
+  // a field, so the browser's own text undo still works there.
+  useEffect(() => {
+    const handleKey = (event) => {
+      if (!(event.ctrlKey || event.metaKey) || event.altKey) return;
+      const target = event.target;
+      if (target instanceof HTMLElement && (target.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(target.tagName))) {
+        return;
+      }
+
+      const key = event.key.toLowerCase();
+      if (key === "z" && !event.shiftKey) {
+        event.preventDefault();
+        handleUndo();
+      } else if ((key === "z" && event.shiftKey) || key === "y") {
+        event.preventDefault();
+        handleRedo();
+      }
+    };
+
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  });
+
+  // Warn before leaving the page with unsaved changes.
+  useEffect(() => {
+    if (!isDirty) return undefined;
+    const warn = (event) => event.preventDefault();
+    window.addEventListener("beforeunload", warn);
+    return () => window.removeEventListener("beforeunload", warn);
+  }, [isDirty]);
 
   const handleViewChange = (viewId) => {
     setActiveView(viewId);
@@ -121,11 +218,20 @@ export default function DesignStudio({ initialStyleId, initialColor, initialQuan
 
   const handleToolChange = (toolId) => {
     setActiveTool(toolId);
-    if (toolId !== "text" && toolId !== "upload" && toolId !== "clipart") setSelectedId(null);
+    const selectedElement = elements.find((el) => el.id === selectedId);
+    if (!selectedElement || toolForElement(selectedElement) !== toolId) setSelectedId(null);
+  };
+
+  // Selecting something on the canvas opens the tool that edits it.
+  const handleCanvasSelect = (id) => {
+    setSelectedId(id);
+    const element = elements.find((el) => el.id === id);
+    if (element) setActiveTool(toolForElement(element));
   };
 
   return (
     <AntdProvider>
+    {messageContext}
     <div className={styles.app}>
       <header className={styles.topBar}>
         {backHref ? (
@@ -154,11 +260,17 @@ export default function DesignStudio({ initialStyleId, initialColor, initialQuan
             <span>per shirt ({garment.quantity})</span>
           </div>
 
-          <Tooltip title="Coming soon">
-            <Button disabled icon={<FiSave size={16} />}>
-              <span className={styles.btnLabel}>Save Design</span>
-            </Button>
+          <Tooltip title="Undo">
+            <Button icon={<FiCornerUpLeft size={16} />} onClick={handleUndo} disabled={history.past.length === 0} aria-label="Undo" />
           </Tooltip>
+
+          <Tooltip title="Redo">
+            <Button icon={<FiCornerUpRight size={16} />} onClick={handleRedo} disabled={history.future.length === 0} aria-label="Redo" />
+          </Tooltip>
+
+          <Button icon={<FiSave size={16} />} onClick={handleSave} disabled={!isDirty}>
+            <span className={styles.btnLabel}>{isDirty ? "Save Design" : "Saved"}</span>
+          </Button>
 
           <Tooltip title="Coming soon">
             <Button type="primary" disabled icon={<FiShoppingCart size={16} />}>
@@ -179,8 +291,8 @@ export default function DesignStudio({ initialStyleId, initialColor, initialQuan
           onViewChange={handleViewChange}
           elements={elements}
           selectedId={selectedId}
-          onSelect={setSelectedId}
-          onDragStart={() => commit(elements)}
+          onSelect={handleCanvasSelect}
+          onDragStart={() => commit()}
           onDragMove={handleDragMove}
           onRotate={handleRotate}
           onResize={handleResize}
@@ -197,8 +309,6 @@ export default function DesignStudio({ initialStyleId, initialColor, initialQuan
             onSelect={setSelectedId}
             onAdd={addText}
             onUpdate={updateSelected}
-            onUndo={handleUndo}
-            canUndo={history.length > 0}
           />
         ) : null}
 

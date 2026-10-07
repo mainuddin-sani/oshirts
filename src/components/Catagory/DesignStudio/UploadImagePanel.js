@@ -22,7 +22,7 @@ const clampImageSize = (value) => Math.round(Math.min(MAX_IMAGE_SIZE, Math.max(M
 export default function UploadImagePanel({ elements, selectedId, onSelect, onAdd, onUpdate, onDelete }) {
   const [error, setError] = useState("");
 
-  const images = elements.filter((el) => el.type === "image");
+  const images = elements.filter((el) => el.type === "image" && el.origin !== "clipart");
   const selected = images.find((el) => el.id === selectedId) || null;
 
   const handleFile = (file) => {

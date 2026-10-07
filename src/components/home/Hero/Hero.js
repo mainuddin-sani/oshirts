@@ -17,10 +17,10 @@ export default function Hero() {
     reduce
       ? {}
       : {
-        initial: { opacity: 0, y: 22 },
-        animate: { opacity: 1, y: 0 },
-        transition: { duration: 0.7, delay, ease: EASE },
-      };
+          initial: { opacity: 0, y: 22 },
+          animate: { opacity: 1, y: 0 },
+          transition: { duration: 0.7, delay, ease: EASE },
+        };
 
   const [ratingProof, ...statProof] = hero.proof;
   const assurances = pricing.includes.slice(0, 3);
@@ -44,12 +44,9 @@ export default function Hero() {
           </motion.h1> */}
 
           <motion.h1 id="hero-title" {...fadeUp(0.08)}>
-            <span>
-              {hero.title.replace("want to wear.", "")}
-            </span>
+            <span>{hero.title.replace("want to wear.", "")}</span>
             <span className={styles.accentLine}>want to wear.</span>
           </motion.h1>
-
 
           <motion.p className={`ic_lead ${styles.lead}`} {...fadeUp(0.18)}>
             {hero.description}
@@ -57,16 +54,21 @@ export default function Hero() {
 
           <div className={styles.ic_cta_top}>
             <motion.div className={styles.ctas} {...fadeUp(0.26)}>
-              <Link href={site.ctaPrimary.href} className="ic_btn ic_btn_primary ic_btn_lg">
+              <Link
+                href={site.ctaPrimary.href}
+                className="ic_btn ic_btn_primary ic_btn_lg"
+              >
                 {site.ctaPrimary.label}
                 <FiArrowRight aria-hidden="true" />
               </Link>
-              <Link href={site.ctaSecondary.href} className="ic_btn ic_btn_secondary ic_btn_lg">
+              <Link
+                href={site.ctaSecondary.href}
+                className="ic_btn ic_btn_secondary ic_btn_lg"
+              >
                 {site.ctaSecondary.label}
               </Link>
             </motion.div>
           </div>
-
         </div>
 
         <div>
@@ -149,11 +151,17 @@ export default function Hero() {
 
           <div className={styles.ic_cta_bottom}>
             <motion.div className={styles.ctas} {...fadeUp(0.26)}>
-              <Link href={site.ctaPrimary.href} className="ic_btn ic_btn_primary ic_btn_lg">
+              <Link
+                href={site.ctaPrimary.href}
+                className="ic_btn ic_btn_primary ic_btn_lg"
+              >
                 {site.ctaPrimary.label}
                 <FiArrowRight aria-hidden="true" />
               </Link>
-              <Link href={site.ctaSecondary.href} className="ic_btn ic_btn_secondary ic_btn_lg">
+              <Link
+                href={site.ctaSecondary.href}
+                className="ic_btn ic_btn_secondary ic_btn_lg"
+              >
                 {site.ctaSecondary.label}
               </Link>
             </motion.div>
